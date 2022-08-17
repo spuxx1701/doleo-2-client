@@ -1,0 +1,13 @@
+.separator {
+  width: 100%;
+  max-width: 75%;
+  height: 7px;
+  border-radius: 3.5px;
+  background-color: var(--colorDark);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.outlet-container {
+  padding: 0.5rem;
+}

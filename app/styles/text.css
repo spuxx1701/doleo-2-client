@@ -1,0 +1,31 @@
+@font-face {
+  font-family: Magelove;
+  src: url('/assets/fonts/Magelove.otf');
+}
+
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--colorDark);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h1, h2 {
+  font-family: 'MageLove', sans-serif;
+}
+
+p, input {
+  font-size: x-large;
+  color: var(--colorDatk);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

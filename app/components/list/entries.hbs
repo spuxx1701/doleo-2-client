@@ -1,6 +1,6 @@
 <div class="list-entries-container">
-  {{#each @entries as |entry|}}
+  {{#each this.entries as |entry|}}
 
-    <List::Entry @entry={{entry}}/>
+  <List::Entry @entry={{entry}} />
   {{/each}}
 </div>

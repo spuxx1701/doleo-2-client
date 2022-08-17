@@ -10,17 +10,14 @@ export interface ListEntryComponentArgs {
 
 export default class ListEntryComponent extends Component {
   @service declare store: Store;
-  entry: ListEntry;
 
   constructor(owner: unknown, args: ListEntryComponentArgs) {
     super(owner, args as any);
-    for (let key of Object.keys(args)) console.log(key);
-    this.entry = args.entry as ListEntry;
   }
 
-  // get entry(): ListEntry {
-  //   return this.args.entry;
-  // }
+  get entry() {
+    return (this.args as ListEntryComponentArgs).entry;
+  }
 
   /**
    * Checks or unchecks the list entry.
@@ -33,7 +30,10 @@ export default class ListEntryComponent extends Component {
   /**
    * Deletes the list entry.
    */
-  @action delete() {}
+  @action delete() {
+    this.entry.deleteRecord();
+    this.entry.save();
+  }
 
   /**
    * Opens a dialog to edit the list entry.

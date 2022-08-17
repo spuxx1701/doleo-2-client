@@ -9,17 +9,4 @@ export default class ListController extends Controller {
   @service declare store: Store;
 
   declare model: List;
-
-  @action
-  createEntry() {
-    const newEntry = {
-      text: 'New Entry',
-      list: this.model,
-    } as ListEntry;
-    const entry = this.store.createRecord('list-entry', newEntry);
-    entry.save();
-    // this.store.pushPayload<ListEntry>('list-entry', newEntry);
-
-    console.log(this.model);
-  }
 }

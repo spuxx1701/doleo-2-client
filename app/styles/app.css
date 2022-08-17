@@ -1,2 +1,13 @@
 @import 'colors.css';
+@import 'layout.css';
 @import 'list.css';
+@import 'text.css';
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--colorBright);
+  margin: 0px
+}
