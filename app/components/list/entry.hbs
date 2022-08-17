@@ -1,0 +1,7 @@
+    <div class="list-entry">
+      <button class="list-entry-button" type="button" {{on 'click' this.toggleChecked}}>
+        <FaIcon @icon="{{if @entry.isChecked 'square-check' 'square'}}" @size="2x" @prefix="far"/>
+        </button>
+      <button class="list-entry-button" type="button" {{on 'click' this.delete}}>-</button>
+      <p>{{@entry.text}}</p>
+    </div>

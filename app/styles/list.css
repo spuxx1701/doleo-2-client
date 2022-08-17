@@ -1,0 +1,9 @@
+.list-entry {
+  display: flex;
+}
+
+.list-entry-button {
+  border: none;
+  background-color: transparent;
+  color: var(--colorDark);
+}

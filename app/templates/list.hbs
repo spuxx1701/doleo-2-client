@@ -1,0 +1,4 @@
+<h2>{{@model.displayName}}</h2>
+<List::Entries @entries={{@model.entries}}/>
+
+<button  type='button' {{on 'click' this.createEntry}}>+</button>

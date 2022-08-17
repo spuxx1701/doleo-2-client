@@ -1,4 +1,5 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany, SyncHasMany } from '@ember-data/model';
+import ListEntry from './list-entry';
 
 export default class List extends Model {
   @attr()
@@ -11,7 +12,10 @@ export default class List extends Model {
   declare hasAmounts: boolean;
 
   @attr()
-  declare ownerId: string;
+  declare owner: any;
+
+  @hasMany('list-entry', { async: false })
+  declare entries: SyncHasMany<ListEntry>;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.

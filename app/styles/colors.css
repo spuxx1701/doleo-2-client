@@ -1,0 +1,17 @@
+:root {
+  --colorBright: #ffe1e1;
+  --colorMedium: #ffbebe;
+  --colorDark: #d87093;
+  --pinkBright: #ffe1e1;
+  --pinkMedium: #ffbebe;
+  --pinkDark: #d87093;
+  --blueBright: #e1f6ff;
+  --blueMedium: #bed5ff;
+  --blueDark: #70a6d8;
+  --greenBright: #ecffe1;
+  --greenMedium: #a2eb85;
+  --greenDark: #60bb4e;
+  --yellowBright: #f8fabf;
+  --yellowMedium: #fae174;
+  --yellowDark: #e2bd57;
+}
