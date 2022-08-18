@@ -5,7 +5,7 @@
 
 :root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: var(--colorDark);
+  color: var(--color-dark);
 }
 
 h1 {
@@ -30,16 +30,17 @@ h1, h2 {
 
 p, input, a {
   font-size: x-large !important;
+  color: var(--color-dark);
 }
 
 a {
-  color: var(--colorDark) !important;
+  color: var(--color-dark) !important;
 }
 
 h1, h2, h3, h4, h5, h6, p, label {
   margin-top: 0px;
   margin-bottom: 0px;
-  color: var(--colorDark);
+  color: var(--color-dark);
 }
 
 .header {
@@ -55,5 +56,5 @@ h1, h2, h3, h4, h5, h6, p, label {
 
 .header svg {
   margin-right: 0.5rem;
-  color: var(--colorDark);
+  color: var(--color-dark);
 }

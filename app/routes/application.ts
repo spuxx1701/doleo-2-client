@@ -8,6 +8,6 @@ export default class ApplicationRoute extends Route {
   @service declare manager: ManagerService;
 
   async afterModel() {
-    this.manager.enableCursorRippleEffect();
+    this.manager.initialize();
   }
 }

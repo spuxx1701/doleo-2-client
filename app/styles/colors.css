@@ -1,32 +1,32 @@
 :root {
-  --colorBright: #ffe1e1;
-  --colorMedium: #ffbebe;
-  --colorDark: #d87093;
-  --pinkBright: #ffe1e1;
-  --pinkMedium: #ffbebe;
-  --pinkDark: #d87093;
-  --blueBright: #e1f6ff;
-  --blueMedium: #bed5ff;
-  --blueDark: #70a6d8;
-  --greenBright: #ecffe1;
-  --greenMedium: #a2eb85;
-  --greenDark: #60bb4e;
-  --yellowBright: #f8fabf;
-  --yellowMedium: #fae174;
-  --yellowDark: #e2bd57;
+  --color-bright: #ffe1e1;
+  --color-medium: #ffbebe;
+  --color-dark: #d87093;
+  --pink-bright: #ffe1e1;
+  --pink-medium: #ffbebe;
+  --pink-dark: #d87093;
+  --blue-bright: #e1f6ff;
+  --blue-medium: #bed5ff;
+  --blue-dark: #70a6d8;
+  --green-bright: #ecffe1;
+  --green-medium: #a2eb85;
+  --green-dark: #60bb4e;
+  --yellow-bright: #f8fabf;
+  --yellow-medium: #fae174;
+  --yellow-dark: #e2bd57;
 }
 
 .dark {
-  background-color: var(--colorDark);
-  color: var(--colorBright);
+  background-color: var(--color-dark);
+  color: var(--color-bright);
 }
 
 .dark p {
-  color: var(--colorBright);
+  color: var(--color-bright);
 }
 
 .dark-inverse {
-  border-color: var(--colorDark);
+  border-color: var(--color-dark);
   background-color: transparent;
-  color: var(--colorDark);
+  color: var(--color-dark);
 }

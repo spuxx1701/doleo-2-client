@@ -10,6 +10,6 @@ html {
 }
 
 body {
-  background-color: var(--colorBright) !important;
+  background-color: var(--color-bright) !important;
   height: 100vh;
 }
