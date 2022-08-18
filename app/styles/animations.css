@@ -1,0 +1,33 @@
+.ripple {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  position: fixed;
+  border-radius: 50%;
+  border: 2px solid var(--colorMedium);
+  opacity: 0.5;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(20);
+    opacity: 0;
+  }
+}
+
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--colorDark) 0.8;
+  }
+
+  50% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 10px transparent;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 transparent;
+  }
+}

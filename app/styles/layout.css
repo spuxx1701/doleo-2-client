@@ -8,6 +8,29 @@
   margin-bottom: 1rem;
 }
 
+.separator-hidden {
+  background-color: transparent;
+}
+
 .outlet-container {
   padding: 0.5rem;
+  margin: 0px auto 0px auto;
+  max-width: 600px;
+}
+
+.setting-container {
+  display: flex;
+  width: 100%;
+  max-width: 340px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.setting-container a {
+  font-size: medium !important;
+}
+
+.setting-container a svg {
+  margin-right: 0.5rem;
 }

@@ -1,6 +1,6 @@
 <div class="list-entries-container">
   {{#each this.entries as |entry|}}
-
   <List::Entry @entry={{entry}} />
   {{/each}}
+  <Common::ButtonLarge @text="Listeneinstellungen" @icon="gear" @onClick={{this.goToSettings}} />
 </div>

@@ -5,6 +5,7 @@ import Store from '@ember-data/store';
 import { inject as service } from '@ember/service';
 import List from 'doleo-2-client/models/list';
 import ListEntry from 'doleo-2-client/models/list-entry';
+import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 
 export interface ListInputFooterComponentArgs {
   list: List;
@@ -25,7 +26,7 @@ export default class ListEntryComponent extends Component {
 
   @action createListEntry(event: SubmitEvent) {
     event.preventDefault();
-    if (this.value?.replace(/\s/g, '').length > 0) {
+    if (stringIsNotEmpty([this.value])) {
       const newEntry = {
         text: this.value,
         list: this.list,

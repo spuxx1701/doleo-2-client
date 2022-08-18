@@ -4,6 +4,5 @@
     <h2>{{@model.displayName}}</h2>
   </div>
   <Common::Separator />
-  <List::Entries @entries={{@model.entries}} />
+  {{outlet}}
 </div>
-<List::InputFooter @list={{@model}} />

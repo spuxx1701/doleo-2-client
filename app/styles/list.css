@@ -1,5 +1,5 @@
 :root {
-  --list-input-footer-height: 50px;
+  --list-input-footer-height: 60px;
   --list-input-footer-button-width: 4.5rem;
 }
 
@@ -19,6 +19,7 @@
 
 .list-header svg {
   margin-right: 1rem;
+  color: var(--colorDark);
 }
 
 .list-header h2 {
@@ -40,7 +41,7 @@
   border: 4px solid var(--colorDark);
   border-radius: 10px;
   margin-bottom: 0.5rem;
-  min-height: 3rem;
+  min-height: 50px;
 }
 
 .list-entry-checked {
@@ -50,6 +51,7 @@
 .list-entry p {
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 0px;
 }
 
 .list-entry svg {
@@ -63,7 +65,7 @@
 }
 
 .list-input-footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100vw;
   max-width: 100vw;
@@ -71,7 +73,7 @@
   transform: translate(-50%, 0);
   height: var(--list-input-footer-height);
   background-color: var(--colorDark);
-  padding: 4px 0px 4px 4px;
+  padding: 5px 0px 5px 10px;
   display: flex;
 }
 

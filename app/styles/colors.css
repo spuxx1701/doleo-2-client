@@ -15,3 +15,18 @@
   --yellowMedium: #fae174;
   --yellowDark: #e2bd57;
 }
+
+.dark {
+  background-color: var(--colorDark);
+  color: var(--colorBright);
+}
+
+.dark p {
+  color: var(--colorBright);
+}
+
+.dark-inverse {
+  border-color: var(--colorDark);
+  background-color: transparent;
+  color: var(--colorDark);
+}

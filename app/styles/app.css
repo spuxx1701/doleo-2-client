@@ -1,4 +1,6 @@
+@import 'animations.css';
 @import 'colors.css';
+@import 'controls.css';
 @import 'layout.css';
 @import 'list.css';
 @import 'text.css';
@@ -8,6 +10,6 @@ html {
 }
 
 body {
-  background-color: var(--colorBright);
-  margin: 0px
+  background-color: var(--colorBright) !important;
+  height: 100vh;
 }
