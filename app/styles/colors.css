@@ -21,7 +21,7 @@
   color: var(--color-bright);
 }
 
-.dark p {
+.dark p, .dark svg {
   color: var(--color-bright);
 }
 
@@ -29,4 +29,17 @@
   border-color: var(--color-dark);
   background-color: transparent;
   color: var(--color-dark);
+}
+
+.dark-inverse p, .dark-inverse svg {
+  color: var(--color-dark);
+}
+
+.bright-transparent {
+  background-color: transparent;
+  color: var(--color-bright);
+}
+
+.bright-transparent p, .bright-transparent svg {
+  color: var(--color-bright);
 }

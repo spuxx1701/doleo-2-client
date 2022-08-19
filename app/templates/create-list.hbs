@@ -1,0 +1,23 @@
+{{page-title "Neue Liste"}}
+
+<div class="list-header">
+  <FaIcon @icon={{this.iconName}} @size="2x" />
+  <h2>{{this.displayName}}
+  </h2>
+</div>
+<Common::Separator />
+<div class="setting-container flex-column">
+  <label>Name
+    <Input @value={{this.displayName}} />
+  </label>
+</div>
+<div class="setting-container flex-column">
+  <label>Icon
+    <Input @value={{this.iconName}} />
+  </label>
+  <a href="https://fontawesome.com/search?m=free&s=solid%2Cbrands" target="_blank" rel="noopener noreferrer">
+    <FaIcon @icon="magnifying-glass" />Nach Icons suchen
+  </a>
+</div>
+<Common::ButtonLarge @icon="floppy-disk" @text="Liste anlegen" @onClick={{this.createList}}
+  @disabled={{this.createDisabled}} />

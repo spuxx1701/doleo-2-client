@@ -1,0 +1,70 @@
+  :root {
+    --sidenav-max-width: 300px;
+  }
+
+  #sidenav {
+    height: 100%;
+    width: 0px;
+    max-width: 100%;
+    position: fixed;
+    z-index: 5;
+    top: calc(var(--branding-bar-height) + var(--header-height));
+    left: 0;
+    padding: 1rem 0 1rem 0;
+    background-color: var(--color-dark);
+    overflow-x: hidden;
+    transition: 500ms;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sidenav * {
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+
+  .sidenav-collapsible-header, .sidenav-button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    height: 50px;
+    width: var(--sidenav-max-width);
+    border: none;
+    background-color: transparent;
+  }
+
+  .sidenav-collapsible-header {
+    justify-content: space-between;
+    padding-left: 1rem;
+  }
+
+  .sidenav-collapsible-content {
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, max-height 0.3s ease-in-out;
+  }
+
+  .sidenav-collapsible-content-collapsed {
+    transform: scaleY(0);
+    max-height: 0px;
+  }
+
+  .sidenav-collapsible-content-expanded {
+    transform: scaleY(1);
+    max-height: 1000px;
+  }
+
+  .sidenav-button:active:not(:disabled) {
+    background-color: var(--color-medium);
+    animation: none;
+  }
+
+  .sidenav-button svg, .sidenav-collapsible-header svg {
+    color: var(--color-bright);
+    min-width: 45px;
+    margin-right: 1rem;
+  }
+
+  .sidenav-button p, .sidenav-collapsible-header p {
+    color: var(--color-bright);
+    margin: 0;
+  }

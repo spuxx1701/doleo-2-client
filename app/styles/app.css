@@ -3,7 +3,13 @@
 @import 'controls.css';
 @import 'layout.css';
 @import 'list.css';
+@import 'sidenav.css';
 @import 'text.css';
+
+:root {
+  --branding-bar-height: 5px;
+  --header-height: 55px;
+}
 
 html {
   overflow-x: hidden;
@@ -12,4 +18,39 @@ html {
 body {
   background-color: var(--color-bright) !important;
   height: 100vh;
+}
+
+#branding-bar {
+  background-color: var(--color-dark);
+  position: fixed;
+  top: 0;
+  height: var(--branding-bar-height);
+  width: 100%;
+  z-index: 5;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-medium);
+  position: fixed;
+  top: var(--branding-bar-height);
+  height: var(--header-height);
+  width: 100%;
+  padding: 0 0.5rem 0 0.5rem;
+  box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+#header h2 {
+  margin: 0;
+}
+
+#content {
+  padding-top: calc(var(--branding-bar-height) + var(--header-height) + 1rem);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin: 0px auto 0px auto;
+  max-width: 600px;
 }

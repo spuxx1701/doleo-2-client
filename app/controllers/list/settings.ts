@@ -3,14 +3,15 @@ import { action } from '@ember/object';
 import Store from '@ember-data/store';
 import { inject as service } from '@ember/service';
 import List from 'doleo-2-client/models/list';
-import { Router } from '@ember/routing';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import { tracked } from '@glimmer/tracking';
 import User from 'doleo-2-client/models/user';
+import ManagerService from 'doleo-2-client/services/manager';
 
 export default class ListController extends Controller {
-  @service declare router: Router;
+  @service declare manager: ManagerService;
   @service declare store: Store;
+  @service declare notifications: any;
 
   declare model: { list: List; users: User[] };
 
@@ -49,11 +50,21 @@ export default class ListController extends Controller {
     this.model.list.save();
   }
 
-  @action delete() {
-    console.log('Implement me!');
+  @action async delete() {
+    const result = await this.model.list.destroyRecord();
+    if (result.isDestroyed) {
+      this.manager.goTo('/');
+      this.notifications.success(
+        `Liste '${result.displayName}' wurde gelöscht.`
+      );
+    } else {
+      this.notifications.error(
+        'Das hat leider nicht geklappt. Bitte prüfe Deine Internetverbindung und probiere es später nochmal!'
+      );
+    }
   }
 
   @action goToList() {
-    this.router.transitionTo(`/list/${this.model.list.id}`);
+    this.manager.goTo(`/list/${this.model.list.id}`);
   }
 }

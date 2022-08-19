@@ -20,7 +20,19 @@ button p {
   min-height: 50px;
   padding: 0px 0.5rem 0px 0.5rem;
   width: 100%;
-  max-width: 420px;
+}
+
+.button-large {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.button-small {
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  width: 45px;
 }
 
 input {

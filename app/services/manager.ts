@@ -1,6 +1,9 @@
-import Service from '@ember/service';
+import { Router } from '@ember/routing';
+import Service, { inject as service } from '@ember/service';
 
 export default class ManagerService extends Service {
+  @service declare router: Router;
+
   constructor() {
     super(...arguments);
   }
@@ -8,6 +11,11 @@ export default class ManagerService extends Service {
   initialize() {
     this.applyDesign();
     this.enableCursorRippleEffect();
+  }
+
+  goTo(path: string) {
+    this.router.transitionTo(path);
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
   /**

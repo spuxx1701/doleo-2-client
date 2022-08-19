@@ -11,4 +11,5 @@ Router.map(function () {
   this.route('list', { path: '/list/:list_id' }, function () {
     this.route('settings');
   });
+  this.route('create-list');
 });

@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { Router } from '@ember/routing';
+import ManagerService from 'doleo-2-client/services/manager';
 
 export interface ListEntriesComponentArgs {
   entries: any;
@@ -9,7 +9,7 @@ export interface ListEntriesComponentArgs {
 }
 
 export default class ListEntriesComponent extends Component {
-  @service declare router: Router;
+  @service declare manager: ManagerService;
 
   get entries() {
     const entries = (this.args as ListEntriesComponentArgs).entries;
@@ -21,6 +21,6 @@ export default class ListEntriesComponent extends Component {
   }
 
   @action goToSettings() {
-    this.router.transitionTo(`/list/${this.listId}/settings`);
+    this.manager.goTo(`/list/${this.listId}/settings`);
   }
 }

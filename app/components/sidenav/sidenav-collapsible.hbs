@@ -1,0 +1,9 @@
+<div class="sidenav-collapsible">
+  <button type="button" class="sidenav-collapsible-header" {{ on "click" this.toggleCollapsed}}>
+    <p>{{@text}}</p>
+    <FaIcon @icon={{this.chevron}} @size="2x" />
+  </button>
+  <div class="sidenav-collapsible-content sidenav-collapsible-content-{{this.state}}">
+    {{yield}}
+  </div>
+</div>
