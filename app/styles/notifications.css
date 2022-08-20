@@ -1,0 +1,34 @@
+:root {
+  --ecn-icon-width: 40px;
+  --ecn-notification-border-radius: 10px;
+}
+
+.ember-cli-notifications-notification__container {
+  bottom: 50px
+}
+
+.ember-cli-notifications-notification__container .c-notification__content {
+  min-height: 50px;
+  align-items: center;
+  font-size: var(--notification-font-size);
+}
+
+.c-notification__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+.c-notification__close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 30px;
+}
+
+.ember-cli-notifications-notification__container .c-notification__svg {
+  height: 22px;
+  width: 22px;
+}

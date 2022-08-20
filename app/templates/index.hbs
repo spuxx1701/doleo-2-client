@@ -1,6 +1,8 @@
 {{page-title "Home"}}
 
 <Common::Separator @hidden="true" />
-<h2>Hallo, $USER!</h2>
+<h1>Hallo, $USER!</h1>
 
 <FaIcon @icon="heart" @prefix="far" @size="4x" />
+
+<Common::ButtonLarge @text="Notification" @onClick={{this.createNotification}} />

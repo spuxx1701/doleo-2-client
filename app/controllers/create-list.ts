@@ -31,7 +31,7 @@ export default class ListController extends Controller {
     await list.save();
     if (list.id) {
       this.manager.goTo(`/list/${list.id}`);
-      this.notifications.success(`Liste '${list.displayName}' wurde angelegt.`);
+      this.notifications.success(`'${list.displayName}' wurde angelegt.`);
     } else {
       this.notifications.error(
         'Das hat leider nicht geklappt. Bitte prüfe Deine Internetverbindung und probiere es später nochmal!'

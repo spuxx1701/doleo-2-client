@@ -14,6 +14,7 @@
 .content-header h2 {
   overflow: hidden;
   text-overflow: ellipsis;
+  margin: 0;
 }
 
 .separator {
@@ -53,8 +54,4 @@
 
 .content-element a svg {
   margin-right: 0.5rem;
-}
-
-.ember-cli-notifications-notification__container {
-  bottom: 50px
 }

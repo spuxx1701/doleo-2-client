@@ -69,9 +69,7 @@ export default class ListController extends Controller {
     const result = await this.model.list.destroyRecord();
     if (result.isDestroyed) {
       this.manager.goTo('/');
-      this.notifications.success(
-        `Liste '${result.displayName}' wurde gelöscht.`
-      );
+      this.notifications.success(`'${result.displayName}' wurde gelöscht.`);
     } else {
       this.notifications.error(
         'Das hat leider nicht geklappt. Bitte prüfe Deine Internetverbindung und probiere es später nochmal!'

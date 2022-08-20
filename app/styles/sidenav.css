@@ -61,7 +61,7 @@
   .sidenav-button svg, .sidenav-collapsible-header svg {
     color: var(--color-bright);
     min-width: 45px;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
 
   .sidenav-button p, .sidenav-collapsible-header p {

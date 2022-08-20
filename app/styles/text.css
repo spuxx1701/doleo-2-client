@@ -6,31 +6,29 @@
 :root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: var(--color-dark);
+  --default-font-size: 1.4rem;
+  --notification-font-size: 1.2rem;
 }
 
 h1 {
-  font-size: 3rem !important;
-}
-
-h2 {
   font-size: 2.4rem !important;
 }
 
-h3 {
-  font-size: 1.8rem !important;
+h2 {
+  font-size: 2rem !important;
 }
 
-h4, label {
-  font-size: 1.4rem !important;
+h3 {
+  font-size: 1.6rem !important;
+}
+
+h4, label, p, a, input {
+  font-size: var(--default-font-size) !important;
+  color: var(--color-dark);
 }
 
 h1, h2 {
   font-family: 'MageLove', sans-serif !important;
-}
-
-p, input, a {
-  font-size: x-large !important;
-  color: var(--color-dark);
 }
 
 a {

@@ -43,3 +43,7 @@
 .bright-transparent p, .bright-transparent svg {
   color: var(--color-bright);
 }
+
+.c-notification__svg {
+  color: white;
+}
