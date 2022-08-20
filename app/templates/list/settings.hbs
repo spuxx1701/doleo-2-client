@@ -2,12 +2,12 @@
   <FaIcon @icon="gear" @size="2x" />
   <h3>Einstellungen</h3>
 </div>
-<div class="setting-container flex-column">
+<div class="content-element flex-column">
   <label>Name
     <Input @value={{this.displayName}} {{on "change" this.changeDisplayName}} />
   </label>
 </div>
-<div class="setting-container flex-column">
+<div class="content-element flex-column">
   <label>Icon
     <Input @value={{this.iconName}} {{on "change" this.changeIconName}} />
   </label>
@@ -15,14 +15,14 @@
     <FaIcon @icon="magnifying-glass" />Nach Icons suchen
   </a>
 </div>
-<div class="setting-container">
+<div class="content-element">
   <label>Mengen verwenden</label>
   <label class="switch">
     <input type="checkbox" checked={{@model.list.hasAmounts}} {{on "change" this.toggleHasAmounts}}>
     <span class="slider round"></span>
   </label>
 </div>
-<div class="setting-container flex-column">
+<div class="content-element flex-column">
   <label>Mitglieder
     <Common::TokenField @options={{this.userOptions}} />
   </label>
