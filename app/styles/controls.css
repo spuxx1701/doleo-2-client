@@ -18,13 +18,13 @@ button p {
   border-radius: 10px;
   margin-bottom: 0.5rem;
   min-height: 50px;
-  padding: 0px 0.5rem 0px 0.5rem;
   width: 100%;
 }
 
 .button-large {
   margin-left: auto;
   margin-right: auto;
+  padding: 0px 1rem 0px 1rem;
 }
 
 
@@ -38,6 +38,7 @@ button p {
 input {
   background-color: var(--color-bright);
   transition: 200ms;
+  padding: 0px 0.5rem 0px 0.5rem;
 }
 
 input:focus {

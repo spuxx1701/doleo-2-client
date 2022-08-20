@@ -18,8 +18,17 @@
   background-color: var(--color-bright) !important;
 }
 
+.modal-header {
+  justify-content: start !important;
+}
+
 .modal-header h3 {
   margin: 0px;
+}
+
+.modal-header svg {
+  color: var(--color-dark);
+  margin-right: 0.5rem;
 }
 
 .modal-body p {
