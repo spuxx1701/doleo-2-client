@@ -3,30 +3,6 @@
   --list-input-footer-button-width: 4.5rem;
 }
 
-.list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.list-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  white-space: nowrap;
-}
-
-.list-header svg {
-  margin-right: 1rem;
-  color: var(--color-dark);
-}
-
-.list-header h2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .list-entries-container {
   display: grid;
   width: 100%;
@@ -89,6 +65,9 @@
 .list-input-footer button {
   border: none;
   background-color: transparent;
-  color: white;
   width: var(--list-input-footer-button-width);
+}
+
+.list-input-footer button svg {
+  color: var(--color-bright);
 }

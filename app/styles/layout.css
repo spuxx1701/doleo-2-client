@@ -1,3 +1,21 @@
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.content-header svg {
+  margin-right: 1rem;
+  color: var(--color-dark);
+}
+
+.content-header h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .separator {
   width: 100%;
   max-width: 75%;

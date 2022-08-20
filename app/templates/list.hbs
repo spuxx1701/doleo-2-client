@@ -1,10 +1,7 @@
 {{page-title @model.displayName}}
-
-<div class="list-container">
-  <div class="list-header">
-    <FaIcon @icon={{@model.iconName}} @size="2x" />
-    <h2>{{@model.displayName}}</h2>
-  </div>
-  <Common::Separator />
-  {{outlet}}
+<div class="content-header">
+  <FaIcon @icon={{@model.iconName}} @size="2x" />
+  <h2>{{@model.displayName}}</h2>
 </div>
+<Common::Separator />
+{{outlet}}

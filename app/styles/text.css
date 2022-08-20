@@ -43,6 +43,10 @@ h1, h2, h3, h4, h5, h6, p, label {
   color: var(--color-dark);
 }
 
+svg {
+  color: var(--color-dark);
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -56,5 +60,4 @@ h1, h2, h3, h4, h5, h6, p, label {
 
 .header svg {
   margin-right: 0.5rem;
-  color: var(--color-dark);
 }
