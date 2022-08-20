@@ -25,3 +25,11 @@
   <Sidenav::SidenavButton @icon="heart" @text="Anstupsen" @onClick={{fn this.goToPage "settings" }} />
   <NotificationContainer @position="bottom" @zindex="9999" />
 </div>
+
+<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    {{#if this.activeModalName}}
+    {{component (concat 'modal/' this.activeModalName) options=this.activeModalOptions }}
+    {{/if}}
+  </div>
+</div>

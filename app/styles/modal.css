@@ -1,0 +1,33 @@
+:root {
+  --modal-container-background: rgba(55, 55, 55, 0.6);
+  --modal-fade-time: 300ms
+}
+
+.modal-dialog {
+  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+
+.modal.show .modal-dialog {
+  transform: translate(0, 50%) !important;
+}
+
+.modal-content {
+  background-color: var(--color-bright) !important;
+}
+
+.modal-header h3 {
+  margin: 0px;
+}
+
+.modal-body p {
+  margin: 0px;
+}
+
+.modal-footer .button-large {
+  min-width: 100px;
+  width: auto;
+  max-width: 200px;
+}

@@ -75,4 +75,8 @@ export default class ManagerService extends Service {
     ripple.style.animation = 'ripple-effect .4s  linear';
     ripple.onanimationend = () => document.body.removeChild(ripple);
   }
+
+  async sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 }

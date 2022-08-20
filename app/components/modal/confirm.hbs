@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <div class="modal-header">
+    {{#if @icon}}
+    <FaIcon @icon={{@options.icon}} />
+    {{/if}}
+    <h3>{{@options.title}}</h3>
+  </div>
+  <div class="modal-body">
+    <p>{{@options.text}}</p>
+  </div>
+  <div class="modal-footer">
+    <Common::ButtonLarge @text={{@options.yesLabel}} @onClick={{this.onYesClickHandler}} />
+    <Common::ButtonLarge @text={{@options.noLabel}} @onClick={{this.onNoClickHandler}} />
+  </div>
+</div>

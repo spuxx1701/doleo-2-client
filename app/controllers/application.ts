@@ -4,15 +4,25 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import ManagerService from 'doleo-2-client/services/manager';
+import ModalService from 'doleo-2-client/services/modal';
 
 export default class ApplicationController extends Controller {
   @service declare store: Store;
   @service declare manager: ManagerService;
+  @service declare modal: ModalService;
 
   declare model: { lists: any };
 
   @tracked sidenavExpanded = false;
   sidenavExpandWidth = '300px';
+
+  get activeModalName() {
+    return this.modal.activeModalName;
+  }
+
+  get activeModalOptions() {
+    return this.modal.activeModalOptions;
+  }
 
   @action toggleSidenav() {
     this.sidenavExpanded = !this.sidenavExpanded;

@@ -7,11 +7,14 @@ import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import { tracked } from '@glimmer/tracking';
 import User from 'doleo-2-client/models/user';
 import ManagerService from 'doleo-2-client/services/manager';
+import ModalService from 'doleo-2-client/services/modal';
+import { ConfirmModalComponentOptions } from 'doleo-2-client/components/modal/confirm';
 
 export default class ListController extends Controller {
   @service declare manager: ManagerService;
   @service declare store: Store;
   @service declare notifications: any;
+  @service declare modal: ModalService;
 
   declare model: { list: List; users: User[] };
 
@@ -50,7 +53,19 @@ export default class ListController extends Controller {
     this.model.list.save();
   }
 
-  @action async delete() {
+  @action delete() {
+    this.modal.confirm({
+      title: 'Liste löschen',
+      text: 'Die Liste und alle Einträge werden unwiederbringlich gelöscht. Möchest Du fortfahren?',
+      icon: 'trash',
+      yesLabel: 'Löschen',
+      noLabel: 'Abbrechen',
+      onYesClick: this.submitDelete,
+    } as ConfirmModalComponentOptions);
+  }
+
+  @action async submitDelete() {
+    this.modal.hide();
     const result = await this.model.list.destroyRecord();
     if (result.isDestroyed) {
       this.manager.goTo('/');
