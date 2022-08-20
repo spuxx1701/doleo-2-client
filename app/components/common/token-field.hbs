@@ -1,6 +1,6 @@
 <div class="uncharted-form-control">
   <div class="uncharted-token-container">
-    {{#each this.tokens as |token index|}}
+    {{!-- {{#each this.tokens as |token index|}} --}}
     {{!-- {{component tokenComponent
     token=token
     index=index
@@ -11,7 +11,7 @@
     removeToken=(action 'removeToken' token)
     mouseDown=(action 'selectToken' token index)
     doubleClick=(action 'editToken' token)}} --}}
-    {{/each}}
+    {{!-- {{/each}} --}}
     {{!-- template-lint-disable require-input-label --}}
     <Input class='uncharted-token-input' @value={{this.value}} disabled={{@disabled}} placeholder={{@placeholder}} />
   </div>
