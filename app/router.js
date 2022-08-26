@@ -12,4 +12,5 @@ Router.map(function () {
     this.route('settings');
   });
   this.route('create-list');
+  this.route('not-found', { path: '*' });
 });
