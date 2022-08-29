@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import WebNotificationService from '../services/web-notification';
+import WebNotificationService from 'doleo-2-client/services/web-notification';
 
 export default class IndexController extends Controller {
   @service declare webNotification: WebNotificationService;

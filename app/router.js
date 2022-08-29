@@ -7,10 +7,13 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('settings');
-  this.route('list', { path: '/list/:list_id' }, function () {
+  this.route('login');
+  this.route('authenticated', { path: '' }, function () {
     this.route('settings');
+    this.route('list', { path: '/list/:list_id' }, function () {
+      this.route('settings');
+    });
+    this.route('create-list');
   });
-  this.route('create-list');
   this.route('not-found', { path: '*' });
 });

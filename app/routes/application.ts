@@ -1,21 +1,14 @@
-import Store from '@ember-data/store';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import ManagerService from 'doleo-2-client/services/manager';
-import RSVP from 'rsvp';
 
 export default class ApplicationRoute extends Route {
-  @service declare store: Store;
+  @service declare session: any;
   @service declare manager: ManagerService;
 
-  async model() {
-    const lists = await this.store.findAll('list');
-    return RSVP.hash({
-      lists: lists,
-    });
-  }
-
-  async afterModel() {
+  async beforeModel(transition: any) {
     this.manager.initialize();
+    await this.session.setup();
+    this.session.requireAuthentication(transition, 'login');
   }
 }
