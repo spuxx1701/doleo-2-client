@@ -18,10 +18,7 @@ export default class ManagerService extends Service {
   goTo(path: string) {
     this.router.transitionTo(path);
     window.scrollTo({ top: 0, behavior: 'auto' });
-  } // Ember.set(that.session.data.authenticated.user, "selectedDesign", value);
-  // if (typeof this.session?.user?.design === 'number') {
-  //   design = this.session.user.design;
-  // }
+  }
 
   /**
    * Returns the currently signed-in user.
