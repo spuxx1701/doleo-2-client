@@ -1,0 +1,29 @@
+{{page-title 'Einstellungen'}}
+
+<div class='header'>
+  <FaIcon @icon='gear' @size='2x' />
+  <h3>Einstellungen</h3>
+</div>
+
+<div class='vBoxItem hBox'>
+  {{#each this.model.designs as |design|}}
+    <button
+      id='designButton{{design.name}}'
+      type='button'
+      class='designBGButton bgButton{{design.buttonPosition}}
+        designThumbnail{{design.name}}'
+      {{on 'click' (fn this.onDesignChange design.value)}}
+    ></button>
+  {{/each}}
+</div>
+
+<div class='content-element flex-column'>
+  <label>Anzeigename
+    <Input
+      @value={{this.displayName}}
+      minlength='1'
+      maxlength='30'
+      {{on 'change' this.changeDisplayName}}
+    />
+  </label>
+</div>
