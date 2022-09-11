@@ -10,5 +10,6 @@ declare const config: {
   podModulePrefix: string;
   locationType: 'history' | 'hash' | 'none' | 'auto';
   rootURL: string;
+  apiUrl: string;
   APP: Record<string, unknown>;
 };

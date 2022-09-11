@@ -1,6 +1,5 @@
 import { Router } from '@ember/routing';
 import Service, { inject as service } from '@ember/service';
-import { Profile } from 'doleo-2-client';
 
 export default class ManagerService extends Service {
   @service declare router: Router;
@@ -21,25 +20,10 @@ export default class ManagerService extends Service {
   }
 
   /**
-   * Returns the currently signed-in user.
-   */
-  get profile(): Profile | null {
-    if (!this.session.data.authenticated) return null;
-    return this.session.data.authenticated.user as Profile;
-  }
-
-  /**
-   * Updates the currently signed-in user.
-   */
-  set profile(user: Profile | null) {
-    this.session.data.user = user;
-  }
-
-  /**
    * (Re-)applies the active design.
    */
   private applyDesign() {
-    let design = this.profile?.selectedDesign || 0;
+    let design = 0;
     const root = document.querySelector(':root') as any;
     const rootStyle = getComputedStyle(root);
     let color: 'pink' | 'blue' | 'green' | 'yellow';

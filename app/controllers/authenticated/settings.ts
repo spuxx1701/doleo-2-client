@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { Profile } from 'doleo-2-client';
+import Profile from 'doleo-2-client/models/profile';
 import ManagerService from 'doleo-2-client/services/manager';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 
