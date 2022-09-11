@@ -8,7 +8,7 @@ export default class ListRoute extends Route {
   @service declare store: Store;
 
   async model() {
-    const { list_id } = this.paramsFor('list') as ListRouteParams;
+    const { list_id } = this.paramsFor('authenticated/list') as ListRouteParams;
     return RSVP.hash({
       list: await this.store.findRecord('list', list_id),
       users: await this.store.findAll('user'),
