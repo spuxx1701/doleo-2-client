@@ -1,8 +1,10 @@
 import { Router } from '@ember/routing';
 import Service, { inject as service } from '@ember/service';
+import { CurrentUser } from 'doleo-2-client';
 
 export default class ManagerService extends Service {
   @service declare router: Router;
+  @service declare session: any;
 
   constructor() {
     super(...arguments);
@@ -16,17 +18,31 @@ export default class ManagerService extends Service {
   goTo(path: string) {
     this.router.transitionTo(path);
     window.scrollTo({ top: 0, behavior: 'auto' });
+  } // Ember.set(that.session.data.authenticated.user, "selectedDesign", value);
+  // if (typeof this.session?.user?.design === 'number') {
+  //   design = this.session.user.design;
+  // }
+
+  /**
+   * Returns the currently signed-in user.
+   */
+  get currentUser(): CurrentUser | null {
+    if (!this.session.data.authenticated) return null;
+    return this.session.data.authenticated.user as CurrentUser;
+  }
+
+  /**
+   * Updates the currently signed-in user.
+   */
+  set currentUser(user: CurrentUser | null) {
+    this.session.data.user = user;
   }
 
   /**
    * (Re-)applies the active design.
    */
   private applyDesign() {
-    let design = 1;
-    // Ember.set(that.session.data.authenticated.user, "selectedDesign", value);
-    // if (typeof this.session?.user?.design === 'number') {
-    //   design = this.session.user.design;
-    // }
+    let design = this.currentUser?.selectedDesign || 0;
     const root = document.querySelector(':root') as any;
     const rootStyle = getComputedStyle(root);
     let color: 'pink' | 'blue' | 'green' | 'yellow';
