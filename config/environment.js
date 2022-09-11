@@ -35,10 +35,12 @@ module.exports = function (environment) {
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
+    ENV.apiUrl = 'https://test.api.doleo-2.de';
   }
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.apiUrl = 'https://api.doleo-2.de';
   }
 
   return ENV;
