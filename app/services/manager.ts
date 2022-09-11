@@ -85,7 +85,7 @@ export default class ManagerService extends Service {
     ripple.style.left = `${event.clientX}px`;
     ripple.style.top = `${event.clientY}px`;
 
-    ripple.style.animation = 'ripple-effect .4s  linear';
+    ripple.style.animation = 'ripple-effect 500ms  linear';
     ripple.onanimationend = () => document.body.removeChild(ripple);
   }
 
