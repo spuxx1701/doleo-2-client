@@ -1,16 +1,17 @@
 import RESTAdapter from '@ember-data/adapter/rest';
 import ENV from 'doleo-2-client/config/environment';
 import { inject as service } from '@ember/service';
+import ManagerService from 'doleo-2-client/services/manager';
 
 export default class ApplicationAdapter extends RESTAdapter {
-  @service session;
-  @service manager;
+  @service declare session: any;
+  @service declare manager: ManagerService;
 
   host = ENV.apiUrl;
-  namespace = ENV.APP.apiNamespace;
+  namespace = ENV.APP['apiNamespace'] as string;
 
   get headers() {
-    let headers = {};
+    let headers = {} as any;
     if (this.session.isAuthenticated) {
       headers[
         'Authorization'
@@ -20,9 +21,10 @@ export default class ApplicationAdapter extends RESTAdapter {
     return headers;
   }
 
-  handleResponse(status) {
+  handleResponse(status: number, headers: {}, payload: {}, requestData: {}) {
     if (status === 401) {
       this.manager.goTo('login');
-    } else return super.handleResponse(...arguments);
+    }
+    return super.handleResponse(status, headers, payload, requestData);
   }
 }
