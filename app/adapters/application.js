@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default class ApplicationAdapter extends RESTAdapter {
   @service session;
+  @service manager;
 
   host = ENV.apiUrl;
   namespace = ENV.APP.apiNamespace;
@@ -17,5 +18,11 @@ export default class ApplicationAdapter extends RESTAdapter {
     }
 
     return headers;
+  }
+
+  handleResponse(status) {
+    if (status === 401) {
+      this.manager.goTo('login');
+    } else return super.handleResponse(...arguments);
   }
 }
