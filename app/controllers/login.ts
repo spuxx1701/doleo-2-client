@@ -19,8 +19,6 @@ export default class LoginController extends Controller {
 
   async authenticate() {
     try {
-      console.log(this.email);
-      console.log(this.password);
       await this.session.authenticate(
         'authenticator:oauth2',
         this.email,
