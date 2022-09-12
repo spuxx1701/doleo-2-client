@@ -16,14 +16,11 @@ export default class AccountController extends Controller {
 
   declare model: Account;
 
-  @tracked selectedDesign = this.model.selectedDesign;
   @tracked displayName = this.model.displayName;
   @tracked email = this.model.email;
   @tracked password = '';
 
   emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/;
-
-  @action changeDesign() {}
 
   @action changeDisplayName() {
     if (!this.validateDisplayName(this.displayName)) {

@@ -24,7 +24,7 @@ export default class ManagerService extends Service {
   /**
    * (Re-)applies the active design.
    */
-  private applyDesign() {
+  public applyDesign() {
     const design = this.account.account?.selectedDesign || 0;
     const root = document.querySelector(':root') as any;
     const rootStyle = getComputedStyle(root);

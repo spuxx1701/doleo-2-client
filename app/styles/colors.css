@@ -51,6 +51,22 @@
   color: white;
 }
 
+.bg-color-pink-medium {
+  background-color: var(--pink-medium);
+}
+
+.bg-color-blue-medium {
+  background-color: var(--blue-medium);
+}
+
+.bg-color-green-medium {
+  background-color: var(--green-medium);
+}
+
+.bg-color-yellow-medium {
+  background-color: var(--yellow-medium);
+}
+
 .bg-color-error {
   background-color: var(--color-error) !important;
 }

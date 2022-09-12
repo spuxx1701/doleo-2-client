@@ -22,12 +22,14 @@ export default class AccountService extends Service {
   }
 
   /**
-   * Saves the state of the account.
+   * Saves the account settings.
+   * @param showNotification (optional, default 'true') Whether a notification should be displayed.
    */
-  async save() {
+  async save({ showNotification = true } = {}) {
     if (this.account?.hasDirtyAttributes) {
       await this.account?.save();
-      this.notifications.success('Änderungen wurden gespeichert.');
+      if (showNotification)
+        this.notifications.success('Änderungen wurden gespeichert.');
     }
   }
 }

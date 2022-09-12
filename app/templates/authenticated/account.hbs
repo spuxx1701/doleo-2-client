@@ -5,16 +5,10 @@
   <h3>Benutzerkonto</h3>
 </div>
 
-<div class='vBoxItem hBox'>
-  {{#each this.model.designs as |design|}}
-    <button
-      id='designButton{{design.name}}'
-      type='button'
-      class='designBGButton bgButton{{design.buttonPosition}}
-        designThumbnail{{design.name}}'
-      {{on 'click' (fn this.onDesignChange design.value)}}
-    ></button>
-  {{/each}}
+<div class='content-element flex-column'>
+  <label class='full-width'>Design
+    <Account::DesignPicker @selectedDesign={{@model.selectedDesign}} />
+  </label>
 </div>
 
 <div class='content-element flex-column'>
