@@ -4,10 +4,10 @@ import { inject as service } from '@ember/service';
 import AccountService from 'doleo-2-client/services/account';
 import ManagerService from 'doleo-2-client/services/manager';
 
-export interface ButtonComponentArgs {
+interface Args {
   selectedDesign: number;
 }
-export default class DesignPickerComponent extends Component {
+export default class DesignPickerComponent extends Component<Args> {
   @service declare manager: ManagerService;
   @service declare account: AccountService;
 

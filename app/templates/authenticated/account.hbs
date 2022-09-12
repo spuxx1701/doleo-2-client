@@ -46,18 +46,5 @@
       {{on 'change' this.changePassword}}
     />
   </label>
-  <div class='flex flex-row justify-between'>
-    <div
-      class='h-box-item password-sec-level-bar {{this.secBarOneHighlighted}}'
-    ></div>
-    <div
-      class='h-box-item password-sec-level-bar {{this.secBarTwoHighlighted}}'
-    ></div>
-    <div
-      class='h-box-item password-sec-level-bar {{this.secBarThreeHighlighted}}'
-    ></div>
-    <div
-      class='h-box-item password-sec-level-bar {{this.secBarFourHighlighted}}'
-    ></div>
-  </div>
+  <Account::PasswordSecurityDisplay @password={{this.password}} />
 </div>
