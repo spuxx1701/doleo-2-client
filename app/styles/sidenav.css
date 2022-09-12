@@ -3,7 +3,7 @@
   }
 
   #sidenav {
-    height: 100%;
+    height: calc(100% - var(--header-height));
     width: 0px;
     max-width: 100%;
     position: fixed;
@@ -13,6 +13,7 @@
     padding: 1rem 0 1rem 0;
     background-color: var(--color-dark);
     overflow-x: hidden;
+    overflow-y: scroll;
     transition: 500ms;
     display: flex;
     flex-direction: column;
@@ -23,11 +24,16 @@
     white-space: nowrap;
   }
 
+  .sidenav-collapsible {
+    height: fit-content;
+  }
+
   .sidenav-collapsible-header, .sidenav-button {
     display: flex;
     align-items: center;
     padding: 0.5rem;
-    height: 50px;
+    height: 45px;
+    min-height: 45px;
     width: var(--sidenav-max-width);
     border: none;
     background-color: transparent;
@@ -51,6 +57,7 @@
   .sidenav-collapsible-content-expanded {
     transform: scaleY(1);
     max-height: 1000px;
+    min-height: max-content;
   }
 
   .sidenav-button:active:not(:disabled) {
@@ -71,7 +78,7 @@
 
   .sidenav-separator {
     width: calc(var(--sidenav-max-width) - 20px);
-    height: 7px;
+    min-height: 7px;
     border-radius: 3.5px;
     background-color: var(--color-bright);
     margin: 0.5rem 10px 0.5rem 10px;

@@ -24,20 +24,18 @@
     @onClick={{fn this.goToPage '/account'}}
   />
   <Sidenav::SidenavSeparator />
-  <Sidenav::SidenavCollapsible @text='Listen'>
-    {{#each @model.lists as |list|}}
-      <Sidenav::SidenavButton
-        @icon={{list.iconName}}
-        @text={{list.displayName}}
-        @onClick={{fn this.goToList list.id}}
-      />
-    {{/each}}
+  {{#each @model.lists as |list|}}
     <Sidenav::SidenavButton
-      @icon='plus'
-      @text='Neue Liste'
-      @onClick={{fn this.goToPage '/create-list'}}
+      @icon={{list.iconName}}
+      @text={{list.displayName}}
+      @onClick={{fn this.goToList list.id}}
     />
-  </Sidenav::SidenavCollapsible>
+  {{/each}}
+  <Sidenav::SidenavButton
+    @icon='plus'
+    @text='Neue Liste'
+    @onClick={{fn this.goToPage '/create-list'}}
+  />
   <Sidenav::SidenavSeparator />
   <Sidenav::SidenavButton
     @icon='heart'
