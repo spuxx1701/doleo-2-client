@@ -8,6 +8,6 @@ export default class SettingsRoute extends Route {
   @service declare account: AccountService;
 
   async model() {
-    // return this.manager.account;
+    return this.account.account;
   }
 }

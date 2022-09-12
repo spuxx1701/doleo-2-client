@@ -6,6 +6,7 @@ import Account from 'doleo-2-client/models/account';
 export default class AccountService extends Service {
   @service declare session: any;
   @service declare store: emberData__store;
+  @service declare notifications: any;
 
   @tracked account: Account | undefined;
 
@@ -20,28 +21,13 @@ export default class AccountService extends Service {
     return this.account;
   }
 
-  async update(updatedAccount: Account) {}
-
   /**
-   * Returns the ID of the currently signed in user.
+   * Saves the state of the account.
    */
-  get userId() {
-    if (!this.session.data.authenticated) return null;
-    return this.session.data.authenticated.sub;
+  async save() {
+    if (this.account?.hasDirtyAttributes) {
+      await this.account?.save();
+      this.notifications.success('Änderungen wurden gespeichert.');
+    }
   }
-
-  // /**
-  //  * Returns the currently signed-in user.
-  //  */
-  // get account(): Account | null {
-  //   if (!this.session.data.authenticated) return null;
-  //   return this.session.data.authenticated.user as Account;
-  // }
-
-  // /**
-  //  * Updates the currently signed-in user.
-  //  */
-  // set account(user: Account | null) {
-  //   this.session.data.user = user;
-  // }
 }

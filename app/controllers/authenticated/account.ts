@@ -5,9 +5,11 @@ import { tracked } from '@glimmer/tracking';
 import Account from 'doleo-2-client/models/account';
 import ManagerService from 'doleo-2-client/services/manager';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
+import AccountService from 'doleo-2-client/services/account';
 
 export default class AccountController extends Controller {
   @service declare manager: ManagerService;
+  @service declare account: AccountService;
   @service declare notifications: any;
 
   declare model: Account;
@@ -24,11 +26,8 @@ export default class AccountController extends Controller {
       this.displayName = this.model.displayName;
       return;
     }
-    const account = {
-      ...this.model,
-      displayName: this.displayName,
-    } as Account;
-    this.updateAccount(account);
+    this.model.displayName = this.displayName;
+    this.account.save();
   }
 
   validateDisplayName(input: string) {
@@ -43,10 +42,5 @@ export default class AccountController extends Controller {
       return false;
     }
     return true;
-  }
-
-  updateAccount(account: Account) {
-    console.log(account);
-    this.notifications.success('Änderungen gespeichert.');
   }
 }
