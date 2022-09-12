@@ -30,21 +30,4 @@ export default class ApplicationAdapter extends RESTAdapter {
     }
     return super.handleResponse(status, headers, payload, requestData);
   }
-
-  urlForQueryRecord(query: any, modelName: any) {
-    // We manipulate Ember Data to be able to work with singular sources (like '/profile').
-    // If the 'singular' query option is provided, we change the request URL.
-    if (query?.singular) {
-      const baseUrl = this.buildURL();
-      return `${baseUrl}/${modelName as string}`;
-    }
-    return super.urlForQueryRecord(query, modelName);
-  }
-
-  sortQueryParams(obj: any) {
-    // When working with a single resource, don't send the 'singular' property as
-    // an actual query parameter.
-    if (Object.keys(obj).find(() => 'singular')) delete obj.singular;
-    return super.sortQueryParams(obj);
-  }
 }

@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import Profile from 'doleo-2-client/models/profile';
+import Account from 'doleo-2-client/models/account';
 import ManagerService from 'doleo-2-client/services/manager';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 
@@ -10,7 +10,7 @@ export default class ListController extends Controller {
   @service declare manager: ManagerService;
   @service declare notifications: any;
 
-  declare model: Profile;
+  declare model: Account;
 
   @tracked selectedDesign = this.model.selectedDesign;
   @tracked displayName = this.model.displayName;
@@ -24,11 +24,11 @@ export default class ListController extends Controller {
       this.displayName = this.model.displayName;
       return;
     }
-    const profile = {
+    const account = {
       ...this.model,
       displayName: this.displayName,
-    } as Profile;
-    this.updateProfile(profile);
+    } as Account;
+    this.updateAccount(account);
   }
 
   validateDisplayName(input: string) {
@@ -45,8 +45,8 @@ export default class ListController extends Controller {
     return true;
   }
 
-  updateProfile(profile: Profile) {
-    console.log(profile);
+  updateAccount(account: Account) {
+    console.log(account);
     this.notifications.success('Änderungen gespeichert.');
   }
 }

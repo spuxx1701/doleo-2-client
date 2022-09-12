@@ -1,7 +1,6 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
-import Family from './family';
+import Model, { attr } from '@ember-data/model';
 
-export default class Profile extends Model {
+export default class Account extends Model {
   @attr()
   declare displayName: string;
 
@@ -13,14 +12,11 @@ export default class Profile extends Model {
 
   @attr()
   declare password: string;
-
-  // @belongsTo('family', { async: false })
-  // declare family: Family;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
 declare module 'ember-data/types/registries/model' {
   export default interface ModelRegistry {
-    profile: Profile;
+    account: Account;
   }
 }
