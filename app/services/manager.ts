@@ -75,6 +75,31 @@ export default class ManagerService extends Service {
     ripple.onanimationend = () => document.body.removeChild(ripple);
   }
 
+  public showLoadBubble() {
+    const loadBubble = this.findLoadBubble();
+    loadBubble.classList.add('load-bubble-expanded');
+  }
+
+  public hideLoadBubble() {
+    const loadBubble = this.findLoadBubble();
+    loadBubble.classList.remove('load-bubble-expanded');
+  }
+
+  public getLoadBubbleAnimationLength() {
+    const string = getComputedStyle(document.documentElement).getPropertyValue(
+      '--load-bubble-anim-length'
+    );
+    return parseInt(string.replace(/\D/g, ''));
+  }
+
+  private findLoadBubble() {
+    const loadBubble = document.getElementById('load-bubble');
+    if (!loadBubble) {
+      throw new Error('Unable to find load bubble.');
+    }
+    return loadBubble;
+  }
+
   async sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }

@@ -1,16 +1,27 @@
-{{page-title "Doleo"}}
-<div id="branding-bar" />
+{{page-title 'Doleo'}}
+<div id='branding-bar'></div>
 
-<div id="content">
+<div id='content'>
   {{outlet}}
 </div>
 
-<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div
+  id='modal'
+  class='modal fade'
+  tabindex='-1'
+  role='dialog'
+  aria-hidden='true'
+>
+  <div class='modal-dialog' role='document'>
     {{#if this.activeModalName}}
-    {{component (concat 'modal/' this.activeModalName) options=this.activeModalOptions }}
+      {{component
+        (concat 'modal/' this.activeModalName)
+        options=this.activeModalOptions
+      }}
     {{/if}}
   </div>
 </div>
 
-<NotificationContainer @position="bottom" @zindex="9999" />
+<Application::LoadBubble />
+
+<NotificationContainer @position='bottom' @zindex='9999' />
