@@ -55,3 +55,11 @@
 .content-element a svg {
   margin-right: 0.5rem;
 }
+
+.flex {
+  display: flex;
+}
+
+.full-width {
+  width: 100%;
+}

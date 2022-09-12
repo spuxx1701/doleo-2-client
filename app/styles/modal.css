@@ -25,6 +25,7 @@
 
 .modal-header {
   justify-content: start !important;
+  border-bottom: 2px solid var(--color-dark) !important;
 }
 
 .modal-header h3 {
@@ -38,6 +39,10 @@
 
 .modal-body p {
   margin: 0px;
+}
+
+.modal-footer {
+  border-top: none !important;
 }
 
 .modal-footer .button-large {

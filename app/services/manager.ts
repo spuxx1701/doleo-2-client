@@ -1,9 +1,11 @@
 import { Router } from '@ember/routing';
 import Service, { inject as service } from '@ember/service';
+import AccountService from './account';
 
 export default class ManagerService extends Service {
   @service declare router: Router;
   @service declare session: any;
+  @service declare account: AccountService;
 
   constructor() {
     super(...arguments);
@@ -23,7 +25,7 @@ export default class ManagerService extends Service {
    * (Re-)applies the active design.
    */
   private applyDesign() {
-    let design = 0;
+    const design = this.account.account?.selectedDesign || 0;
     const root = document.querySelector(':root') as any;
     const rootStyle = getComputedStyle(root);
     let color: 'pink' | 'blue' | 'green' | 'yellow';

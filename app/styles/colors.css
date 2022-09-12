@@ -14,6 +14,9 @@
   --yellow-bright: #f8fabf;
   --yellow-medium: #fae174;
   --yellow-dark: #e2bd57;
+  --color-error: #ff0000;
+  --color-warning: #ffa500;
+  --color-success: #008000;
 }
 
 .dark {
@@ -46,4 +49,16 @@
 
 .c-notification__svg {
   color: white;
+}
+
+.bg-color-error {
+  background-color: var(--color-error) !important;
+}
+
+.bg-color-warning {
+  background-color: var(--color-warning) !important;
+}
+
+.bg-color-success {
+  background-color: var(--color-success) !important;
 }

@@ -20,10 +20,38 @@
 <div class='content-element flex-column'>
   <label>Anzeigename
     <Input
+      @type='text'
       @value={{this.displayName}}
       minlength='1'
       maxlength='30'
       {{on 'change' this.changeDisplayName}}
     />
   </label>
+</div>
+
+<div class='content-element flex-column'>
+  <label>Passwort
+    <Input
+      @type='password'
+      @value={{this.password}}
+      placeholder='●●●●●●●●'
+      minlength='1'
+      maxlength='255'
+      {{on 'change' this.changePassword}}
+    />
+  </label>
+  <div class='flex flex-row justify-between'>
+    <div
+      class='h-box-item password-sec-level-bar {{this.secBarOneHighlighted}}'
+    ></div>
+    <div
+      class='h-box-item password-sec-level-bar {{this.secBarTwoHighlighted}}'
+    ></div>
+    <div
+      class='h-box-item password-sec-level-bar {{this.secBarThreeHighlighted}}'
+    ></div>
+    <div
+      class='h-box-item password-sec-level-bar {{this.secBarFourHighlighted}}'
+    ></div>
+  </div>
 </div>

@@ -59,3 +59,13 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+.password-sec-level-bar {
+  margin: 5px;
+  height: 5px;
+  width: 50px;
+  background-color: var(--color-medium);
+  border-radius: 2px;
+  border: none;
+  transition: 150ms;
+}
