@@ -2,11 +2,13 @@ import emberData__store from '@ember-data/store';
 import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import Account from 'doleo-2-client/models/account';
+import ManagerService from './manager';
 
 export default class AccountService extends Service {
   @service declare session: any;
   @service declare store: emberData__store;
   @service declare notifications: any;
+  @service declare manager: ManagerService;
 
   @tracked account: Account | undefined;
 
@@ -18,6 +20,7 @@ export default class AccountService extends Service {
       throw new Error('Attempted to load account without an active session.');
     }
     this.account = await this.store.queryRecord('account', {});
+    this.manager.applyDesign();
     return this.account;
   }
 
