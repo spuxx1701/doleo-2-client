@@ -30,6 +30,18 @@
 </div>
 
 <div class='content-element flex-column'>
+  <label>Email
+    <Input
+      @type='email'
+      @value={{this.email}}
+      minlength='5'
+      maxlength='50'
+      {{on 'change' this.changeEmail}}
+    />
+  </label>
+</div>
+
+<div class='content-element flex-column'>
   <label>Passwort
     <Input
       @type='password'

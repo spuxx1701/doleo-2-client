@@ -18,7 +18,10 @@ export default class AccountController extends Controller {
 
   @tracked selectedDesign = this.model.selectedDesign;
   @tracked displayName = this.model.displayName;
+  @tracked email = this.model.email;
   @tracked password = '';
+
+  emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/;
 
   @action changeDesign() {}
 
@@ -39,6 +42,51 @@ export default class AccountController extends Controller {
     if (input.length > 30) {
       this.notifications.error(
         'Dein Anzeigename darf nicht länger als 30 Zeichen sein.'
+      );
+      return false;
+    }
+    return true;
+  }
+
+  @action changeEmail() {
+    if (!this.validateEmail(this.email)) {
+      this.email = this.model.email;
+      return;
+    }
+    this.modal.confirm({
+      title: 'Passwort ändern',
+      text: 'Du bist dabei, Deine Email zu ändern. Deine Email ist auch Dein Anmeldename. Möchtest Du fortfahren?',
+      noLabel: 'Abbrechen',
+      onYesClick: () => {
+        this.modal.hide();
+        this.model.email = this.email;
+        this.account.save();
+      },
+      onNoClick: () => {
+        this.modal.hide();
+        this.model.email = this.email;
+      },
+    });
+  }
+
+  validateEmail(input: string) {
+    if (!stringIsNotEmpty([input])) {
+      this.notifications.error('Deine Email darf nicht leer sein.');
+      return false;
+    }
+    if (!this.emailPattern.test(input)) {
+      this.notifications.error('Bitte gib eine gültige Email ein.');
+      return false;
+    }
+    if (input.length < 5) {
+      this.notifications.error(
+        'Deine Email muss mindestens fünf Zeichen lang sein.'
+      );
+      return false;
+    }
+    if (input.length > 50) {
+      this.notifications.error(
+        'Deine Email darf nicht länger als 50 Zeichen sein.'
       );
       return false;
     }
@@ -102,7 +150,6 @@ export default class AccountController extends Controller {
       else if (length >= 10 && variety === 2) complexity = 2;
       else complexity = 1;
     }
-    console.log(complexity);
     return complexity;
   }
 
