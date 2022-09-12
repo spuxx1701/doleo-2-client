@@ -6,7 +6,7 @@ import Account from 'doleo-2-client/models/account';
 import ManagerService from 'doleo-2-client/services/manager';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 
-export default class ListController extends Controller {
+export default class AccountController extends Controller {
   @service declare manager: ManagerService;
   @service declare notifications: any;
 

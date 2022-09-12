@@ -1,22 +1,49 @@
-<div id="header">
-  <Common::ButtonSmall @icon={{if this.sidenavExpanded 'chevron-left' 'bars' }} @design="dark-inverse"
-    @onClick={{this.toggleSidenav}} />
+<div id='header'>
+  <Common::ButtonSmall
+    @icon={{if this.sidenavExpanded 'chevron-left' 'bars'}}
+    @design='dark-inverse'
+    @onClick={{this.toggleSidenav}}
+  />
   <h2>Doleo</h2>
-  <Common::ButtonSmall @icon="arrow-right-from-bracket" @design="dark-inverse" @onClick={{this.logout}} />
+  <Common::ButtonSmall
+    @icon='arrow-right-from-bracket'
+    @design='dark-inverse'
+    @onClick={{this.logout}}
+  />
 </div>
 
-<div id="sidenav">
-  <Sidenav::SidenavButton @icon="house" @text="Home" @onClick={{fn this.goToPage "/" }} />
-  <Sidenav::SidenavButton @icon="gear" @text="Einstellungen" @onClick={{fn this.goToPage "/settings" }} />
+<div id='sidenav'>
+  <Sidenav::SidenavButton
+    @icon='house'
+    @text='Home'
+    @onClick={{fn this.goToPage '/'}}
+  />
+  <Sidenav::SidenavButton
+    @icon='user'
+    @text='Benutzerkonto'
+    @onClick={{fn this.goToPage '/settings'}}
+  />
   <Sidenav::SidenavSeparator />
-  <Sidenav::SidenavCollapsible @text="Listen">
+  <Sidenav::SidenavCollapsible @text='Listen'>
     {{#each @model.lists as |list|}}
-    <Sidenav::SidenavButton @icon={{list.iconName}} @text={{list.displayName}} @onClick={{fn this.goToList list.id }} />
+      <Sidenav::SidenavButton
+        @icon={{list.iconName}}
+        @text={{list.displayName}}
+        @onClick={{fn this.goToList list.id}}
+      />
     {{/each}}
-    <Sidenav::SidenavButton @icon="plus" @text="Neue Liste" @onClick={{fn this.goToPage "/create-list" }} />
+    <Sidenav::SidenavButton
+      @icon='plus'
+      @text='Neue Liste'
+      @onClick={{fn this.goToPage '/create-list'}}
+    />
   </Sidenav::SidenavCollapsible>
   <Sidenav::SidenavSeparator />
-  <Sidenav::SidenavButton @icon="heart" @text="Anstupsen" @onClick={{fn this.goToPage "/pings" }} />
+  <Sidenav::SidenavButton
+    @icon='heart'
+    @text='Anstupsen'
+    @onClick={{fn this.goToPage '/pings'}}
+  />
 </div>
 
 {{outlet}}
