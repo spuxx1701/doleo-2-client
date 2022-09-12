@@ -51,7 +51,7 @@ export default class AccountController extends Controller {
       return;
     }
     this.modal.confirm({
-      title: 'Passwort ändern',
+      title: 'Email ändern',
       text: 'Du bist dabei, Deine Email zu ändern. Deine Email ist auch Dein Anmeldename. Möchtest Du fortfahren?',
       noLabel: 'Abbrechen',
       onYesClick: () => {
