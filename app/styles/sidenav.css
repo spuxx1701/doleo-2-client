@@ -68,3 +68,11 @@
     color: var(--color-bright);
     margin: 0;
   }
+
+  .sidenav-separator {
+    width: calc(var(--sidenav-max-width) - 20px);
+    height: 7px;
+    border-radius: 3.5px;
+    background-color: var(--color-bright);
+    margin: 0.5rem 10px 0.5rem 10px;
+  }

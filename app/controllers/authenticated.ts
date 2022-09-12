@@ -13,7 +13,12 @@ export default class AuthenticatedController extends Controller {
   declare model: { lists: any };
 
   @tracked sidenavExpanded = false;
-  sidenavExpandWidth = '300px';
+
+  get sidenavExpandWidth(): string {
+    return getComputedStyle(document.documentElement).getPropertyValue(
+      '--sidenav-max-width'
+    );
+  }
 
   @action toggleSidenav() {
     this.sidenavExpanded = !this.sidenavExpanded;
