@@ -49,6 +49,7 @@ export default class ManagerService extends Service {
         rootStyle.getPropertyValue(`--${color}-${suffix}`)
       );
     }
+    return color;
   }
 
   /**
