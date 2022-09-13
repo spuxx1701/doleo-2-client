@@ -8,6 +8,7 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('login');
+  this.route('reset-password');
   this.route('authenticated', { path: '' }, function () {
     this.route('account');
     this.route('list', { path: '/list/:list_id' }, function () {

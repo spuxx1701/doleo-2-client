@@ -20,8 +20,6 @@ export default class AccountController extends Controller {
   @tracked email = this.model.email;
   @tracked password = '';
 
-  emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/;
-
   @action changeDisplayName() {
     if (!this.validateDisplayName(this.displayName)) {
       this.displayName = this.model.displayName;
@@ -52,7 +50,7 @@ export default class AccountController extends Controller {
     }
     this.modal.confirm({
       title: 'Email ändern',
-      text: 'Du bist dabei, Deine Email zu ändern. Deine Email ist auch Dein Anmeldename. Möchtest Du fortfahren?',
+      text: 'Du bist dabei, Deine Email zu ändern. Deine Email ist auch Dein Anmeldename und ist zum Zurücksetzen Deines Passworts notwendig. Möchtest Du fortfahren?',
       noLabel: 'Abbrechen',
       onYesClick: () => {
         this.modal.hide();
@@ -71,7 +69,7 @@ export default class AccountController extends Controller {
       this.notifications.error('Deine Email darf nicht leer sein.');
       return false;
     }
-    if (!this.emailPattern.test(input)) {
+    if (!this.account.patternEmail.test(input)) {
       this.notifications.error('Bitte gib eine gültige Email ein.');
       return false;
     }
