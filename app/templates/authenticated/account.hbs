@@ -47,4 +47,9 @@
     />
   </label>
   <Account::PasswordSecurityDisplay @password={{this.password}} />
+
+  <div class='content-element flex-column'>
+    <p class='no-margin'>Deine Familie ist:
+      {{this.model.family.displayName}}</p>
+  </div>
 </div>
