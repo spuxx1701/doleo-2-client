@@ -9,9 +9,11 @@ import User from 'doleo-2-client/models/user';
 import ManagerService from 'doleo-2-client/services/manager';
 import ModalService from 'doleo-2-client/services/modal';
 import { ConfirmModalComponentOptions } from 'doleo-2-client/components/modal/confirm';
+import AccountService from 'doleo-2-client/services/account';
 
 export default class ListController extends Controller {
   @service declare manager: ManagerService;
+  @service declare account: AccountService;
   @service declare store: Store;
   @service declare notifications: any;
   @service declare modal: ModalService;
@@ -25,9 +27,8 @@ export default class ListController extends Controller {
     return false;
   }
 
-  get userOptions() {
-    const options = [];
-    return ['Leo', 'Doro'];
+  get isOwner() {
+    return this.account.account?.id === this.model.list.owner.id;
   }
 
   @action changeDisplayName(event: any) {

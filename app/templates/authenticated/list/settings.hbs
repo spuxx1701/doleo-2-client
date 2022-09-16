@@ -35,9 +35,27 @@
 </div>
 
 <div class='content-element flex-column'>
-  <label class='full-width'>Mitglieder
-    <Common::UserMultiSelect @list={{@model.list}} @family={{@model.family}} />
-  </label>
+  <label class='full-width'>Mitglieder</label>
+  <div class='tag-container full-width'>
+    {{#each @model.list.members as |member|}}
+      <button
+        type='button'
+        class='tag dark'
+        disabled={{if this.isOwner false true}}
+        aria-label='{{member.displayName}} von Liste entfernen'
+      >
+        <p>{{member.displayName}}</p>
+        {{#if this.isOwner}}
+          <FaIcon @icon='times' />
+        {{/if}}
+      </button>
+    {{/each}}
+    {{#if this.isOwner}}
+      <button type='button' class='tag dark'>
+        <FaIcon @icon='user-plus' aria-label='Mitglied hinzufügen' />
+      </button>
+    {{/if}}
+  </div>
 </div>
 
 <Common::Separator @hidden='true' />
