@@ -30,11 +30,18 @@
 
 .dark-inverse {
   border-color: var(--color-dark);
-  background-color: transparent;
+  background-color: var(--color-bright);
   color: var(--color-dark);
 }
 
-.dark-inverse p, .dark-inverse svg {
+.dark-inverse p, .dark-inverse svg,
+.dark-transparent p, .dark-transparent svg {
+  color: var(--color-dark);
+}
+
+.dark-transparent {
+  border: none !important;
+  background-color: transparent;
   color: var(--color-dark);
 }
 

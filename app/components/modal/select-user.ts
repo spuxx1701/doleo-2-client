@@ -3,18 +3,15 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import ModalService from 'doleo-2-client/services/modal';
 
-export interface ConfirmModalOptions {
+export interface SelectUserModalOptions {
   title: string;
-  text: string;
   icon?: string;
   yesLabel?: string;
-  noLabel?: string;
   onYesClick?: Function;
-  onNoClick?: Function;
 }
 
 interface ConfirmModalComponentArgs {
-  options: ConfirmModalOptions;
+  options: SelectUserModalOptions;
 }
 
 export default class ConfirmModalComponent extends Component {
@@ -34,16 +31,6 @@ export default class ConfirmModalComponent extends Component {
     if ((this.args as ConfirmModalComponentArgs).options.onYesClick) {
       (
         (this.args as ConfirmModalComponentArgs).options.onYesClick as Function
-      )();
-    } else {
-      this.modal.hide();
-    }
-  }
-
-  @action onNoClickHandler() {
-    if ((this.args as ConfirmModalComponentArgs).options.onNoClick) {
-      (
-        (this.args as ConfirmModalComponentArgs).options.onNoClick as Function
       )();
     } else {
       this.modal.hide();

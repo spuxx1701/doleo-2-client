@@ -8,7 +8,7 @@ import { tracked } from '@glimmer/tracking';
 import User from 'doleo-2-client/models/user';
 import ManagerService from 'doleo-2-client/services/manager';
 import ModalService from 'doleo-2-client/services/modal';
-import { ConfirmModalComponentOptions } from 'doleo-2-client/components/modal/confirm';
+import { ConfirmModalOptions } from 'doleo-2-client/components/modal/confirm';
 import AccountService from 'doleo-2-client/services/account';
 
 export default class ListController extends Controller {
@@ -29,6 +29,12 @@ export default class ListController extends Controller {
 
   get isOwner() {
     return this.account.account?.id === this.model.list.owner.id;
+  }
+
+  get members() {
+    return this.model.list.members.filter(
+      (member) => member.id !== this.model.list.owner.id
+    );
   }
 
   @action changeDisplayName(event: any) {
@@ -54,8 +60,17 @@ export default class ListController extends Controller {
     this.model.list.save();
   }
 
-  @action transfer() {
-    // implement me
+  @action invite() {
+    this.modal.selectUser({
+      title: 'Jemanden einladen',
+      icon: 'user-plus',
+      yesLabel: 'Einladen',
+      onYesClick: this.submitInvites,
+    });
+  }
+
+  @action submitInvites(selection: User[]) {
+    console.log(selection);
   }
 
   @action delete() {
@@ -66,7 +81,7 @@ export default class ListController extends Controller {
       yesLabel: 'Löschen',
       noLabel: 'Abbrechen',
       onYesClick: this.submitDelete,
-    } as ConfirmModalComponentOptions);
+    } as ConfirmModalOptions);
   }
 
   @action async submitDelete() {

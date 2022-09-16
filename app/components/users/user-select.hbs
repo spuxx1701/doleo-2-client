@@ -1,0 +1,8 @@
+<div class='user-select'>
+  <h4>Deine Familie</h4>
+  {{#each @family.members as |user|}}
+    <div class='user-select-option'>
+      <p>{{user.displayName}}</p>
+    </div>
+  {{/each}}
+</div>

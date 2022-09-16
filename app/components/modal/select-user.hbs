@@ -6,14 +6,13 @@
   <div class='modal-body'>
     <p>{{@options.text}}</p>
   </div>
+  <Users::UserSelect />
   <div class='modal-footer'>
-    {{#if @options.noLabel}}
-      <Common::ButtonLarge
-        @text={{@options.noLabel}}
-        @onClick={{this.onNoClickHandler}}
-        @design='dark-transparent'
-      />
-    {{/if}}
+    <Common::ButtonLarge
+      @text='Abbrechen'
+      @design='dark-transparent'
+      @onClick={{this.hide}}
+    />
     <Common::ButtonLarge
       @text={{this.yesLabel}}
       @onClick={{this.onYesClickHandler}}
