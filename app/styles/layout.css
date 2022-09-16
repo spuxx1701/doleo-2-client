@@ -1,3 +1,7 @@
+:root {
+  --large-control-width: 340px;
+}
+
 .content-header {
   display: flex;
   align-items: center;
@@ -33,7 +37,7 @@
 .content-element {
   display: flex;
   width: 100%;
-  max-width: 340px;
+  max-width: var(--large-control-width);
   justify-content: space-between;
   align-items: center;
   margin: 0 auto 0.5rem auto;

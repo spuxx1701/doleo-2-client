@@ -1,33 +1,59 @@
-<div class="header">
-  <FaIcon @icon="gear" @size="2x" />
+<div class='header'>
+  <FaIcon @icon='gear' @size='2x' />
   <h3>Einstellungen</h3>
 </div>
-<div class="content-element flex-column">
+
+<div class='content-element flex-column'>
   <label>Name
-    <Input @value={{this.displayName}} {{on "change" this.changeDisplayName}} />
+    <Input @value={{this.displayName}} {{on 'change' this.changeDisplayName}} />
   </label>
 </div>
-<div class="content-element flex-column">
+
+<div class='content-element flex-column'>
   <label>Icon
-    <Input @value={{this.iconName}} {{on "change" this.changeIconName}} />
+    <Input @value={{this.iconName}} {{on 'change' this.changeIconName}} />
   </label>
-  <a href="https://fontawesome.com/search?m=free&s=solid%2Cbrands" target="_blank" rel="noopener noreferrer">
-    <FaIcon @icon="magnifying-glass" />Nach Icons suchen
+  <a
+    href='https://fontawesome.com/search?m=free&s=solid%2Cbrands'
+    target='_blank'
+    rel='noopener noreferrer'
+  >
+    <FaIcon @icon='magnifying-glass' />Nach Icons suchen
   </a>
 </div>
-<div class="content-element">
+
+<div class='content-element'>
   <label>Mengen verwenden</label>
-  <label class="switch">
-    <input type="checkbox" checked={{@model.list.hasAmounts}} {{on "change" this.toggleHasAmounts}}>
-    <span class="slider round"></span>
+  <label class='switch' aria-label='Mengen verwenden'>
+    <input
+      type='checkbox'
+      checked={{@model.list.hasAmounts}}
+      {{on 'change' this.toggleHasAmounts}}
+    />
+    <span class='slider round'></span>
   </label>
 </div>
-<div class="content-element flex-column">
-  <label>Mitglieder
-    <Common::TokenField @options={{this.userOptions}} />
+
+<div class='content-element flex-column'>
+  <label class='full-width'>Mitglieder
+    <Common::UserMultiSelect @list={{@model.list}} @family={{@model.family}} />
   </label>
 </div>
-<Common::Separator @hidden="true" />
-<Common::ButtonLarge @icon="people-arrows" @text="Liste übertragen" @onClick={{this.delete}} />
-<Common::ButtonLarge @icon="trash" @text="Liste löschen" @onClick={{this.delete}} />
-<Common::ButtonLarge @icon="caret-left" @text="Zurück zur Liste" @onClick={{this.goToList}} />
+
+<Common::Separator @hidden='true' />
+
+<Common::ButtonLarge
+  @icon='people-arrows'
+  @text='Liste übertragen'
+  @onClick={{this.transfer}}
+/>
+<Common::ButtonLarge
+  @icon='trash'
+  @text='Liste löschen'
+  @onClick={{this.delete}}
+/>
+<Common::ButtonLarge
+  @icon='caret-left'
+  @text='Zurück zur Liste'
+  @onClick={{this.goToList}}
+/>

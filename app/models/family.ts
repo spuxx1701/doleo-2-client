@@ -6,7 +6,7 @@ export default class Family extends Model {
   declare displayName: string;
 
   @hasMany('user', { async: false })
-  declare entries: SyncHasMany<User>;
+  declare members: SyncHasMany<User>;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.

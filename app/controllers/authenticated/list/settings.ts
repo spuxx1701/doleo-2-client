@@ -53,6 +53,10 @@ export default class ListController extends Controller {
     this.model.list.save();
   }
 
+  @action transfer() {
+    // implement me
+  }
+
   @action delete() {
     this.modal.confirm({
       title: 'Liste löschen',

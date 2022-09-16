@@ -1,5 +1,6 @@
 import Model, { attr, hasMany, SyncHasMany } from '@ember-data/model';
 import ListEntry from './list-entry';
+import User from './user';
 
 export default class List extends Model {
   @attr()
@@ -12,7 +13,10 @@ export default class List extends Model {
   declare hasAmounts: boolean;
 
   @attr()
-  declare owner: any;
+  declare owner: User;
+
+  @attr()
+  declare members: User[];
 
   @hasMany('list-entry', { async: false })
   declare entries: SyncHasMany<ListEntry>;
