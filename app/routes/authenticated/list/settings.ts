@@ -11,12 +11,6 @@ export default class ListRoute extends Route {
 
   async model() {
     const { list_id } = this.paramsFor('authenticated/list') as ListRouteParams;
-    return RSVP.hash({
-      list: await this.store.findRecord('list', list_id),
-      family: await this.store.findRecord(
-        'family',
-        this.account.account?.family.id as string
-      ),
-    });
+    return await this.store.findRecord('list', list_id);
   }
 }

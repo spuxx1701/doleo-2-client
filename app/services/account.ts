@@ -11,6 +11,7 @@ export default class AccountService extends Service {
   @service declare notifications: any;
   @service declare manager: ManagerService;
 
+  @tracked id: string = '';
   @tracked account: Account | undefined;
 
   patternEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/;
@@ -23,6 +24,7 @@ export default class AccountService extends Service {
       throw new Error('Attempted to load account without an active session.');
     }
     this.account = await this.store.queryRecord('account', {});
+    this.id = this.account.id;
     this.manager.applyDesign();
     return this.account;
   }

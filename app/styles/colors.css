@@ -30,7 +30,7 @@
 
 .dark-inverse {
   border-color: var(--color-dark);
-  background-color: var(--color-bright);
+  background-color: transparent;
   color: var(--color-dark);
 }
 

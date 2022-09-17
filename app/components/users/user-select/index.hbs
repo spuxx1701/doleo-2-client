@@ -1,0 +1,45 @@
+<div class='user-select'>
+  <h4>Deine Familie</h4>
+  {{#if (eq this.familyMembersState 'pending')}}
+    <FaIcon
+      class='flex margin-auto'
+      @icon='spinner'
+      @size='2x'
+      @spin={{true}}
+    />
+  {{/if}}
+  {{#each this.familyMembers as |user|}}
+    <Common::ButtonSelectable
+      @text={{user.displayName}}
+      @state={{user.state}}
+      @onToggle={{this.handleSelectionChange}}
+      @context={{user}}
+    />
+  {{/each}}
+  {{#if (eq this.otherUsersState 'initial')}}
+    <Common::ButtonLarge
+      @icon='user'
+      @text='Andere Personen'
+      @onClick={{this.loadOtherUsers}}
+    />
+  {{/if}}
+  {{#if (eq this.otherUsersState 'pending')}}
+    <FaIcon
+      class='flex margin-auto'
+      @icon='spinner'
+      @size='2x'
+      @spin={{true}}
+    />
+  {{/if}}
+  {{#if (eq this.otherUsersState 'success')}}
+    <h4>Andere Personen</h4>
+    {{#each this.otherUsers as |user|}}
+      <Common::ButtonSelectable
+        @text='{{user.displayName}} {{user.family.displayName}}'
+        @state={{user.state}}
+        @onToggle={{this.handleSelectionChange}}
+        @context={{user}}
+      />
+    {{/each}}
+  {{/if}}
+</div>

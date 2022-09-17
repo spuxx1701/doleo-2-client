@@ -1,0 +1,13 @@
+<button
+  type='button'
+  class='button-selectable {{if this.selected "dark" "dark-inverse"}}'
+  aria-valuenow={{this.selected}}
+  {{on 'click' this.handleClick}}
+>
+  <p>{{@text}}</p>
+  <FaIcon
+    @icon={{if this.selected 'square-check' 'square'}}
+    @size='2x'
+    @prefix='far'
+  />
+</button>
