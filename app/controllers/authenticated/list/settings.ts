@@ -49,7 +49,7 @@ export default class ListController extends Controller {
 
   @action changeIconName(event: any) {
     if (stringIsNotEmpty([event.target.value])) {
-      this.model.iconName = event.target.value;
+      this.model.iconName = (event.target.value as string).toLowerCase();
       this.model.save();
     } else {
       this.iconName = this.model.iconName;

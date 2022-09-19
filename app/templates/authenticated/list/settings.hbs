@@ -15,7 +15,11 @@
 
   <div class='content-element flex-column'>
     <label>Icon
-      <Input @value={{this.iconName}} {{on 'change' this.changeIconName}} />
+      <Input
+        @value={{this.iconName}}
+        {{on 'change' this.changeIconName}}
+        autocapitalize='off'
+      />
     </label>
     <a
       href='https://fontawesome.com/search?m=free&s=solid%2Cbrands'
