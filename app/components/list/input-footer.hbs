@@ -1,7 +1,12 @@
-<form class="list-input-footer" {{on 'submit' this.createListEntry}}>
-  {{!-- template-lint-disable require-input-label --}}
-  <Input @type="text" @value={{this.value}} maxlength={{255}} />
-  <button type="submit">
-    <FaIcon @icon="plus" @size="3x" @prefix="fas" />
+<form class='list-input-footer' {{on 'submit' this.createListEntry}}>
+  {{! template-lint-disable require-input-label }}
+  <Input
+    id='list-new-entry-input'
+    @type='text'
+    @value={{this.value}}
+    maxlength={{255}}
+  />
+  <button type='submit'>
+    <FaIcon @icon='plus' @size='3x' @prefix='fas' />
   </button>
 </form>
