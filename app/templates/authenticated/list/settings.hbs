@@ -6,8 +6,8 @@
 {{#if this.isOwner}}
   <div class='content-element flex-column'>
     <label>Name
-      <Input
-        @value={{this.displayName}}
+      <input
+        value={{this.model.displayName}}
         {{on 'change' this.changeDisplayName}}
       />
     </label>
@@ -15,8 +15,8 @@
 
   <div class='content-element flex-column'>
     <label>Icon
-      <Input
-        @value={{this.iconName}}
+      <input
+        value={{this.model.iconName}}
         {{on 'change' this.changeIconName}}
         autocapitalize='off'
       />

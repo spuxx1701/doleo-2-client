@@ -6,7 +6,6 @@ import { tracked } from '@glimmer/tracking';
 import { ConfirmModalOptions } from 'doleo-2-client/components/modal/confirm';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import List from 'doleo-2-client/models/list';
-import ListInvite from 'doleo-2-client/models/list-invite';
 import User from 'doleo-2-client/models/user';
 import AccountService from 'doleo-2-client/services/account';
 import ManagerService from 'doleo-2-client/services/manager';
@@ -20,9 +19,6 @@ export default class ListController extends Controller {
   @service declare modal: ModalService;
 
   declare model: List;
-
-  @tracked displayName = this.model.displayName;
-  @tracked iconName = this.model.iconName;
 
   get hasChanges() {
     return false;
@@ -43,7 +39,7 @@ export default class ListController extends Controller {
       this.model.displayName = event.target.value;
       this.model.save();
     } else {
-      this.displayName = this.model.displayName;
+      event.target.value = this.model.displayName;
     }
   }
 
@@ -52,7 +48,7 @@ export default class ListController extends Controller {
       this.model.iconName = (event.target.value as string).toLowerCase();
       this.model.save();
     } else {
-      this.iconName = this.model.iconName;
+      event.target.value = this.model.iconName;
     }
   }
 

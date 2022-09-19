@@ -11,6 +11,8 @@ export default class ListRoute extends Route {
 
   async model() {
     const { list_id } = this.paramsFor('authenticated/list') as ListRouteParams;
-    return await this.store.findRecord('list', list_id);
+    const list = await this.store.findRecord('list', list_id);
+    console.log(await list.displayName);
+    return list;
   }
 }
