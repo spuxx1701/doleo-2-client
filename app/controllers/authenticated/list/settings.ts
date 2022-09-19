@@ -76,7 +76,6 @@ export default class ListController extends Controller {
         list: this.model.id,
         recipient: user.id,
       });
-      console.log(invite.serialize());
       await invite.save();
     }
     this.notifications.success('Deine Einladung(en) wurden versendet.');

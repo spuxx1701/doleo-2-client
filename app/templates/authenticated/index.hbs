@@ -2,5 +2,16 @@
 
 <Common::Separator @hidden='true' />
 <h2>Hallo {{this.account.account.displayName}}!</h2>
-<FaIcon @icon='heart' @prefix='far' @size='4x' />
+{{#unless this.newsFeed.hasNews}}
+  <FaIcon @icon='heart' @prefix='far' @size='4x' />
+{{/unless}}
 <Common::Separator @hidden='true' />
+
+{{#if this.newsFeed.hasNews}}
+  <h3>Es gibt Neuigkeiten!</h3>
+  <div class='content'>
+    {{#each this.newsFeed.listInvites as |invite|}}
+      <Home::IncomingListInvite @invite={{invite}} />
+    {{/each}}
+  </div>
+{{/if}}

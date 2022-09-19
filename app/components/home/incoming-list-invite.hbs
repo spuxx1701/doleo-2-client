@@ -1,0 +1,24 @@
+<div
+  class='content-element feed-element {{if this.hidden "feed-element-hidden"}}'
+>
+  <p>
+    <b>{{@invite.sender.displayName}}</b>
+    hat Dich zur Liste
+    <b>{{@invite.list.displayName}}</b>
+    eingeladen. Möchtest Du Die Einladung annehmen?
+  </p>
+  <div class='flex full-width justify-content-end'>
+    <Common::ButtonSmall
+      @icon='check'
+      @design='dark'
+      aria-label='Einladung zu Liste {{@invite.list.displayName}} annehmen'
+      @onClick={{this.accept}}
+    />
+    <Common::ButtonSmall
+      @icon='times'
+      @design='dark'
+      aria-label='Einladung zu Liste {{@invite.list.displayName}} ablehnen'
+      @onClick={{this.reject}}
+    />
+  </div>
+</div>
