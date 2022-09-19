@@ -3,36 +3,41 @@
   <h3>Einstellungen</h3>
 </div>
 
-<div class='content-element flex-column'>
-  <label>Name
-    <Input @value={{this.displayName}} {{on 'change' this.changeDisplayName}} />
-  </label>
-</div>
+{{#if this.isOwner}}
+  <div class='content-element flex-column'>
+    <label>Name
+      <Input
+        @value={{this.displayName}}
+        {{on 'change' this.changeDisplayName}}
+      />
+    </label>
+  </div>
 
-<div class='content-element flex-column'>
-  <label>Icon
-    <Input @value={{this.iconName}} {{on 'change' this.changeIconName}} />
-  </label>
-  <a
-    href='https://fontawesome.com/search?m=free&s=solid%2Cbrands'
-    target='_blank'
-    rel='noopener noreferrer'
-  >
-    <FaIcon @icon='magnifying-glass' />Nach Icons suchen
-  </a>
-</div>
+  <div class='content-element flex-column'>
+    <label>Icon
+      <Input @value={{this.iconName}} {{on 'change' this.changeIconName}} />
+    </label>
+    <a
+      href='https://fontawesome.com/search?m=free&s=solid%2Cbrands'
+      target='_blank'
+      rel='noopener noreferrer'
+    >
+      <FaIcon @icon='magnifying-glass' />Nach Icons suchen
+    </a>
+  </div>
 
-<div class='content-element'>
-  <label>Mengen verwenden</label>
-  <label class='switch' aria-label='Mengen verwenden'>
-    <input
-      type='checkbox'
-      checked={{@model.hasAmounts}}
-      {{on 'change' this.toggleHasAmounts}}
-    />
-    <span class='slider round'></span>
-  </label>
-</div>
+  <div class='content-element'>
+    <label>Mengen verwenden</label>
+    <label class='switch' aria-label='Mengen verwenden'>
+      <input
+        type='checkbox'
+        checked={{@model.hasAmounts}}
+        {{on 'change' this.toggleHasAmounts}}
+      />
+      <span class='slider round'></span>
+    </label>
+  </div>
+{{/if}}
 
 <div class='content-element flex-column'>
   <label class='full-width'>Mitglieder</label>
@@ -68,11 +73,19 @@
 
 <Common::Separator @hidden='true' />
 
-<Common::ButtonLarge
-  @icon='trash'
-  @text='Liste löschen'
-  @onClick={{this.delete}}
-/>
+{{#if this.isOwner}}
+  <Common::ButtonLarge
+    @icon='trash'
+    @text='Liste löschen'
+    @onClick={{this.delete}}
+  />
+{{else}}
+  <Common::ButtonLarge
+    @icon='right-from-bracket'
+    @text='Liste verlassen'
+    @onClick={{this.leave}}
+  />
+{{/if}}
 <Common::ButtonLarge
   @icon='caret-left'
   @text='Zurück zur Liste'

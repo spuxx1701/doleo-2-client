@@ -105,6 +105,32 @@ export default class ListController extends Controller {
     }
   }
 
+  @action leave() {
+    this.modal.confirm({
+      title: 'Liste verlassen',
+      text: 'Möchtest Du die Liste wirklich verlassen?',
+      icon: 'right-from-bracket',
+      yesLabel: 'Verlassen',
+      noLabel: 'Abbrechen',
+      onYesClick: this.submitLeave,
+    } as ConfirmModalOptions);
+  }
+
+  @action async submitLeave() {
+    this.modal.hide();
+    const result = await this.model.destroyRecord();
+    if (result.isDestroyed) {
+      this.manager.goTo('/');
+      this.notifications.success(
+        `Du hast die Liste '${result.displayName}' verlassen.`
+      );
+    } else {
+      this.notifications.error(
+        'Das hat leider nicht geklappt. Bitte prüfe Deine Internetverbindung und probiere es später nochmal!'
+      );
+    }
+  }
+
   @action goToList() {
     this.manager.goTo(`/list/${this.model.id}`);
   }
