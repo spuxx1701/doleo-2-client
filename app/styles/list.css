@@ -58,6 +58,8 @@
 .list-input-footer input {
   border: none;
   border-radius: 10px;
+  color: var(--color-dark);
+  font-size: x-large;
   background-color: var(--color-bright);
   width: calc(100% - var(--list-input-footer-button-width));
   max-width: 505px;
