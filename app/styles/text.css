@@ -12,7 +12,6 @@
 
 h1 {
   font-size: 3rem !important;
-  input: :-webkit-input-placeholder
 }
 
 h2 {
@@ -29,7 +28,7 @@ h4, label, p, a, input, li, select {
 }
 
 input::placeholder {
-  font-size: var(--default-font-size) !important;
+  font-size: var(--default-font-size);
   color: var(--color-medium);
 }
 

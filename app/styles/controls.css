@@ -2,6 +2,16 @@ button:active:not(:disabled) {
   animation: button-pulse 100ms ease-in-out;
 }
 
+button {
+  /* Safari compatibility */
+  margin-left: 0;
+}
+
+button:not(:disabled) {
+  /* Safari compatibility */
+  cursor: pointer;
+}
+
 button:disabled {
   opacity: 0.5;
 }
@@ -10,7 +20,7 @@ button p {
   margin-bottom: 0px;
 }
 
-.button-large, .button-selectable, input, select {
+.button-large, .button-selectable {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,23 +46,28 @@ button p {
   width: 45px;
 }
 
-input, select {
-  background-color: var(--color-bright);
+input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid white;
+  background-color: var(--color-dark);
+  color: white !important;
+  min-height: 50px;
+  border-radius: 10px;
   transition: 200ms;
   padding: 0px 0.5rem 0px 0.5rem;
+  /* Safari compatibility */
+  float: left;
 }
 
 input:focus, select:focus {
   scale: 1.05;
+  border-color: white;
 }
 
 .button-large svg {
   margin-right: 0.5rem;
-}
-
-select {
-  padding: 0.5rem;
-  width: 100%;
 }
 
 /* The switch - the box around the slider */
@@ -74,6 +89,7 @@ select {
 .slider {
   position: absolute;
   cursor: pointer;
+  /* border: 4px solid white; */
   top: 0;
   left: 0;
   right: 0;
