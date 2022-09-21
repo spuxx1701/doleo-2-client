@@ -22,14 +22,9 @@ h3 {
   font-size: 1.6rem !important;
 }
 
-h4, label, p, a, input, li, select {
+h4, label, p, a, li {
   font-size: var(--default-font-size) !important;
   color: var(--color-dark);
-}
-
-input::placeholder {
-  font-size: var(--default-font-size);
-  color: var(--color-medium);
 }
 
 h1, h2 {
