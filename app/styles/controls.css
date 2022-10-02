@@ -49,6 +49,7 @@ button p {
 input {
   display: flex;
   justify-content: center;
+  width: var(--large-control-width);
   align-items: center;
   border: 4px solid white;
   background-color: var(--color-dark);
