@@ -5,7 +5,7 @@ export default class Family extends Model {
   @attr()
   declare displayName: string;
 
-  @hasMany('user', { async: false })
+  @hasMany('user', { async: false, inverse: 'family' })
   declare members: SyncHasMany<User>;
 }
 

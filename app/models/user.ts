@@ -5,7 +5,7 @@ export default class User extends Model {
   @attr()
   declare displayName: string;
 
-  @belongsTo('family', { async: false })
+  @belongsTo('family', { async: false, inverse: 'members' })
   declare family: Family;
 }
 

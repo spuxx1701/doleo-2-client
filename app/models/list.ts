@@ -18,7 +18,7 @@ export default class List extends Model {
   @attr()
   declare members: User[];
 
-  @hasMany('list-entry', { async: false })
+  @hasMany('list-entry', { async: false, inverse: 'list' })
   declare entries: SyncHasMany<ListEntry>;
 }
 
