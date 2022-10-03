@@ -1,16 +1,17 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
 import WebNotificationService from 'doleo-2-client/services/web-notification';
+import ManagerService from 'doleo-2-client/services/manager';
+import AccountService from 'doleo-2-client/services/account';
+import NewsFeedService from 'doleo-2-client/services/news-feed';
 
 export default class IndexController extends Controller {
   @service declare webNotification: WebNotificationService;
-  @service declare session: any;
+  @service declare manager: ManagerService;
+  @service declare account: AccountService;
+  @service declare newsFeed: NewsFeedService;
 
-  @action createNotification() {
-    console.log(this.session.currentSession);
-    const title = 'Hello World';
-    const message = 'I am a notification!';
-    this.webNotification.create(title, message);
+  get hasNews() {
+    return this.newsFeed.hasNews;
   }
 }

@@ -3,15 +3,16 @@ import Store from '@ember-data/store';
 import { inject as service } from '@ember/service';
 import RSVP from 'rsvp';
 import { ListRouteParams } from '../list';
+import AccountService from 'doleo-2-client/services/account';
 
 export default class ListRoute extends Route {
   @service declare store: Store;
+  @service declare account: AccountService;
 
   async model() {
-    const { list_id } = this.paramsFor('list') as ListRouteParams;
-    return RSVP.hash({
-      list: await this.store.findRecord('list', list_id),
-      users: await this.store.findAll('user'),
-    });
+    const { list_id } = this.paramsFor('authenticated/list') as ListRouteParams;
+    const list = await this.store.findRecord('list', list_id);
+    console.log(await list.displayName);
+    return list;
   }
 }

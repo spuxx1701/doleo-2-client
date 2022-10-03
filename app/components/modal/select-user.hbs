@@ -1,0 +1,20 @@
+<div class='modal-content'>
+  <div class='modal-header'>
+    <FaIcon @icon={{this.icon}} @size='2x' />
+    <h3>{{@options.title}}</h3>
+  </div>
+  <div class='modal-body'>
+    <Users::UserSelect @onSelectionChange={{this.onSelectionChange}} />
+  </div>
+  <div class='modal-footer'>
+    <Common::ButtonLarge
+      @text='Abbrechen'
+      @design='dark-transparent'
+      @onClick={{this.hide}}
+    />
+    <Common::ButtonLarge
+      @text={{this.yesLabel}}
+      @onClick={{this.handleSubmit}}
+    />
+  </div>
+</div>

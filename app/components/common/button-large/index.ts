@@ -1,4 +1,4 @@
-import ButtonComponent, { ButtonComponentArgs } from './button';
+import ButtonComponent, { ButtonComponentArgs } from '../button';
 
 export interface ButtonLargeComponentArgs extends ButtonComponentArgs {
   text: string;

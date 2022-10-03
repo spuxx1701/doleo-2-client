@@ -14,6 +14,9 @@
   --yellow-bright: #f8fabf;
   --yellow-medium: #fae174;
   --yellow-dark: #e2bd57;
+  --color-error: #ff0000;
+  --color-warning: #ffa500;
+  --color-success: #008000;
 }
 
 .dark {
@@ -31,7 +34,14 @@
   color: var(--color-dark);
 }
 
-.dark-inverse p, .dark-inverse svg {
+.dark-inverse p, .dark-inverse svg,
+.dark-transparent p, .dark-transparent svg {
+  color: var(--color-dark);
+}
+
+.dark-transparent {
+  border: none !important;
+  background-color: transparent;
   color: var(--color-dark);
 }
 
@@ -46,4 +56,32 @@
 
 .c-notification__svg {
   color: white;
+}
+
+.bg-color-pink-medium {
+  background-color: var(--pink-medium);
+}
+
+.bg-color-blue-medium {
+  background-color: var(--blue-medium);
+}
+
+.bg-color-green-medium {
+  background-color: var(--green-medium);
+}
+
+.bg-color-yellow-medium {
+  background-color: var(--yellow-medium);
+}
+
+.bg-color-error {
+  background-color: var(--color-error) !important;
+}
+
+.bg-color-warning {
+  background-color: var(--color-warning) !important;
+}
+
+.bg-color-success {
+  background-color: var(--color-success) !important;
 }

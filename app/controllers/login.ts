@@ -30,7 +30,11 @@ export default class LoginController extends Controller {
     }
     if (this.session.isAuthenticated) {
       this.password = '';
+      this.manager.showLoadBubble();
+      await this.manager.sleep(this.manager.getLoadBubbleAnimationLength());
       this.manager.goTo('/');
+      await this.manager.sleep(500);
+      this.manager.hideLoadBubble();
     }
   }
 }
