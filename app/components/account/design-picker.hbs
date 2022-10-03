@@ -1,0 +1,10 @@
+<div class='design-picker flex flex-row full-width'>
+  {{#each this.designs as |design|}}
+    <button
+      type='button'
+      class='bg-color-{{design.name}}-medium
+        {{if (eq @selectedDesign design.id) " design-picker-button-active"}}'
+      {{on 'click' (fn this.onDesignChange design.id)}}
+    ></button>
+  {{/each}}
+</div>

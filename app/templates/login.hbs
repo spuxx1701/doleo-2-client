@@ -1,22 +1,24 @@
-{{page-title "Login"}}
+{{page-title 'Login'}}
 
-<Common::Separator @hidden="true" />
+<Common::Separator @hidden='true' />
 <h1>Doleo</h1>
-<Common::Separator @hidden="true" />
+<Common::Separator @hidden='true' />
 <form {{on 'submit' this.submit}}>
-  <div class="content-element flex-column">
-    <label title="Email">Email
-      <Input @type="email" @value={{this.email}} />
+  <div class='content-element flex-column'>
+    <label title='Email'>Email
+      <Input @type='email' @value={{this.email}} />
     </label>
   </div>
-  <div class="content-element flex-column">
-    <label title="Passwort">Passwort
-      <Input @type="password" @value={{this.password}} />
+  <div class='content-element flex-column'>
+    <label title='Passwort'>Passwort
+      <Input @type='password' @value={{this.password}} />
     </label>
   </div>
-  <Common::Separator @hidden="true" />
-  <button type="submit" class="button-large dark">
-    <FaIcon @icon="arrow-right-to-bracket" @size="2x" />
+  <Common::Separator @hidden='true' />
+  <button type='submit' class='button-large dark'>
+    <FaIcon @icon='arrow-right-to-bracket' @size='2x' />
     <p>Anmelden</p>
   </button>
+  <a class='full-width text-center' href='/reset-password'><p>Passwort
+      vergessen?</p></a>
 </form>

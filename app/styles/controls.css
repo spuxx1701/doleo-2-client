@@ -2,6 +2,17 @@ button:active:not(:disabled) {
   animation: button-pulse 100ms ease-in-out;
 }
 
+button {
+  /* Safari compatibility */
+  /* margin-left: 0; */
+  padding: 0;
+}
+
+button:not(:disabled) {
+  /* Safari compatibility */
+  cursor: pointer;
+}
+
 button:disabled {
   opacity: 0.5;
 }
@@ -10,7 +21,7 @@ button p {
   margin-bottom: 0px;
 }
 
-.button-large, input {
+.button-large, .button-selectable {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +29,8 @@ button p {
   border-radius: 10px;
   margin-bottom: 0.5rem;
   min-height: 50px;
-  width: 100%;
+  width: var(--large-control-width);
+  padding: 0 0.5rem 0 0.5rem;
 }
 
 .button-large {
@@ -36,13 +48,29 @@ button p {
 }
 
 input {
-  background-color: var(--color-bright);
+  display: flex;
+  justify-content: center;
+  width: var(--large-control-width);
+  align-items: center;
+  border: 4px solid white;
+  background-color: var(--color-dark);
+  color: white;
+  min-height: 50px;
+  border-radius: 10px;
   transition: 200ms;
   padding: 0px 0.5rem 0px 0.5rem;
+  /* Safari compatibility */
+  float: left;
 }
 
-input:focus {
+input:focus, select:focus {
   scale: 1.05;
+  border-color: white;
+}
+
+input::placeholder {
+  font-size: var(--default-font-size);
+  color: white;
 }
 
 .button-large svg {
@@ -68,6 +96,7 @@ input:focus {
 .slider {
   position: absolute;
   cursor: pointer;
+  /* border: 4px solid white; */
   top: 0;
   left: 0;
   right: 0;
@@ -110,4 +139,40 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.design-picker {
+  height: 45px;
+}
+
+.design-picker button {
+  border: none;
+  width: 25%;
+  transition: 200ms;
+}
+
+.design-picker button:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.design-picker button:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.design-picker-button-active {
+  border: 4px solid white !important;
+}
+
+.user-select {
+  margin: auto;
+  width: var(--large-control-width);
+  max-height: 340px;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+.button-selectable {
+  justify-content: space-between;
 }

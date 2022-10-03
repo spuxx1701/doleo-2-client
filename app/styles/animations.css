@@ -1,3 +1,7 @@
+:root {
+  --load-bubble-anim-length: 800ms;
+}
+
 .ripple {
   width: 10px;
   height: 10px;
@@ -30,5 +34,31 @@
   100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+#load-bubble {
+  position: absolute;
+  z-index: 8999;
+  width: 0px;
+  height: 0px;
+  transition: var(--load-bubble-anim-length);
+  background-color: var(--color-dark);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.load-bubble-expanded {
+  width: 150vh !important;
+  height: 150vh !important;
+}
+
+@media (orientation:landscape) {
+  .load-bubble-expanded {
+    width: 150vw !important;
+    height: 150vw !important;
   }
 }

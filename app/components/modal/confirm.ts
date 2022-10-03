@@ -3,7 +3,7 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import ModalService from 'doleo-2-client/services/modal';
 
-export interface ConfirmModalComponentOptions {
+export interface ConfirmModalOptions {
   title: string;
   text: string;
   icon?: string;
@@ -14,7 +14,7 @@ export interface ConfirmModalComponentOptions {
 }
 
 interface ConfirmModalComponentArgs {
-  options: ConfirmModalComponentOptions;
+  options: ConfirmModalOptions;
 }
 
 export default class ConfirmModalComponent extends Component {

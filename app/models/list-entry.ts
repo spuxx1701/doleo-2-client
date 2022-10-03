@@ -11,7 +11,7 @@ export default class ListEntry extends Model {
   @attr()
   declare isChecked?: boolean;
 
-  @belongsTo('list', { async: false })
+  @belongsTo('list', { async: false, inverse: 'entries' })
   declare list: List;
 }
 

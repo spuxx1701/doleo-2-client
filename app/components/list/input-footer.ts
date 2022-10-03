@@ -34,6 +34,7 @@ export default class ListEntryComponent extends Component {
       const entry = this.store.createRecord('list-entry', newEntry);
       entry.save();
       this.value = '';
+      document.getElementById('list-new-entry-input')?.focus();
     }
   }
 }

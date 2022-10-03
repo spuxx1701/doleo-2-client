@@ -5,7 +5,7 @@ export default class FamilySerializer extends JSONSerializer.extend(
   EmbeddedRecordsMixin
 ) {
   attrs = {
-    users: {
+    members: {
       serialize: 'ids',
       deserialize: 'records',
     },

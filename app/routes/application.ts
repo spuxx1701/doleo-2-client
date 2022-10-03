@@ -6,9 +6,8 @@ export default class ApplicationRoute extends Route {
   @service declare session: any;
   @service declare manager: ManagerService;
 
-  async beforeModel(transition: any) {
+  async beforeModel() {
     this.manager.initialize();
     await this.session.setup();
-    this.session.requireAuthentication(transition, 'login');
   }
 }

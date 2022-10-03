@@ -1,15 +1,22 @@
-<div class="modal-content">
-  <div class="modal-header">
-    <FaIcon @icon={{this.icon}} @size="2x" />
+<div class='modal-content'>
+  <div class='modal-header'>
+    <FaIcon @icon={{this.icon}} @size='2x' />
     <h3>{{@options.title}}</h3>
   </div>
-  <div class="modal-body">
+  <div class='modal-body'>
     <p>{{@options.text}}</p>
   </div>
-  <div class="modal-footer">
-    <Common::ButtonLarge @text={{this.yesLabel}} @onClick={{this.onYesClickHandler}} />
+  <div class='modal-footer'>
     {{#if @options.noLabel}}
-    <Common::ButtonLarge @text={{@options.noLabel}} @onClick={{this.onNoClickHandler}} />
+      <Common::ButtonLarge
+        @text={{@options.noLabel}}
+        @onClick={{this.onNoClickHandler}}
+        @design='dark-transparent'
+      />
     {{/if}}
+    <Common::ButtonLarge
+      @text={{this.yesLabel}}
+      @onClick={{this.onYesClickHandler}}
+    />
   </div>
 </div>

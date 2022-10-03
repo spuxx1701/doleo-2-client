@@ -1,0 +1,55 @@
+{{page-title 'Einstellungen'}}
+
+<div class='header'>
+  <FaIcon @icon='user' @size='2x' />
+  <h3>Benutzerkonto</h3>
+</div>
+
+<div class='content-element flex-column'>
+  <label class='full-width'>Design
+    <Account::DesignPicker @selectedDesign={{@model.selectedDesign}} />
+  </label>
+</div>
+
+<div class='content-element flex-column'>
+  <label>Anzeigename
+    <Input
+      @type='text'
+      @value={{this.displayName}}
+      minlength='1'
+      maxlength='30'
+      {{on 'change' this.changeDisplayName}}
+    />
+  </label>
+</div>
+
+<div class='content-element flex-column'>
+  <label>Email
+    <Input
+      @type='email'
+      @value={{this.email}}
+      minlength='5'
+      maxlength='50'
+      {{on 'change' this.changeEmail}}
+    />
+  </label>
+</div>
+
+<div class='content-element flex-column'>
+  <label>Passwort
+    <Input
+      @type='password'
+      @value={{this.password}}
+      placeholder='●●●●●●●●'
+      minlength='1'
+      maxlength='255'
+      {{on 'change' this.changePassword}}
+    />
+  </label>
+  <Account::PasswordSecurityDisplay @password={{this.password}} />
+
+  <div class='content-element flex-column'>
+    <p class='no-margin'>Deine Familie ist:
+      {{this.model.family.displayName}}</p>
+  </div>
+</div>

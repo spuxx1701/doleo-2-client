@@ -5,8 +5,8 @@ export default class Family extends Model {
   @attr()
   declare displayName: string;
 
-  @hasMany('user', { async: false })
-  declare entries: SyncHasMany<User>;
+  @hasMany('user', { async: false, inverse: 'family' })
+  declare members: SyncHasMany<User>;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
