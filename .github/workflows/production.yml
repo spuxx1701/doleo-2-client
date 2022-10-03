@@ -15,8 +15,8 @@ jobs:
     with:
       username: spuxx
       repository: doleo-2-client
-      environment: integrate
-      dockerfile: Dockerfile.integration
+      environment: production
+      dockerfile: Dockerfile.production
     secrets:
       token: ${{ secrets.DOCKERHUB_TOKEN }}
       ssh_host: ${{ secrets.SSH_HOST }}
