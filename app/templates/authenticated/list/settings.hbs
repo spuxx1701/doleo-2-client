@@ -54,13 +54,14 @@
       <button
         type='button'
         class='tag dark'
-        disabled={{if this.isOwner false true}}
+        {{!-- disabled={{if this.isOwner false true}} --}}
+        disabled={{true}}
         aria-label='{{member.displayName}} von Liste entfernen'
       >
         <p>{{member.displayName}}</p>
-        {{#if this.isOwner}}
+        {{!-- {{#if this.isOwner}}
           <FaIcon @icon='times' />
-        {{/if}}
+        {{/if}} --}}
       </button>
     {{/each}}
     {{#if this.isOwner}}
