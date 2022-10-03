@@ -1,9 +1,9 @@
-name: integrate
+name: production
 
 on:
   push:
     branches:
-      - integrate
+      - master
 
 jobs:
   lint:
