@@ -46,7 +46,7 @@ export default class AuthenticatedController extends Controller {
     }
   }
 
-  @action refresh() {
+  @action synchronize() {
     // TODO: Implement me
   }
 
