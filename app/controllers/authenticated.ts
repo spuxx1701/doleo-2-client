@@ -46,6 +46,14 @@ export default class AuthenticatedController extends Controller {
     }
   }
 
+  @action refresh() {
+    // TODO: Implement me
+  }
+
+  get isSyncing() {
+    return false;
+  }
+
   @action logout() {
     this.session.invalidate();
   }

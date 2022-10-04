@@ -5,11 +5,14 @@
     @onClick={{this.toggleSidenav}}
   />
   <h2>Doleo</h2>
-  <Common::ButtonSmall
-    @icon='arrow-right-from-bracket'
-    @design='dark-inverse'
-    @onClick={{this.logout}}
-  />
+  <div class='flex align-items-center'>
+    <Common::ButtonSmall
+      @icon='rotate-right'
+      @spin={{this.isSyncing}}
+      @design='dark-inverse'
+      @onClick={{this.synchronize}}
+    />
+  </div>
 </div>
 
 <div id='sidenav'>
@@ -38,9 +41,9 @@
   />
   <Sidenav::SidenavSeparator />
   <Sidenav::SidenavButton
-    @icon='heart'
-    @text='Anstupsen'
-    @onClick={{fn this.goToPage '/pings'}}
+    @icon='arrow-right-from-bracket'
+    @text='Abmelden'
+    @onClick={{this.logout}}
   />
 </div>
 
