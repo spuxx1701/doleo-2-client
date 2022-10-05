@@ -10,7 +10,13 @@ export default class List extends Model {
   declare iconName: string;
 
   @attr()
+  declare usesCheck: boolean;
+
+  @attr()
   declare hasAmounts: boolean;
+
+  @attr()
+  declare usesConfirmDelete: boolean;
 
   @attr()
   declare owner: User;

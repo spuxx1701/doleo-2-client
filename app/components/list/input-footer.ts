@@ -30,6 +30,7 @@ export default class ListEntryComponent extends Component {
       const newEntry = {
         text: this.value,
         list: this.list,
+        amount: 1,
       } as ListEntry;
       const entry = this.store.createRecord('list-entry', newEntry);
       entry.save();
