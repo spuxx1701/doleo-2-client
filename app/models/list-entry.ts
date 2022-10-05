@@ -6,7 +6,7 @@ export default class ListEntry extends Model {
   declare text: string;
 
   @attr()
-  declare amount?: number;
+  declare amount: number;
 
   @attr()
   declare isChecked?: boolean;

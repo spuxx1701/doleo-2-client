@@ -1,9 +1,33 @@
-<div class="list-entry {{if @entry.isChecked 'list-entry-checked'}}">
-  <button class="list-entry-button" type="button" {{on 'click' this.toggleChecked}}>
-    <FaIcon @icon="{{if @entry.isChecked 'square-check' 'square'}}" @size="3x" @prefix="far" />
+<div class='list-entry {{if @entry.isChecked "list-entry-checked"}}'>
+  {{#if @showCheckBox}}
+    <button
+      class='list-entry-button'
+      type='button'
+      {{on 'click' this.toggleChecked}}
+    >
+      <FaIcon
+        @icon='{{if @entry.isChecked "square-check" "square"}}'
+        @size='3x'
+        @prefix='far'
+      />
+    </button>
+  {{/if}}
+  <button class='list-entry-button' type='button' {{on 'click' this.delete}}>
+    <FaIcon @icon='xmark' @size='3x' />
   </button>
-  <button class="list-entry-button" type="button" {{on 'click' this.delete}}>
-    <FaIcon @icon="xmark" @size="3x" />
-  </button>
+  {{#if @showAmountInput}}
+    <input
+      aria-label='Menge von Eintrag {{@entry.text}}'
+      class='list-entry-amount-input'
+      type='text'
+      inputmode='numeric'
+      value={{this.amount}}
+      min={{1}}
+      max={{99}}
+      minlength={{1}}
+      maxlength={{2}}
+      {{on 'change' this.handleAmountChange}}
+    />
+  {{/if}}
   <p>{{@entry.text}}</p>
 </div>

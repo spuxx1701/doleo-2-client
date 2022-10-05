@@ -1,6 +1,14 @@
-<div class="list-entries-container">
+<div class='list-entries-container'>
   {{#each this.entries as |entry|}}
-  <List::Entry @entry={{entry}} />
+    <List::Entry
+      @entry={{entry}}
+      @showCheckBox={{@list.usesCheck}}
+      @showAmountInput={{@list.hasAmounts}}
+    />
   {{/each}}
-  <Common::ButtonLarge @text="Listeneinstellungen" @icon="gear" @onClick={{this.goToSettings}} />
+  <Common::ButtonLarge
+    @text='Listeneinstellungen'
+    @icon='gear'
+    @onClick={{this.goToSettings}}
+  />
 </div>
