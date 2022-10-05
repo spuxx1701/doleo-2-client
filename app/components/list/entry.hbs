@@ -12,7 +12,11 @@
       />
     </button>
   {{/if}}
-  <button class='list-entry-button' type='button' {{on 'click' this.delete}}>
+  <button
+    class='list-entry-button'
+    type='button'
+    {{on 'click' this.handleDeleteClick}}
+  >
     <FaIcon @icon='xmark' @size='3x' />
   </button>
   {{#if @showAmountInput}}

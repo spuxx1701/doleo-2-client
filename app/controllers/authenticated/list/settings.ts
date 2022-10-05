@@ -52,8 +52,18 @@ export default class ListController extends Controller {
     }
   }
 
+  @action toggleUsesCheck(event: any) {
+    this.model.usesCheck = event.target.checked;
+    this.model.save();
+  }
+
   @action toggleHasAmounts(event: any) {
     this.model.hasAmounts = event.target.checked;
+    this.model.save();
+  }
+
+  @action toggleUsesConfirmDelete(event: any) {
+    this.model.usesConfirmDelete = event.target.checked;
     this.model.save();
   }
 
