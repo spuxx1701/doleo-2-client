@@ -5,18 +5,21 @@
 
 .modal-dialog {
   border-radius: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
-  top: 0;
+  width: 500px;
+  max-width: 90%;
+  max-height: 80%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50% !important;
+  margin: 0 !important;
 }
 
 .modal:not(.show) .modal-dialog {
-  transform: scale(0, 0) translateY(50%) !important;
+  transform: scale(0, 0) !important;
 }
 
 .modal.show .modal-dialog {
-  transform: scale(1, 1) translateY(50%) !important;
+  transform: scale(1, 1) !important;
 }
 
 .modal-content {

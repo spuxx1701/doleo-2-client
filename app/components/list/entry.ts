@@ -63,9 +63,10 @@ export default class ListEntryComponent extends Component<Args> {
     this.entry.save();
   }
 
-  /**
-   * Handle's the change event of the amount input.
-   */
+  handleAmountFocus(event: any) {
+    event.target.select();
+  }
+
   @action handleAmountChange(event: any) {
     const amount = parseInt(event.target.value);
     if (amount && !isNaN(amount) && amount > 0 && amount < 100) {

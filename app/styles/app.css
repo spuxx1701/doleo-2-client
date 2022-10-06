@@ -59,9 +59,8 @@ body {
   padding-top: calc(var(--branding-bar-height) + var(--header-height) + 1rem);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  margin: 0px auto 0px auto;
+  padding-bottom: 1rem;
   max-width: 600px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
