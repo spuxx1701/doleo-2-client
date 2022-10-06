@@ -22,8 +22,11 @@ h3 {
   font-size: 1.6rem !important;
 }
 
-h4, label, p, a, li {
+h4, label, p, a, li, input {
   font-size: var(--default-font-size) !important;
+}
+
+h4, label, p, a, li {
   color: var(--color-dark);
 }
 
