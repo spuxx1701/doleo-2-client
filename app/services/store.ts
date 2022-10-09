@@ -49,9 +49,8 @@ export default class CustomStore extends Store {
   }
 
   private addToQueue(record: any) {
-    this.queue.push(record);
-    if (this.queue.length === 1) {
-      this.notifications.warning('Keine Verbindung. Verwende Offline-Modus.');
+    if (!this.queue.find(() => record)) this.queue.push(record);
+    if (this.queue.length >= 1) {
       this.startSyncInterval();
     }
   }
@@ -73,19 +72,24 @@ export default class CustomStore extends Store {
       }
     }
     if (this.queue.length === 0) {
-      this.notifications.success('Synchronisierung abgeschlossen.');
       this.stopSyncInterval();
     }
   }
 
   @action private startSyncInterval() {
     this.hasUnsyncedChanges = true;
-    this.syncInterval = window.setInterval(this.tryProcessQueue, 5000);
+    if (this.syncInterval === undefined) {
+      this.syncInterval = window.setInterval(this.tryProcessQueue, 5000);
+      this.notifications.warning('Keine Verbindung. Verwende Offline-Modus.');
+    }
   }
 
   @action private stopSyncInterval() {
-    window.clearInterval(this.syncInterval);
-    this.hasUnsyncedChanges = false;
-    this.syncInterval = undefined;
+    if (this.syncInterval !== undefined) {
+      window.clearInterval(this.syncInterval);
+      this.hasUnsyncedChanges = false;
+      this.syncInterval = undefined;
+      this.notifications.success('Synchronisierung abgeschlossen.');
+    }
   }
 }
