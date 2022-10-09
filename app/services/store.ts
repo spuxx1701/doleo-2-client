@@ -49,7 +49,14 @@ export default class CustomStore extends Store {
   }
 
   private addToQueue(record: any) {
-    if (!this.queue.find(() => record)) this.queue.push(record);
+    if (
+      !this.queue.find(
+        (element) =>
+          record.id === element.id &&
+          record.constructor.name === element.constructor.name
+      )
+    )
+      this.queue.push(record);
     if (this.queue.length >= 1) {
       this.startSyncInterval();
     }
