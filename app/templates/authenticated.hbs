@@ -13,11 +13,17 @@
       class='dark-inverse slow-pulse
         {{if this.hasUnsyncedChanges "opacity-100" "opacity-0"}}'
     />
-    <Common::ButtonSmall
-      @icon='rotate-right'
-      @design='dark-inverse'
-      @onClick={{this.synchronize}}
-    />
+    {{#if this.isSyncing}}
+      <div class='button-small flex align-items-center' aria-hidden='true'>
+        <div class='dot-pulse'></div>
+      </div>
+    {{else}}
+      <Common::ButtonSmall
+        @icon='rotate-right'
+        @design='dark-inverse'
+        @onClick={{this.sync}}
+      />
+    {{/if}}
   </div>
 </div>
 

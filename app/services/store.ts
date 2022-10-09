@@ -45,7 +45,6 @@ export default class CustomStore extends Store {
     } catch (error) {
       this.notifications.error('Synchronisation fehlgeschlagen.');
     }
-    await this.manager.sleep(1000);
     this.isSyncing = false;
   }
 
