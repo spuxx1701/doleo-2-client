@@ -3,8 +3,16 @@
     <List::Entry
       @entry={{entry}}
       @showCheckBox={{@list.usesCheck}}
+      @showDelete={{true}}
       @showAmountInput={{@list.hasAmounts}}
       @usesConfirmDelete={{@list.usesConfirmDelete}}
+    />
+  {{/each}}
+  {{#each this.unpersistedEntries as |entry|}}
+    <List::Entry
+      @entry={{entry}}
+      @disabled={{true}}
+      @showLoadingIndicator={{true}}
     />
   {{/each}}
   <Common::ButtonLarge

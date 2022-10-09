@@ -14,9 +14,7 @@
         {{if this.hasUnsyncedChanges "opacity-100" "opacity-0"}}'
     />
     {{#if this.isSyncing}}
-      <div class='button-small flex align-items-center' aria-hidden='true'>
-        <div class='dot-pulse'></div>
-      </div>
+      <Common::LoadingIndicator />
     {{else}}
       <Common::ButtonSmall
         @icon='rotate-right'

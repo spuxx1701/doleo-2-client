@@ -8,7 +8,10 @@ import CustomStore from 'doleo-2-client/services/store';
 
 export interface Args {
   entry: ListEntry;
+  disabled: boolean;
+  showLoadingIndicator: boolean;
   showCheckBox: boolean;
+  showDelete: boolean;
   showAmountInput: boolean;
   usesConfirmDelete: boolean;
 }

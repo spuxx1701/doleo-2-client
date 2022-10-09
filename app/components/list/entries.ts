@@ -14,12 +14,21 @@ export default class ListEntriesComponent extends Component<Args> {
   declare args: Args;
 
   get entries() {
+    // Do not show records that were deleted and do not yet have an id
     const entries = this.args.list.entries.filter(
-      (record) => !record.isDeleted
+      (record) => !record.isDeleted && record.id
     );
     return entries.sort((a, b) =>
       a.isChecked && !b.isChecked ? 1 : -1 || b.text.localeCompare(a.text)
     );
+  }
+
+  get unpersistedEntries() {
+    // New, unpersisted entries are displayed seperately during offline mode
+    const entries = this.args.list.entries.filter(
+      (record) => !record.isDeleted && !record.id
+    );
+    return entries.sort((a, b) => b.text.localeCompare(a.text));
   }
 
   @action goToSettings() {
