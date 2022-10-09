@@ -46,8 +46,12 @@ export default class AuthenticatedController extends Controller {
     }
   }
 
-  @action synchronize() {
-    // TODO: Implement me
+  @action sync() {
+    this.store.sync();
+  }
+
+  get isSyncing() {
+    return this.store.isSyncing;
   }
 
   get hasUnsyncedChanges() {
