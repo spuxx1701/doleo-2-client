@@ -22,9 +22,10 @@ export default class CustomStore extends Store {
   }
 
   async trySave(record: any) {
+    this.hasUnsyncedChanges = true;
     try {
       await record.save();
-      // throw new Error('Network request failed');
+      if (this.queue.length === 0) this.hasUnsyncedChanges = false;
     } catch (error: any) {
       if (error.message === 'Network request failed') {
         this.addToQueue(record);
