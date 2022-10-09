@@ -62,3 +62,30 @@
     height: 150vw !important;
   }
 }
+
+.slow-pulse {
+  box-shadow: var(--color-dark);
+  transform: scale(1);
+  animation: slow-pulse 2s infinite;
+  border-radius: 50%;
+}
+
+@keyframes slow-pulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 var(--color-dark);
+    background-color: var(--color-dark);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    background-color: transparent;
+  }
+
+  100% {
+    transform: scale(0.90);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    background-color: transparent;
+  }
+}

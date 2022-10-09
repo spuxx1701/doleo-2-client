@@ -38,8 +38,9 @@ body {
 }
 
 #header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-auto-columns: 25% 50% 25%;
+  grid-auto-flow: column;
   align-items: center;
   background-color: var(--color-medium);
   position: fixed;
@@ -53,6 +54,12 @@ body {
 
 #header h2 {
   margin: auto;
+}
+
+#sync-indicator {
+  transition: opacity 500ms;
+  width: 45px;
+  height: 45px;
 }
 
 #content {
