@@ -44,7 +44,6 @@ export default class CustomStore extends Store {
 
   @action async tryProcessQueue() {
     this.queue.forEach(async (record, index) => {
-      console.log(record);
       try {
         await record.save();
         this.queue.splice(index, 1);
