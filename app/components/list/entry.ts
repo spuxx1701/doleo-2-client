@@ -37,7 +37,6 @@ export default class ListEntryComponent extends Component<Args> {
    * Handles the delete click.
    */
   @action handleDeleteClick() {
-    console.log(this.args.usesConfirmDelete);
     if (this.args.usesConfirmDelete) {
       this.modal.confirm({
         title: 'Eintrag löschen',
@@ -60,7 +59,7 @@ export default class ListEntryComponent extends Component<Args> {
    */
   @action delete() {
     this.entry.deleteRecord();
-    this.entry.save();
+    this.store.trySave(this.entry);
   }
 
   handleAmountFocus(event: any) {
@@ -72,7 +71,7 @@ export default class ListEntryComponent extends Component<Args> {
     if (amount && !isNaN(amount) && amount > 0 && amount < 100) {
       this.amount = amount;
       this.entry.amount = amount;
-      this.entry.save();
+      this.store.trySave(this.entry);
     }
   }
 

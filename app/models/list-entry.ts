@@ -9,7 +9,7 @@ export default class ListEntry extends Model {
   declare amount: number;
 
   @attr()
-  declare isChecked?: boolean;
+  declare isChecked: boolean;
 
   @belongsTo('list', { async: false, inverse: 'entries' })
   declare list: List;

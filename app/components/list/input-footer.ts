@@ -30,10 +30,11 @@ export default class ListEntryComponent extends Component {
       const newEntry = {
         text: this.value,
         list: this.list,
+        isChecked: false,
         amount: 1,
       } as ListEntry;
       const entry = this.store.createRecord('list-entry', newEntry);
-      entry.save();
+      this.store.trySave(entry);
       this.value = '';
       document.getElementById('list-new-entry-input')?.focus();
     }
