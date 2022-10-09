@@ -15,7 +15,7 @@ export default class ListEntriesComponent extends Component<Args> {
 
   get entries() {
     const entries = this.args.list.entries.filter(
-      (record) => !record.isDestroyed
+      (record) => !record.isDeleted
     );
     return entries.sort((a, b) =>
       a.isChecked && !b.isChecked ? 1 : -1 || b.text.localeCompare(a.text)
