@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import Store from '@ember-data/store';
+import CustomStore from 'doleo-2-client/services/store';
 import { inject as service } from '@ember/service';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import { action } from '@ember/object';
@@ -8,7 +8,7 @@ import ManagerService from 'doleo-2-client/services/manager';
 
 export default class ListController extends Controller {
   @service declare manager: ManagerService;
-  @service declare store: Store;
+  @service declare store: CustomStore;
   @service declare notifications: any;
   declare model: { displayName: string; iconName: string };
 

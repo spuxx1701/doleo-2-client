@@ -1,4 +1,4 @@
-import Store from '@ember-data/store';
+import CustomStore from 'doleo-2-client/services/store';
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
@@ -14,7 +14,7 @@ import ModalService from 'doleo-2-client/services/modal';
 export default class ListController extends Controller {
   @service declare manager: ManagerService;
   @service declare account: AccountService;
-  @service declare store: Store;
+  @service declare store: CustomStore;
   @service declare notifications: any;
   @service declare modal: ModalService;
 

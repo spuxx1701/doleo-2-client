@@ -1,12 +1,12 @@
 import Route from '@ember/routing/route';
-import Store from '@ember-data/store';
+import CustomStore from 'doleo-2-client/services/store';
 import { inject as service } from '@ember/service';
 import RSVP from 'rsvp';
 import { ListRouteParams } from '../list';
 import AccountService from 'doleo-2-client/services/account';
 
 export default class ListRoute extends Route {
-  @service declare store: Store;
+  @service declare store: CustomStore;
   @service declare account: AccountService;
 
   async model() {

@@ -1,10 +1,10 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import Store from '@ember-data/store';
 import { inject as service } from '@ember/service';
 import ListEntry from 'doleo-2-client/models/list-entry';
 import { tracked } from '@glimmer/tracking';
 import ModalService from 'doleo-2-client/services/modal';
+import CustomStore from 'doleo-2-client/services/store';
 
 export interface Args {
   entry: ListEntry;
@@ -14,7 +14,7 @@ export interface Args {
 }
 
 export default class ListEntryComponent extends Component<Args> {
-  @service declare store: Store;
+  @service declare store: CustomStore;
   @service declare modal: ModalService;
 
   declare args: Args;
@@ -30,7 +30,7 @@ export default class ListEntryComponent extends Component<Args> {
    */
   @action toggleChecked() {
     this.entry.isChecked = !this.entry.isChecked;
-    this.entry.save();
+    this.store.trySave(this.entry);
   }
 
   /**

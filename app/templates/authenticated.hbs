@@ -5,10 +5,16 @@
     @onClick={{this.toggleSidenav}}
   />
   <h2>Doleo</h2>
-  <div class='flex align-items-center'>
+  <div class='flex align-items-center justify-content-end'>
+    <FaIcon
+      id='sync-indicator'
+      @icon='cloud-arrow-up'
+      @size='2x'
+      class='dark-inverse slow-pulse
+        {{if this.hasUnsyncedChanges "opacity-100" "opacity-0"}}'
+    />
     <Common::ButtonSmall
       @icon='rotate-right'
-      @spin={{this.isSyncing}}
       @design='dark-inverse'
       @onClick={{this.synchronize}}
     />
