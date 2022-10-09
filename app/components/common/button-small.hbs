@@ -1,5 +1,7 @@
 <Common::Button
-  @class='button-small {{@design}}'
+  @class='button-small {{@design}}
+   {{if @pulse "slow-pulse"}}
+   {{if @circular "circular"}}'
   @disabled={{@disabled}}
   @onClick={{@onClick}}
 >

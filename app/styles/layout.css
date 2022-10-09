@@ -101,3 +101,7 @@
 .feed-element-hidden {
   transform: scale(0, 0);
 }
+
+.circular {
+  border-radius: 50%;
+}
