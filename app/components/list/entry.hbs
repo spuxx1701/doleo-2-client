@@ -8,7 +8,7 @@
     <button
       class='list-entry-button'
       type='button'
-      disabled={{@disabled}}
+      disabled={{if (or @disabled this.isNew) true}}
       {{on 'click' this.toggleChecked}}
     >
       <FaIcon
@@ -22,7 +22,7 @@
     <button
       class='list-entry-button'
       type='button'
-      disabled={{@disabled}}
+      disabled={{if (or @disabled this.isNew) true}}
       {{on 'click' this.handleDeleteClick}}
     >
       <FaIcon @icon='xmark' @size='3x' />
@@ -39,7 +39,7 @@
       max={{99}}
       minlength={{1}}
       maxlength={{2}}
-      disabled={{@disabled}}
+      disabled={{if (or @disabled this.isNew) true}}
       {{on 'focus' this.handleAmountFocus}}
       {{on 'change' this.handleAmountChange}}
     />

@@ -28,6 +28,10 @@ export default class ListEntryComponent extends Component<Args> {
     return this.args.entry;
   }
 
+  get isNew() {
+    return this.args.entry.get('isNew');
+  }
+
   /**
    * Checks or unchecks the list entry.
    */
