@@ -63,6 +63,7 @@ body {
 }
 
 #content {
+  margin: auto;
   padding-top: calc(var(--branding-bar-height) + var(--header-height) + 1rem);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
