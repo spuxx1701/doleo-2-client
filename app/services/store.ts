@@ -49,13 +49,7 @@ export default class CustomStore extends Store {
   }
 
   private addToQueue(record: any) {
-    if (
-      !this.queue.find(
-        (element) =>
-          record.id === element.id &&
-          record.constructor.name === element.constructor.name
-      )
-    )
+    if (!this.queue.find((element) => element === record))
       this.queue.push(record);
     if (this.queue.length >= 1) {
       this.startSyncInterval();
@@ -66,16 +60,21 @@ export default class CustomStore extends Store {
     if (this.queue.length === 0) return;
     for (let i = 0; i < this.queue.length; i++) {
       const record = this.queue[i];
-      try {
-        await record.save();
+      if (record.get('isLoaded')) {
+        try {
+          await record.save();
+          this.queue.splice(i, 1);
+          i--;
+        } catch (error: any) {
+          if (error.message === 'Network request failed') {
+            break;
+          } else {
+            throw error;
+          }
+        }
+      } else {
         this.queue.splice(i, 1);
         i--;
-      } catch (error: any) {
-        if (error.message === 'Network request failed') {
-          break;
-        } else {
-          throw error;
-        }
       }
     }
     if (this.queue.length === 0) {
