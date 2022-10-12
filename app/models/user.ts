@@ -10,13 +10,24 @@ export default class User extends Model {
   declare family: Family;
 
   /**
-   * @param {string} options
+   * Invites the user to the specified list.
+   * @param {string} body.listId The list id.
    */
   declare inviteToList: Function;
+
+  /**
+   * Pings the user.
+   */
+  declare ping: Function;
 }
 
 User.prototype.inviteToList = memberAction({
   path: 'inviteToList',
+  type: 'POST',
+});
+
+User.prototype.ping = memberAction({
+  path: 'ping',
   type: 'POST',
 });
 
