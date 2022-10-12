@@ -35,7 +35,7 @@
     <h4>Andere Personen</h4>
     {{#each this.otherUsers as |user|}}
       <Common::ButtonSelectable
-        @text='{{user.displayName}} {{user.family.displayName}}'
+        @text='{{user.displayName}} {{user.familyName}}'
         @state={{user.state}}
         @onToggle={{this.handleSelectionChange}}
         @context={{user}}

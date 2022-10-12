@@ -2,14 +2,13 @@ import CustomStore from 'doleo-2-client/services/store';
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 import { ConfirmModalOptions } from 'doleo-2-client/components/modal/confirm';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import List from 'doleo-2-client/models/list';
-import User from 'doleo-2-client/models/user';
 import AccountService from 'doleo-2-client/services/account';
 import ManagerService from 'doleo-2-client/services/manager';
 import ModalService from 'doleo-2-client/services/modal';
+import { SelectableUser } from 'doleo-2-client/components/users/user-select';
 
 export default class ListController extends Controller {
   @service declare manager: ManagerService;
@@ -76,13 +75,9 @@ export default class ListController extends Controller {
     });
   }
 
-  @action async submitInvites(selection: User[]) {
+  @action async submitInvites(selection: SelectableUser[]) {
     for (const user of selection) {
-      const invite = this.store.createRecord('list-invite', {
-        list: this.model.id,
-        recipient: user.id,
-      });
-      await invite.save();
+      user.record.inviteToList({ list: this.model.id });
     }
     this.notifications.success('Deine Einladung(en) wurden versendet.');
   }

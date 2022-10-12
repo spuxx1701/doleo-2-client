@@ -11,8 +11,12 @@ export interface Args {
   onSelectionChange?: Function;
 }
 
-class SelectableUser extends User {
-  state: SelectableState = { selected: false };
+export interface SelectableUser {
+  id: string;
+  displayName: string;
+  familyName: string;
+  record: User;
+  state: SelectableState;
 }
 
 export default class UserSelectComponent extends Component<Args> {
@@ -39,8 +43,10 @@ export default class UserSelectComponent extends Component<Args> {
       family.members.forEach((user) => {
         if (user.id !== this.account.id) {
           this.familyMembers.push({
-            ...user.serialize({ includeId: true }),
-            family: user.family.serialize({ includeId: true }),
+            id: user.id,
+            displayName: user.displayName,
+            familyName: user.family.displayName,
+            record: user,
             state: { selected: false },
           } as SelectableUser);
         }
@@ -64,8 +70,10 @@ export default class UserSelectComponent extends Component<Args> {
         !this.familyMembers.find((member) => member.id === user.id)
       ) {
         this.otherUsers.push({
-          ...user.serialize({ includeId: true }),
-          family: user.family.serialize({ includeId: true }),
+          id: user.id,
+          displayName: user.displayName,
+          familyName: user.family.displayName,
+          record: user,
           state: { selected: false },
         } as SelectableUser);
       }
@@ -84,6 +92,6 @@ export default class UserSelectComponent extends Component<Args> {
     return [
       ...this.familyMembers.filter((user) => user.state.selected),
       ...this.otherUsers.filter((user) => user.state.selected),
-    ] as User[];
+    ] as SelectableUser[];
   }
 }
