@@ -6,7 +6,7 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'history',
-    apiUrl: 'https://test.api.doleo-2.de',
+    apiUrl: 'http://localhost:3000',
     apiNamespace: '',
     EmberENV: {
       EXTEND_PROTOTYPES: {
