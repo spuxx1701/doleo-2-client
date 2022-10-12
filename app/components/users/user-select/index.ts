@@ -1,4 +1,3 @@
-import emberData__store from '@ember-data/store';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
@@ -6,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { SelectableState } from 'doleo-2-client/components/common/button-selectable';
 import User from 'doleo-2-client/models/user';
 import AccountService from 'doleo-2-client/services/account';
+import CustomStore from 'doleo-2-client/services/store';
 
 export interface Args {
   onSelectionChange?: Function;
@@ -16,7 +16,7 @@ class SelectableUser extends User {
 }
 
 export default class UserSelectComponent extends Component<Args> {
-  @service declare store: emberData__store;
+  @service declare store: CustomStore;
   @service declare account: AccountService;
 
   @tracked familyMembers: SelectableUser[] = [];

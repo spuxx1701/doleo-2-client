@@ -2,16 +2,16 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import ListInvite from 'doleo-2-client/models/list-invite';
 import { service } from '@ember/service';
-import emberData__store from '@ember-data/store';
 import { tracked } from '@glimmer/tracking';
 import NewsFeedService from 'doleo-2-client/services/news-feed';
+import CustomStore from 'doleo-2-client/services/store';
 
 export interface Args {
   invite: ListInvite;
 }
 
 export default class IncomingListInvite extends Component<Args> {
-  @service declare store: emberData__store;
+  @service declare store: CustomStore;
   @service declare newsFeed: NewsFeedService;
 
   declare args: Args;

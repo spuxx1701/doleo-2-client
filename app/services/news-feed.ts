@@ -1,12 +1,12 @@
-import emberData__store from '@ember-data/store';
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ListInvite from 'doleo-2-client/models/list-invite';
 import Ember from 'ember';
+import CustomStore from './store';
 
 export default class NewsFeedService extends Service {
-  @service declare store: emberData__store;
+  @service declare store: CustomStore;
 
   @tracked hasNews = false;
   @tracked listInvites: Ember.ArrayProxy<ListInvite> | undefined;

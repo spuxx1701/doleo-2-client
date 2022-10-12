@@ -1,13 +1,13 @@
-import emberData__store from '@ember-data/store';
 import Service, { inject as service } from '@ember/service';
 import ENV from 'doleo-2-client/config/environment';
 import { tracked } from '@glimmer/tracking';
 import Account from 'doleo-2-client/models/account';
 import ManagerService from './manager';
+import CustomStore from './store';
 
 export default class AccountService extends Service {
   @service declare session: any;
-  @service declare store: emberData__store;
+  @service declare store: CustomStore;
   @service declare notifications: any;
   @service declare manager: ManagerService;
 
