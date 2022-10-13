@@ -4,11 +4,13 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import ManagerService from 'doleo-2-client/services/manager';
 import CustomStore from 'doleo-2-client/services/store';
+import NewsFeedService from 'doleo-2-client/services/news-feed';
 
 export default class AuthenticatedController extends Controller {
   @service declare store: CustomStore;
   @service declare manager: ManagerService;
   @service declare session: any;
+  @service declare newsFeed: NewsFeedService;
 
   declare model: { lists: any };
 
@@ -48,6 +50,7 @@ export default class AuthenticatedController extends Controller {
 
   @action sync() {
     this.store.sync();
+    this.newsFeed.refresh();
   }
 
   get isSyncing() {
