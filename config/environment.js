@@ -16,8 +16,8 @@ module.exports = function (environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      vapidPublicKey:
+        'BKK7bl54Trjsx1JE3uvAWs78ADQMKTXxRDMS8nvDt6A1KgEFPUuRG6pUkT53hUrkwYDdgJE2OprRuLW4rG-qfy0',
     },
 
     'ember-cli-notifications': {

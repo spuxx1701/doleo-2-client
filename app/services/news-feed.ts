@@ -3,13 +3,13 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ListInvite from 'doleo-2-client/models/list-invite';
 import AccountService from './account';
+import PushNotificationService from './push-notification';
 import CustomStore from './store';
-import WebNotificationService from './web-notification';
 
 export default class NewsFeedService extends Service {
   @service declare store: CustomStore;
   @service declare account: AccountService;
-  @service declare webNotification: WebNotificationService;
+  @service declare pushNotification: PushNotificationService;
 
   worker: Worker | undefined;
   updateIntervalMs = 10000;
@@ -17,8 +17,8 @@ export default class NewsFeedService extends Service {
   @tracked hasNews = false;
   @tracked listInvites: ListInvite[] = [];
 
-  @action initialize() {
-    this.createWorker();
+  @action async initialize() {
+    this.pushNotification.initialize();
   }
 
   @action createWorker(): Worker {
@@ -28,6 +28,7 @@ export default class NewsFeedService extends Service {
         postMessage('Updating newsfeed.');
       }, ${this.updateIntervalMs});`
     );
+    this.worker;
     this.worker.onmessage = () => {
       this.refresh();
     };
@@ -50,7 +51,7 @@ export default class NewsFeedService extends Service {
   @action async sendWebNotifications() {
     for (const listInvite of this.listInvites) {
       if (!listInvite.notificationSent) {
-        const result = await this.webNotification.create(
+        const result = await this.pushNotification.create(
           'Neue Listeneinladung',
           `${listInvite.sender.displayName} hat Dich zu einer Liste eingeladen.`
         );
