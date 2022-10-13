@@ -14,6 +14,9 @@ export default class ListInvite extends Model {
 
   @attr()
   declare notificationSent: boolean;
+
+  @attr()
+  declare accept: boolean | undefined;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
