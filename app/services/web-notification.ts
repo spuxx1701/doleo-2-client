@@ -3,10 +3,12 @@ import Service from '@ember/service';
 export default class WebNotificationService extends Service {
   async create(title: string, message: string) {
     if (await this.checkSupportAndPermission()) {
-      new Notification(title, {
+      return new Notification(title, {
         body: message,
         icon: '/assets/favicon.ico',
       });
+    } else {
+      return null;
     }
   }
 

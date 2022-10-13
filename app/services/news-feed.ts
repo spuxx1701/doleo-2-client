@@ -4,10 +4,12 @@ import { tracked } from '@glimmer/tracking';
 import ListInvite from 'doleo-2-client/models/list-invite';
 import AccountService from './account';
 import CustomStore from './store';
+import WebNotificationService from './web-notification';
 
 export default class NewsFeedService extends Service {
   @service declare store: CustomStore;
   @service declare account: AccountService;
+  @service declare webNotification: WebNotificationService;
 
   worker: Worker | undefined;
   updateIntervalMs = 10000;
@@ -33,10 +35,9 @@ export default class NewsFeedService extends Service {
   }
 
   @action async refresh() {
-    console.log('refreshing....');
     this.listInvites = (await this.store.findAll('list-invite')).slice();
-    console.log(this.listInvites);
     this.update();
+    this.sendWebNotifications();
   }
 
   @action update() {
@@ -44,5 +45,20 @@ export default class NewsFeedService extends Service {
       (this.listInvites &&
         this.listInvites.filter((record) => !record.isDestroyed).length > 0) ||
       false;
+  }
+
+  @action async sendWebNotifications() {
+    for (const listInvite of this.listInvites) {
+      if (!listInvite.notificationSent) {
+        const result = await this.webNotification.create(
+          'Neue Listeneinladung',
+          `${listInvite.sender.displayName} hat Dich zu einer Liste eingeladen.`
+        );
+        if (result) {
+          listInvite.notificationSent = true;
+          this.store.trySave(listInvite);
+        }
+      }
+    }
   }
 }
