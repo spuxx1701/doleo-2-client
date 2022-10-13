@@ -30,6 +30,7 @@ export default class CustomStore extends Store {
       await record.save();
       if (this.queue.length === 0) this.hasUnsyncedChanges = false;
     } catch (error: any) {
+      this.notifications.error(error.name + ': ' + error.message);
       if (error.message === 'Network request failed') {
         this.addToQueue(record);
       } else {
