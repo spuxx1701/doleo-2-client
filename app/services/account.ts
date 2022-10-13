@@ -4,12 +4,14 @@ import { tracked } from '@glimmer/tracking';
 import Account from 'doleo-2-client/models/account';
 import ManagerService from './manager';
 import CustomStore from './store';
+import NewsFeedService from './news-feed';
 
 export default class AccountService extends Service {
   @service declare session: any;
   @service declare store: CustomStore;
   @service declare notifications: any;
   @service declare manager: ManagerService;
+  @service declare newsFeed: NewsFeedService;
 
   @tracked id: string = '';
   @tracked account: Account | undefined;
@@ -26,6 +28,7 @@ export default class AccountService extends Service {
     this.account = await this.store.queryRecord('account', {});
     this.id = this.account.id;
     this.manager.applyDesign();
+    this.newsFeed.initialize();
     return this.account;
   }
 
