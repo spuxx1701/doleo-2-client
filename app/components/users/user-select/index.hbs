@@ -14,6 +14,7 @@
       @state={{user.state}}
       @onToggle={{this.handleSelectionChange}}
       @context={{user}}
+      @showCheckbox={{if (eq this.mode 'multi') true}}
     />
   {{/each}}
   {{#if (eq this.otherUsersState 'initial')}}
@@ -39,6 +40,7 @@
         @state={{user.state}}
         @onToggle={{this.handleSelectionChange}}
         @context={{user}}
+        @showCheckbox={{if (eq this.mode 'multi') true}}
       />
     {{/each}}
   {{/if}}

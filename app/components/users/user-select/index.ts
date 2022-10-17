@@ -1,4 +1,4 @@
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -9,6 +9,7 @@ import CustomStore from 'doleo-2-client/services/custom-store';
 
 export interface Args {
   onSelectionChange?: Function;
+  mode?: 'single' | 'multi';
 }
 
 export interface SelectableUser {
@@ -82,7 +83,18 @@ export default class UserSelectComponent extends Component<Args> {
     this.otherUsersState = 'success';
   }
 
-  @action handleSelectionChange() {
+  @action handleSelectionChange(
+    state: SelectableState,
+    context: SelectableUser
+  ) {
+    if (this.mode === 'single') {
+      for (const user of this.selection) {
+        if (user.id !== context.id) {
+          // We need to use Ember's builtin setter here to make sure the change propagates properly.
+          set(user.state, 'selected', false);
+        }
+      }
+    }
     if (this.args.onSelectionChange) {
       this.args.onSelectionChange(this.selection);
     }
@@ -93,5 +105,9 @@ export default class UserSelectComponent extends Component<Args> {
       ...this.familyMembers.filter((user) => user.state.selected),
       ...this.otherUsers.filter((user) => user.state.selected),
     ] as SelectableUser[];
+  }
+
+  get mode() {
+    return this.args.mode || 'multi';
   }
 }
