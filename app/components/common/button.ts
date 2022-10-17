@@ -1,21 +1,23 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
-export interface ButtonComponentArgs {
+export interface Args {
   disabled?: boolean;
   onClick: Function;
 }
 
-export default class ButtonComponent extends Component {
-  constructor(owner: unknown, args: ButtonComponentArgs) {
-    super(owner, args as any);
+export default class ButtonComponent extends Component<Args> {
+  declare args: Args;
+
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
     if (!args.onClick) {
       throw new Error('You most provide an @onClick handler to a button.');
     }
   }
 
   get onClick() {
-    return (this.args as ButtonComponentArgs).onClick;
+    return this.args.onClick;
   }
 
   @action onClickHandler() {

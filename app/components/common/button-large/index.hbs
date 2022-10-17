@@ -1,4 +1,8 @@
-<Common::Button @class="button-large {{this.design}}" @disabled={{@disabled}} @onClick={{@onClick}}>
-  <FaIcon @icon={{@icon}} @size="2x" />
+<Common::Button
+  @class='button-large {{this.design}}'
+  @disabled={{@disabled}}
+  @onClick={{@onClick}}
+>
+  <FaIcon @icon={{@icon}} @size='2x' @prefix={{this.prefix}} />
   <p>{{@text}}</p>
 </Common::Button>
