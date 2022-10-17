@@ -1,0 +1,16 @@
+<div
+  class='content-element feed-element {{if this.hidden "feed-element-hidden"}}'
+>
+  <p>
+    <b>{{@ping.sender.displayName}}</b>
+    hat kürzlich an Dich gedacht.
+  </p>
+  <div class='flex full-width justify-content-end'>
+    <Common::ButtonSmall
+      @icon='check'
+      @design='dark'
+      aria-label='Ping von {{@ping.sender.displayName}} löschen'
+      @onClick={{this.delete}}
+    />
+  </div>
+</div>

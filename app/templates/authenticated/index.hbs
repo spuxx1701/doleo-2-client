@@ -10,6 +10,9 @@
 {{#if this.newsFeed.hasNews}}
   <h3>Es gibt Neuigkeiten!</h3>
   <div class='content'>
+    {{#each this.newsFeed.pings as |ping|}}
+      <Home::IncomingPing @ping={{ping}} />
+    {{/each}}
     {{#each this.newsFeed.listInvites as |invite|}}
       <Home::IncomingListInvite @invite={{invite}} />
     {{/each}}

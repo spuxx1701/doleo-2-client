@@ -1,33 +1,26 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import ListInvite from 'doleo-2-client/models/list-invite';
 import { service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 import NewsFeedService from 'doleo-2-client/services/news-feed';
 import CustomStore from 'doleo-2-client/services/custom-store';
+import Ping from 'doleo-2-client/models/ping';
+import { tracked } from '@glimmer/tracking';
 
 export interface Args {
-  invite: ListInvite;
+  ping: Ping;
 }
 
 export default class IncomingListInvite extends Component<Args> {
   @service declare store: CustomStore;
   @service declare newsFeed: NewsFeedService;
 
-  declare args: Args;
-
   @tracked hidden = false;
 
-  @action async accept() {
-    this.hide();
-    await this.args.invite.accept();
-    await this.args.invite.destroyRecord();
-    this.newsFeed.update();
-  }
+  declare args: Args;
 
-  @action async reject() {
+  @action async delete() {
     this.hide();
-    await this.args.invite.destroyRecord();
+    await this.args.ping.destroyRecord();
     this.newsFeed.update();
   }
 
