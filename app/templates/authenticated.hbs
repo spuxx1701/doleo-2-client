@@ -36,6 +36,11 @@
     @text='Benutzerkonto'
     @onClick={{fn this.goToPage '/account'}}
   />
+  <Sidenav::SidenavButton
+    @icon='heart'
+    @text='Anstupsen'
+    @onClick={{fn this.goToPage '/ping'}}
+  />
   <Sidenav::SidenavSeparator />
   {{#each @model.lists as |list|}}
     <Sidenav::SidenavButton

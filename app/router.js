@@ -11,6 +11,7 @@ Router.map(function () {
   this.route('reset-password');
   this.route('authenticated', { path: '' }, function () {
     this.route('account');
+    this.route('ping');
     this.route('list', { path: '/list/:list_id' }, function () {
       this.route('settings');
     });
