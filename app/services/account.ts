@@ -50,7 +50,7 @@ export default class AccountService extends Service {
    */
   async requestPasswordReset(email: string) {
     const encodedEmail = encodeURIComponent(email);
-    fetch(`${ENV.apiUrl}/account/reset-password?email=${encodedEmail}`);
+    fetch(`${ENV.apiUrl}/account/resetPassword?email=${encodedEmail}`);
     this.notifications.success(
       'Du erhältst eine Email mit Deinem neuen Passwort.'
     );
