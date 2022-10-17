@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import ListEntry from 'doleo-2-client/models/list-entry';
 import { tracked } from '@glimmer/tracking';
 import ModalService from 'doleo-2-client/services/modal';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 
 export interface Args {
   entry: ListEntry;

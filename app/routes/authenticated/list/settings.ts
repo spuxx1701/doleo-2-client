@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 import { inject as service } from '@ember/service';
 import { ListRouteParams } from '../list';
 import AccountService from 'doleo-2-client/services/account';

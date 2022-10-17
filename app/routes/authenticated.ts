@@ -4,7 +4,7 @@ import ManagerService from 'doleo-2-client/services/manager';
 import AccountService from 'doleo-2-client/services/account';
 import RSVP from 'rsvp';
 import transition from '@ember/routing/transition';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 
 export default class ProtectedRoute extends Route {
   @service declare store: CustomStore;

@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import ManagerService from 'doleo-2-client/services/manager';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 import NewsFeedService from 'doleo-2-client/services/news-feed';
 
 export default class AuthenticatedController extends Controller {

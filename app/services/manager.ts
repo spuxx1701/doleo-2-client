@@ -2,7 +2,7 @@
 import { Router } from '@ember/routing';
 import Service, { inject as service } from '@ember/service';
 import AccountService from './account';
-import CustomStore from './store';
+import CustomStore from './custom-store';
 
 export default class ManagerService extends Service {
   @service declare router: Router;

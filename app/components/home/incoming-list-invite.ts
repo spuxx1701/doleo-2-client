@@ -4,7 +4,7 @@ import ListInvite from 'doleo-2-client/models/list-invite';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import NewsFeedService from 'doleo-2-client/services/news-feed';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 
 export interface Args {
   invite: ListInvite;

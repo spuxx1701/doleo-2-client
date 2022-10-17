@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import ListInvite from 'doleo-2-client/models/list-invite';
 import AccountService from './account';
 import PushNotificationService from './push-notification';
-import CustomStore from './store';
+import CustomStore from './custom-store';
 
 export default class NewsFeedService extends Service {
   @service declare store: CustomStore;

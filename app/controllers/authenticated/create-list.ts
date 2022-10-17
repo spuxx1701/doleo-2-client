@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 import { inject as service } from '@ember/service';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import { action } from '@ember/object';

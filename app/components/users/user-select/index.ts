@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { SelectableState } from 'doleo-2-client/components/common/button-selectable';
 import User from 'doleo-2-client/models/user';
 import AccountService from 'doleo-2-client/services/account';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 
 export interface Args {
   onSelectionChange?: Function;

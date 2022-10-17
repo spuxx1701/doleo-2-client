@@ -1,4 +1,4 @@
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 

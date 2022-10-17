@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import CustomStore from 'doleo-2-client/services/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 import { inject as service } from '@ember/service';
 import List from 'doleo-2-client/models/list';
 import ListEntry from 'doleo-2-client/models/list-entry';
