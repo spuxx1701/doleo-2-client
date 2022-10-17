@@ -1,12 +1,14 @@
-import ButtonComponent, { ButtonComponentArgs } from '../common/button';
+import ButtonComponent, { Args as ButtonComponentArgs } from '../common/button';
 
-export interface SidenavButtonComponentArgs extends ButtonComponentArgs {
+export interface Args extends ButtonComponentArgs {
   text: string;
   icon: string;
 }
 
 export default class SidenavButtonComponent extends ButtonComponent {
-  constructor(owner: unknown, args: SidenavButtonComponentArgs) {
-    super(owner, args as any);
+  declare args: Args;
+
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
   }
 }

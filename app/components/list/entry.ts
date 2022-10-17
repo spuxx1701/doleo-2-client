@@ -1,20 +1,23 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import Store from '@ember-data/store';
 import { inject as service } from '@ember/service';
 import ListEntry from 'doleo-2-client/models/list-entry';
 import { tracked } from '@glimmer/tracking';
 import ModalService from 'doleo-2-client/services/modal';
+import CustomStore from 'doleo-2-client/services/custom-store';
 
 export interface Args {
   entry: ListEntry;
+  disabled: boolean;
+  showLoadingIndicator: boolean;
   showCheckBox: boolean;
+  showDelete: boolean;
   showAmountInput: boolean;
   usesConfirmDelete: boolean;
 }
 
 export default class ListEntryComponent extends Component<Args> {
-  @service declare store: Store;
+  @service declare store: CustomStore;
   @service declare modal: ModalService;
 
   declare args: Args;
@@ -25,19 +28,22 @@ export default class ListEntryComponent extends Component<Args> {
     return this.args.entry;
   }
 
+  get isNew() {
+    return this.args.entry.get('isNew');
+  }
+
   /**
    * Checks or unchecks the list entry.
    */
   @action toggleChecked() {
     this.entry.isChecked = !this.entry.isChecked;
-    this.entry.save();
+    this.store.trySave(this.entry);
   }
 
   /**
    * Handles the delete click.
    */
   @action handleDeleteClick() {
-    console.log(this.args.usesConfirmDelete);
     if (this.args.usesConfirmDelete) {
       this.modal.confirm({
         title: 'Eintrag löschen',
@@ -60,7 +66,7 @@ export default class ListEntryComponent extends Component<Args> {
    */
   @action delete() {
     this.entry.deleteRecord();
-    this.entry.save();
+    this.store.trySave(this.entry);
   }
 
   handleAmountFocus(event: any) {
@@ -72,7 +78,7 @@ export default class ListEntryComponent extends Component<Args> {
     if (amount && !isNaN(amount) && amount > 0 && amount < 100) {
       this.amount = amount;
       this.entry.amount = amount;
-      this.entry.save();
+      this.store.trySave(this.entry);
     }
   }
 

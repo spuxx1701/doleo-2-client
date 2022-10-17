@@ -2,11 +2,13 @@
 import { Router } from '@ember/routing';
 import Service, { inject as service } from '@ember/service';
 import AccountService from './account';
+import CustomStore from './custom-store';
 
 export default class ManagerService extends Service {
   @service declare router: Router;
   @service declare session: any;
   @service declare account: AccountService;
+  @service declare store: CustomStore;
   @service declare notifications: any;
 
   // totalHeight = window.visualViewport?.height;
@@ -19,6 +21,7 @@ export default class ManagerService extends Service {
     this.applyDesign();
     this.enableCursorRippleEffect();
     addEventListener('error', this.handleError);
+    this.store.initialize();
     // On Safari, we need to do some hacky manipulation to make sure that the fixed input footer will stay at the bottom
     // even if the virtual keyboard is visible
     // if (/iPhone|iPad|iPod/.test(window.navigator.userAgent)) {

@@ -1,4 +1,5 @@
 import Model, { attr } from '@ember-data/model';
+import { memberAction } from 'ember-api-actions';
 import List from './list';
 import User from './user';
 
@@ -12,12 +13,16 @@ export default class ListInvite extends Model {
   @attr()
   declare sender: User;
 
-  @attr()
-  declare notificationSent: boolean | undefined;
-
-  @attr()
-  declare accept: boolean | undefined;
+  /**
+   * Accepts the invite.
+   */
+  declare accept: Function;
 }
+
+ListInvite.prototype.accept = memberAction({
+  path: 'accept',
+  type: 'POST',
+});
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
 declare module 'ember-data/types/registries/model' {

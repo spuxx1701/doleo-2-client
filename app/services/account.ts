@@ -1,15 +1,17 @@
-import emberData__store from '@ember-data/store';
 import Service, { inject as service } from '@ember/service';
 import ENV from 'doleo-2-client/config/environment';
 import { tracked } from '@glimmer/tracking';
 import Account from 'doleo-2-client/models/account';
 import ManagerService from './manager';
+import CustomStore from './custom-store';
+import NewsFeedService from './news-feed';
 
 export default class AccountService extends Service {
   @service declare session: any;
-  @service declare store: emberData__store;
+  @service declare store: CustomStore;
   @service declare notifications: any;
   @service declare manager: ManagerService;
+  @service declare newsFeed: NewsFeedService;
 
   @tracked id: string = '';
   @tracked account: Account | undefined;
@@ -26,6 +28,7 @@ export default class AccountService extends Service {
     this.account = await this.store.queryRecord('account', {});
     this.id = this.account.id;
     this.manager.applyDesign();
+    this.newsFeed.initialize();
     return this.account;
   }
 
@@ -47,7 +50,7 @@ export default class AccountService extends Service {
    */
   async requestPasswordReset(email: string) {
     const encodedEmail = encodeURIComponent(email);
-    fetch(`${ENV.apiUrl}/account/reset-password?email=${encodedEmail}`);
+    fetch(`${ENV.apiUrl}/account/resetPassword?email=${encodedEmail}`);
     this.notifications.success(
       'Du erhältst eine Email mit Deinem neuen Passwort.'
     );

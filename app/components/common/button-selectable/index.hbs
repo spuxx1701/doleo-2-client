@@ -5,9 +5,11 @@
   {{on 'click' this.handleClick}}
 >
   <p>{{@text}}</p>
-  <FaIcon
-    @icon={{if this.selected 'square-check' 'square'}}
-    @size='2x'
-    @prefix='far'
-  />
+  {{#if @showCheckbox}}
+    <FaIcon
+      @icon={{if this.selected 'square-check' 'square'}}
+      @size='2x'
+      @prefix='far'
+    />
+  {{/if}}
 </button>

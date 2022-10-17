@@ -1,0 +1,23 @@
+{{page-title 'Home'}}
+
+<Common::Separator @hidden='true' />
+<div class='content-header'>
+  <FaIcon @icon='heart' @size='2x' />
+  <h2>Anstupsen</h2>
+</div>
+<Common::Separator @hidden='true' />
+<p class='text-center'>Zeige einem lieben Menschen, dass Du gerade an sie oder
+  ihn gedacht hast!
+  <FaIcon @icon='heart' /></p>
+
+<Users::UserSelect
+  @mode='single'
+  @onSelectionChange={{this.onRecipientChange}}
+/>
+
+<Common::ButtonLarge
+  @icon='heart'
+  @text='Anstupsen'
+  @onClick={{this.ping}}
+  @disabled={{this.isPingDisabled}}
+/>

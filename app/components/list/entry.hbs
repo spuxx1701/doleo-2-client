@@ -1,8 +1,14 @@
-<div class='list-entry {{if @entry.isChecked "list-entry-checked"}}'>
+<div
+  class='list-entry {{if (or @entry.isChecked @disabled) "list-entry-checked"}}'
+>
+  {{#if @showLoadingIndicator}}
+    <Common::LoadingIndicator />
+  {{/if}}
   {{#if @showCheckBox}}
     <button
       class='list-entry-button'
       type='button'
+      disabled={{if (or @disabled this.isNew) true}}
       {{on 'click' this.toggleChecked}}
     >
       <FaIcon
@@ -12,13 +18,16 @@
       />
     </button>
   {{/if}}
-  <button
-    class='list-entry-button'
-    type='button'
-    {{on 'click' this.handleDeleteClick}}
-  >
-    <FaIcon @icon='xmark' @size='3x' />
-  </button>
+  {{#if @showDelete}}
+    <button
+      class='list-entry-button'
+      type='button'
+      disabled={{if (or @disabled this.isNew) true}}
+      {{on 'click' this.handleDeleteClick}}
+    >
+      <FaIcon @icon='xmark' @size='3x' />
+    </button>
+  {{/if}}
   {{#if @showAmountInput}}
     <input
       aria-label='Menge von Eintrag {{@entry.text}}'
@@ -30,6 +39,7 @@
       max={{99}}
       minlength={{1}}
       maxlength={{2}}
+      disabled={{if (or @disabled this.isNew) true}}
       {{on 'focus' this.handleAmountFocus}}
       {{on 'change' this.handleAmountChange}}
     />

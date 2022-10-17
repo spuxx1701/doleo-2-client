@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import Store from '@ember-data/store';
+import CustomStore from 'doleo-2-client/services/custom-store';
 import { inject as service } from '@ember/service';
 import List from 'doleo-2-client/models/list';
 import ListEntry from 'doleo-2-client/models/list-entry';
@@ -12,7 +12,7 @@ export interface ListInputFooterComponentArgs {
 }
 
 export default class ListEntryComponent extends Component {
-  @service declare store: Store;
+  @service declare store: CustomStore;
 
   @tracked declare value: string;
 
@@ -30,10 +30,11 @@ export default class ListEntryComponent extends Component {
       const newEntry = {
         text: this.value,
         list: this.list,
+        isChecked: false,
         amount: 1,
       } as ListEntry;
       const entry = this.store.createRecord('list-entry', newEntry);
-      entry.save();
+      this.store.trySave(entry);
       this.value = '';
       document.getElementById('list-new-entry-input')?.focus();
     }

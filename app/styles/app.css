@@ -38,8 +38,9 @@ body {
 }
 
 #header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-auto-columns: 25% 50% 25%;
+  grid-auto-flow: column;
   align-items: center;
   background-color: var(--color-medium);
   position: fixed;
@@ -55,7 +56,14 @@ body {
   margin: auto;
 }
 
+#sync-indicator {
+  transition: opacity 200ms 500ms;
+  width: 45px;
+  height: 45px;
+}
+
 #content {
+  margin: auto;
   padding-top: calc(var(--branding-bar-height) + var(--header-height) + 1rem);
   padding-left: 0.5rem;
   padding-right: 0.5rem;

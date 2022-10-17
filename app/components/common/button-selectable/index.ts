@@ -1,12 +1,12 @@
-import { action } from '@ember/object';
+import { action, get, set } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 
 export interface Args {
   text: string;
   state: SelectableState;
   onToggle?: Function;
   context?: any;
+  showCheckbox: boolean;
 }
 
 export interface SelectableState {
@@ -16,16 +16,19 @@ export interface SelectableState {
 export default class ButtonSelectableComponent extends Component<Args> {
   declare args: Args;
 
-  @tracked selected = false;
-
   constructor(owner: unknown, args: Args) {
-    super(owner, args as any);
-    this.selected = args.state.selected;
+    super(owner, args);
+  }
+
+  get selected() {
+    // We need to use Ember's builtin getter here to make sure that the state change is recognized properly.
+    // eslint-disable-next-line ember/no-get
+    return get(this.args.state, 'selected');
   }
 
   @action handleClick() {
-    this.args.state.selected = !this.args.state.selected;
-    this.selected = this.args.state.selected;
+    // We need to use Ember's builtin setter here to make sure that the state change propagates properly.
+    set(this.args.state, 'selected', !this.args.state.selected);
     if (this.args.onToggle) {
       this.args.onToggle(this.args.state, this.args.context);
     }

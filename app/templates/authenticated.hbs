@@ -5,13 +5,23 @@
     @onClick={{this.toggleSidenav}}
   />
   <h2>Doleo</h2>
-  <div class='flex align-items-center'>
-    <Common::ButtonSmall
-      @icon='rotate-right'
-      @spin={{this.isSyncing}}
-      @design='dark-inverse'
-      @onClick={{this.synchronize}}
+  <div class='flex align-items-center justify-content-end'>
+    <FaIcon
+      id='sync-indicator'
+      @icon='cloud-arrow-up'
+      @size='2x'
+      class='dark-inverse slow-pulse
+        {{if this.hasUnsyncedChanges "opacity-100" "opacity-0"}}'
     />
+    {{#if this.isSyncing}}
+      <Common::LoadingIndicator />
+    {{else}}
+      <Common::ButtonSmall
+        @icon='rotate-right'
+        @design='dark-inverse'
+        @onClick={{this.sync}}
+      />
+    {{/if}}
   </div>
 </div>
 
@@ -25,6 +35,11 @@
     @icon='user'
     @text='Benutzerkonto'
     @onClick={{fn this.goToPage '/account'}}
+  />
+  <Sidenav::SidenavButton
+    @icon='heart'
+    @text='Anstupsen'
+    @onClick={{fn this.goToPage '/ping'}}
   />
   <Sidenav::SidenavSeparator />
   {{#each @model.lists as |list|}}

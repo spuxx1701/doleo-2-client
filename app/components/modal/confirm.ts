@@ -7,6 +7,7 @@ export interface ConfirmModalOptions {
   title: string;
   text: string;
   icon?: string;
+  prefix?: string;
   yesLabel?: string;
   noLabel?: string;
   onYesClick?: Function;
@@ -17,34 +18,33 @@ interface ConfirmModalComponentArgs {
   options: ConfirmModalOptions;
 }
 
-export default class ConfirmModalComponent extends Component {
+export default class ConfirmModalComponent extends Component<ConfirmModalComponentArgs> {
   @service declare modal: ModalService;
+  declare args: ConfirmModalComponentArgs;
 
   get icon() {
-    return (
-      (this.args as ConfirmModalComponentArgs).options.icon || 'circle-info'
-    );
+    return this.args.options.icon || 'circle-info';
+  }
+
+  get prefix() {
+    return this.args.options.prefix || 'fas';
   }
 
   get yesLabel() {
-    return (this.args as ConfirmModalComponentArgs).options.yesLabel || 'OK';
+    return this.args.options.yesLabel || 'OK';
   }
 
   @action onYesClickHandler() {
-    if ((this.args as ConfirmModalComponentArgs).options.onYesClick) {
-      (
-        (this.args as ConfirmModalComponentArgs).options.onYesClick as Function
-      )();
+    if (this.args.options.onYesClick) {
+      (this.args.options.onYesClick as Function)();
     } else {
       this.modal.hide();
     }
   }
 
   @action onNoClickHandler() {
-    if ((this.args as ConfirmModalComponentArgs).options.onNoClick) {
-      (
-        (this.args as ConfirmModalComponentArgs).options.onNoClick as Function
-      )();
+    if (this.args.options.onNoClick) {
+      (this.args.options.onNoClick as Function)();
     } else {
       this.modal.hide();
     }

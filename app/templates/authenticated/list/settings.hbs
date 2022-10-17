@@ -30,41 +30,21 @@
     </a>
   </div>
 
-  <div class='content-element'>
-    <label>Checkboxen verwenden</label>
-    <label class='switch' aria-label='Mengen verwenden'>
-      <input
-        type='checkbox'
-        checked={{@model.usesCheck}}
-        {{on 'change' this.toggleUsesCheck}}
-      />
-      <span class='slider round'></span>
-    </label>
-  </div>
-
-  <div class='content-element'>
-    <label>Mengen verwenden</label>
-    <label class='switch' aria-label='Mengen verwenden'>
-      <input
-        type='checkbox'
-        checked={{@model.hasAmounts}}
-        {{on 'change' this.toggleHasAmounts}}
-      />
-      <span class='slider round'></span>
-    </label>
-  </div>
-
-  <div class='content-element'>
-    <label>Entfernen bestätigen</label>
-    <label class='switch' aria-label='Mengen verwenden'>
-      <input
-        type='checkbox'
-        checked={{@model.usesConfirmDelete}}
-        {{on 'change' this.toggleUsesConfirmDelete}}
-      />
-      <span class='slider round'></span>
-    </label>
-  </div>
+  <Common::Toggle
+    @label='Checkboxen verwenden'
+    @state={{@model.usesCheck}}
+    @onChange={{this.toggleUsesCheck}}
+  />
+  <Common::Toggle
+    @label='Mengen verwenden'
+    @state={{@model.hasAmounts}}
+    @onChange={{this.toggleHasAmounts}}
+  />
+  <Common::Toggle
+    @label='Entfernen bestätigen'
+    @state={{@model.usesConfirmDelete}}
+    @onChange={{this.toggleUsesConfirmDelete}}
+  />
 {{/if}}
 
 <div class='content-element flex-column'>
@@ -72,7 +52,7 @@
   <div class='tag-container full-width'>
     <button type='button' class='tag dark' disabled={{true}}>
       <p>{{@model.owner.displayName}}</p>
-      <FaIcon @icon='crown^^' />
+      <FaIcon @icon='crown' />
     </button>
     {{#each this.members as |member|}}
       <button

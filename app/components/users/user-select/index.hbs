@@ -14,6 +14,7 @@
       @state={{user.state}}
       @onToggle={{this.handleSelectionChange}}
       @context={{user}}
+      @showCheckbox={{if (eq this.mode 'multi') true}}
     />
   {{/each}}
   {{#if (eq this.otherUsersState 'initial')}}
@@ -35,10 +36,11 @@
     <h4>Andere Personen</h4>
     {{#each this.otherUsers as |user|}}
       <Common::ButtonSelectable
-        @text='{{user.displayName}} {{user.family.displayName}}'
+        @text='{{user.displayName}} {{user.familyName}}'
         @state={{user.state}}
         @onToggle={{this.handleSelectionChange}}
         @context={{user}}
+        @showCheckbox={{if (eq this.mode 'multi') true}}
       />
     {{/each}}
   {{/if}}
