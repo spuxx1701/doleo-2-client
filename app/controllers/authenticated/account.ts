@@ -7,12 +7,14 @@ import ManagerService from 'doleo-2-client/services/manager';
 import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import AccountService from 'doleo-2-client/services/account';
 import ModalService from 'doleo-2-client/services/modal';
+import PushNotificationService from 'doleo-2-client/services/push-notification';
 
 export default class AccountController extends Controller {
   @service declare manager: ManagerService;
   @service declare account: AccountService;
   @service declare notifications: any;
   @service declare modal: ModalService;
+  @service declare pushNotification: PushNotificationService;
 
   declare model: Account;
 
@@ -124,5 +126,51 @@ export default class AccountController extends Controller {
       return false;
     }
     return true;
+  }
+
+  get hasActivePushSubscription() {
+    return this.pushNotification.pushSubscription ? true : false;
+  }
+
+  @action togglePushNotifications(event: any) {
+    if (event.target.checked) {
+      this.subscribePushNotifications(event.target);
+    } else {
+      this.unsubscribePushNotifications(event.target);
+    }
+  }
+
+  subscribePushNotifications(toggle: any) {
+    this.modal.confirm({
+      icon: 'comment',
+      title: 'Push-Nachrichten aktivieren',
+      text: 'Wenn Du Push-Nachrichten für dieses Gerät aktivierst, erfährst Du auch dann von Neuigkeiten, wenn Du die App gerade nicht nutzt. Möchtest Du fortfahren?',
+      noLabel: 'Abbrechen',
+      onYesClick: () => {
+        this.modal.hide();
+        this.pushNotification.subscribe();
+      },
+      onNoClick: () => {
+        this.modal.hide();
+        toggle.checked = false;
+      },
+    });
+  }
+
+  unsubscribePushNotifications(toggle: any) {
+    this.modal.confirm({
+      icon: 'comment-slash',
+      title: 'Push-Nachrichten deaktivieren',
+      text: 'Du wirst keine Push-Nachrichten auf diesem Gerät mehr erhalten. Du kannst Push-Nachrichten jederzeit wieder aktivieren. Möchtest Du fortfahren?',
+      noLabel: 'Abbrechen',
+      onYesClick: () => {
+        this.modal.hide();
+        this.pushNotification.unsubscribe();
+      },
+      onNoClick: () => {
+        this.modal.hide();
+        toggle.checked = true;
+      },
+    });
   }
 }

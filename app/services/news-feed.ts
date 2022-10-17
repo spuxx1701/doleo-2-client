@@ -38,7 +38,6 @@ export default class NewsFeedService extends Service {
   @action async refresh() {
     this.listInvites = (await this.store.findAll('list-invite')).slice();
     this.update();
-    this.sendWebNotifications();
   }
 
   @action update() {
@@ -46,20 +45,5 @@ export default class NewsFeedService extends Service {
       (this.listInvites &&
         this.listInvites.filter((record) => !record.isDestroyed).length > 0) ||
       false;
-  }
-
-  @action async sendWebNotifications() {
-    for (const listInvite of this.listInvites) {
-      if (!listInvite.notificationSent) {
-        const result = await this.pushNotification.create(
-          'Neue Listeneinladung',
-          `${listInvite.sender.displayName} hat Dich zu einer Liste eingeladen.`
-        );
-        if (result) {
-          listInvite.notificationSent = true;
-          this.store.trySave(listInvite);
-        }
-      }
-    }
   }
 }

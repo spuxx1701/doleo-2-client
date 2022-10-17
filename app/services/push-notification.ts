@@ -1,15 +1,27 @@
 import Service, { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import ENV from 'doleo-2-client/config/environment';
 
 export default class PushNotificationService extends Service {
   @service declare session: any;
 
   serviceWorkerRegistration: ServiceWorkerRegistration | undefined;
-  pushSubscription: PushSubscription | undefined;
+  @tracked pushSubscription: PushSubscription | null = null;
 
   apiEndpoint = 'pushSubscriptions';
 
   async initialize() {
+    this.serviceWorkerRegistration =
+      await navigator.serviceWorker.getRegistration(
+        '/service-workers/news-feed.js'
+      );
+    if (this.serviceWorkerRegistration) {
+      this.pushSubscription =
+        await this.serviceWorkerRegistration.pushManager.getSubscription();
+    }
+  }
+
+  async subscribe() {
     if (await this.checkSupportAndPermission()) {
       this.serviceWorkerRegistration = await this.registerServiceWorker();
       this.pushSubscription = await this.createSubscription(
@@ -19,11 +31,29 @@ export default class PushNotificationService extends Service {
     }
   }
 
+  async unsubscribe() {
+    if (this.serviceWorkerRegistration) {
+      if (this.pushSubscription) {
+        await this.pushSubscription.unsubscribe();
+        this.pushSubscription = null;
+      }
+      await this.serviceWorkerRegistration.unregister();
+      this.serviceWorkerRegistration = undefined;
+    }
+  }
+
   async registerServiceWorker() {
-    const serviceWorkerRegistration = await navigator.serviceWorker.register(
-      `/service-workers/news-feed.js`
+    const activeRegistration = await navigator.serviceWorker.getRegistration(
+      '/service-workers/news-feed.js'
     );
-    return serviceWorkerRegistration;
+    if (activeRegistration) {
+      return activeRegistration;
+    } else {
+      const serviceWorkerRegistration = await navigator.serviceWorker.register(
+        `/service-workers/news-feed.js`
+      );
+      return serviceWorkerRegistration;
+    }
   }
 
   async createSubscription(
@@ -32,17 +62,17 @@ export default class PushNotificationService extends Service {
     const activeSubscription =
       await serviceWorkerRegistration.pushManager.getSubscription();
     if (activeSubscription) await activeSubscription.unsubscribe();
-    // if (activeSubscription) {
-    // return activeSubscription;
-    // } else {
-    const publicVapidKey = ENV.APP['vapidPublicKey'] as string;
-    const pushSubscription =
-      await serviceWorkerRegistration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: this.urlBase64ToUint8Array(publicVapidKey),
-      });
-    return pushSubscription;
-    // }
+    if (activeSubscription) {
+      return activeSubscription;
+    } else {
+      const publicVapidKey = ENV.APP['vapidPublicKey'] as string;
+      const pushSubscription =
+        await serviceWorkerRegistration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: this.urlBase64ToUint8Array(publicVapidKey),
+        });
+      return pushSubscription;
+    }
   }
 
   async submitSubscription(pushSubscription: PushSubscription) {
@@ -72,17 +102,6 @@ export default class PushNotificationService extends Service {
       outputArray[i] = rawData.charCodeAt(i);
     }
     return outputArray;
-  }
-
-  async create(title: string, message: string) {
-    if (await this.checkSupportAndPermission()) {
-      return new Notification(title, {
-        body: message,
-        icon: '/assets/favicon.ico',
-      });
-    } else {
-      return null;
-    }
   }
 
   async checkSupportAndPermission() {

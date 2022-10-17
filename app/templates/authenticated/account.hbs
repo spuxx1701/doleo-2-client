@@ -47,9 +47,16 @@
     />
   </label>
   <Account::PasswordSecurityDisplay @password={{this.password}} />
+</div>
+<Common::Toggle
+  @label='Push-Nachrichten'
+  @state={{this.hasActivePushSubscription}}
+  @onChange={{this.togglePushNotifications}}
+/>
 
-  <div class='content-element flex-column'>
-    <p class='no-margin'>Deine Familie ist:
-      {{this.model.family.displayName}}</p>
-  </div>
+<Common::Separator @hidden={{true}} />
+
+<div class='content-element flex-column'>
+  <p class='no-margin'>Deine Familie ist:
+    {{this.model.family.displayName}}</p>
 </div>
