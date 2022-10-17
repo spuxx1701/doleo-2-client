@@ -1,0 +1,11 @@
+<div class='content-element'>
+  <label>{{@label}}</label>
+  <label class='switch' aria-label={{@label}}>
+    <input
+      type='checkbox'
+      checked={{this.state}}
+      {{on 'change' this.handleChange}}
+    />
+    <span class='slider round'></span>
+  </label>
+</div>
