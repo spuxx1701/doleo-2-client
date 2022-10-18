@@ -4,6 +4,7 @@ import ENV from 'doleo-2-client/config/environment';
 
 export default class PushNotificationService extends Service {
   @service declare session: any;
+  @service declare notifications: any;
 
   serviceWorkerRegistration: ServiceWorkerRegistration | undefined;
   @tracked pushSubscription: PushSubscription | null = null;
@@ -109,17 +110,26 @@ export default class PushNotificationService extends Service {
       console.warn(
         'Platform does not support service workers. Push notifications are disabled.'
       );
+      this.notifications.warning(
+        'Dein Browser unterstützt keine Push-Nachrichten.'
+      );
       return false;
     }
     if (!('PushManager' in window)) {
       console.warn(
         'Platform does not support Push API. Push notifications are disabled.'
       );
+      this.notifications.warning(
+        'Dein Browser unterstützt keine Push-Nachrichten.'
+      );
       return false;
     }
     if (!('Notification' in window)) {
       console.warn(
         'Platform does not support Web Notifications. Push notifications are disabled.'
+      );
+      this.notifications.warning(
+        'Dein Browser unterstützt keine Push-Nachrichten.'
       );
       return false;
     }
