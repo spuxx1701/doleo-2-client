@@ -56,6 +56,11 @@
   />
   <Sidenav::SidenavSeparator />
   <Sidenav::SidenavButton
+    @icon='info-circle'
+    @text='Über die App'
+    @onClick={{fn this.goToPage '/about'}}
+  />
+  <Sidenav::SidenavButton
     @icon='arrow-right-from-bracket'
     @text='Abmelden'
     @onClick={{this.logout}}

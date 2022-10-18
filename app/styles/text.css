@@ -6,7 +6,7 @@
 :root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: var(--color-dark);
-  --default-font-size: 1.4rem;
+  --default-font-size: 1.3rem;
   --notification-font-size: 1.2rem;
 }
 
