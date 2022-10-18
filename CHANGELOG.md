@@ -13,5 +13,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Offline Mode: Lists now continue to work when internet connection is lost temporarily
 - Users now belong to a 'Family'
 - Accounts are now secured with proper credentials
-- Lists allow more cusotmization
+- Lists allow more customization
 - Implemented ember-data
