@@ -20,20 +20,26 @@ export default class NewsFeedService extends Service {
 
   @action async initialize() {
     this.pushNotification.initialize();
-    setInterval(this.refresh, this.updateIntervalMs);
+    setInterval(this.reload, this.updateIntervalMs);
   }
 
-  @action async refresh() {
-    this.listInvites = (await this.store.findAll('list-invite')).slice();
-    this.pings = (await this.store.findAll('ping')).slice();
+  @action async reload() {
+    this.listInvites = (await this.store.findAll('list-invite')).filter(
+      (record) => !record.isDeleted
+    );
+    this.pings = (await this.store.findAll('ping')).filter(
+      (record) => !record.isDeleted
+    );
     this.update();
   }
 
   @action update() {
-    this.hasNews =
-      (this.listInvites &&
-        this.listInvites.filter((record) => !record.isDestroyed).length > 0) ||
-      (this.pings &&
-        this.pings.filter((record) => !record.isDestroyed).length > 0);
+    this.listInvites = this.store
+      .peekAll('list-invite')
+      .filter((record) => !record.isDeleted);
+    this.pings = this.store
+      .peekAll('ping')
+      .filter((record) => !record.isDeleted);
+    this.hasNews = this.listInvites.length > 0 || this.pings.length > 0;
   }
 }

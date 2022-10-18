@@ -50,7 +50,7 @@ export default class AuthenticatedController extends Controller {
 
   @action sync() {
     this.store.sync();
-    this.newsFeed.refresh();
+    this.newsFeed.reload();
   }
 
   get isSyncing() {

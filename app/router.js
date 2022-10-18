@@ -12,6 +12,7 @@ Router.map(function () {
   this.route('authenticated', { path: '' }, function () {
     this.route('account');
     this.route('ping');
+    this.route('about');
     this.route('list', { path: '/list/:list_id' }, function () {
       this.route('settings');
     });

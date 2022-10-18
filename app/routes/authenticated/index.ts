@@ -6,6 +6,6 @@ export default class HomeRoute extends Route {
   @service declare newsFeed: NewsFeedService;
 
   async model() {
-    await this.newsFeed.refresh();
+    await this.newsFeed.reload();
   }
 }
