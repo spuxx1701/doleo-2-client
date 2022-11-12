@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Lists are now being displayed in alphabetical order in the sidebar menu
 - Login route now redirects to the index route if user is already signed in
 
 ## [2.0.0] - 2022-10-18
