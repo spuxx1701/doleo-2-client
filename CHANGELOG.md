@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- List entries are now being displayed in alphabetical order and sorted by their checked state
 - Lists are now being displayed in alphabetical order in the sidebar menu
 - Login route now redirects to the index route if user is already signed in
 
