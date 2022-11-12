@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import ManagerService from 'doleo-2-client/services/manager';
 import CustomStore from 'doleo-2-client/services/custom-store';
 import NewsFeedService from 'doleo-2-client/services/news-feed';
+import List from 'doleo-2-client/models/list';
 
 export default class AuthenticatedController extends Controller {
   @service declare store: CustomStore;
@@ -51,6 +52,12 @@ export default class AuthenticatedController extends Controller {
   @action sync() {
     this.store.sync();
     this.newsFeed.reload();
+  }
+
+  get lists() {
+    return this.model.lists
+      .toArray()
+      .sort((a: List, b: List) => a.displayName.localeCompare(b.displayName));
   }
 
   get isSyncing() {

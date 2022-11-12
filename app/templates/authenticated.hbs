@@ -42,7 +42,7 @@
     @onClick={{fn this.goToPage '/ping'}}
   />
   <Sidenav::SidenavSeparator />
-  {{#each @model.lists as |list|}}
+  {{#each this.lists as |list|}}
     <Sidenav::SidenavButton
       @icon={{list.iconName}}
       @text={{list.displayName}}

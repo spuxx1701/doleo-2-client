@@ -18,8 +18,10 @@ export default class ListEntriesComponent extends Component<Args> {
     const entries = this.args.list.entries.filter(
       (record) => !record.isDeleted
     );
-    return entries.sort((a, b) =>
-      a.isChecked && !b.isChecked ? 1 : -1 || b.text.localeCompare(a.text)
+    return entries.sort(
+      (a, b) =>
+        Number(a.isChecked) - Number(b.isChecked) ||
+        a.text.localeCompare(b.text)
     );
   }
 

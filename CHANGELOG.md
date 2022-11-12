@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [2.0.1] - unreleased
+
+### Fixed
+
+- List entries are now being displayed in alphabetical order and sorted by their checked state
+- Lists are now being displayed in alphabetical order in the sidebar menu
+- Login route now redirects to the index route if user is already signed in
+
 ## [2.0.0] - 2022-10-18
 
 ### What's new compared to the original application?
