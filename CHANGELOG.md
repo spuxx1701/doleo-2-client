@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [2.0.1] - unreleased
+
+### Fixed
+
+- Login route now redirects to the index route if user is already signed in
+
 ## [2.0.0] - 2022-10-18
 
 ### What's new compared to the original application?
