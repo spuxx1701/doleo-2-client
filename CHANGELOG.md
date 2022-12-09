@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [2.0.1] - unreleased
+## [2.1.0] - 2022-12-09
+
+### Fixed
+
+- App now redirects to login page in case setting up the session fails
+
+## [2.0.1] - 2022-11-12
 
 ### Fixed
 
