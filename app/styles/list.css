@@ -71,8 +71,17 @@
   color: var(--color-dark);
   font-size: x-large;
   background-color: var(--color-bright);
+}
+
+.list-input-footer-text {
+  margin-left: 5px;
   width: calc(100% - var(--list-input-footer-button-width));
   max-width: 505px;
+}
+
+.list-input-footer-amount {
+  width: 50px;
+  text-align: right;
 }
 
 .list-input-footer button {

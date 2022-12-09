@@ -1,11 +1,27 @@
 <form class='list-input-footer' {{on 'submit' this.createListEntry}}>
+  {{#if this.list.hasAmounts}}
+    {{! template-lint-disable require-input-label }}
+    <Input
+      class='list-input-footer-amount'
+      @type='text'
+      inputmode='numeric'
+      min={{1}}
+      max={{99}}
+      @value={{this.amount}}
+      maxlength={{2}}
+      {{on 'change' this.handleAmountChange}}
+      aria-label='Neuer Eintrag: Menge'
+    />
+  {{/if}}
   {{! template-lint-disable require-input-label }}
   <Input
+    class='list-input-footer-text'
     id='list-new-entry-input'
     @type='text'
-    @value={{this.value}}
+    @value={{this.text}}
     maxlength={{255}}
     autocomplete='off'
+    aria-label='Neuer Eintrag: Name'
   />
   <button type='submit'>
     <FaIcon @icon='plus' @size='3x' @prefix='fas' />
