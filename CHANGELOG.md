@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [2.1.0] - 2022-12-09
 
+### Added
+
+- New list entries can now be created with a set amount if amounts are enabled
+
 ### Fixed
 
 - App now redirects to login page in case setting up the session fails
