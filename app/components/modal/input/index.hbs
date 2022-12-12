@@ -1,0 +1,30 @@
+<div class='modal-content'>
+  <div class='modal-header'>
+    <FaIcon @icon={{this.icon}} @size='2x' @prefix={{this.prefix}} />
+    <h3>{{@options.title}}</h3>
+  </div>
+  <form class='modal-body' {{on 'submit' this.handleSubmit}}>
+    <p>{{@options.text}}</p>
+    <label aria-label={{@options.title}} class='full-width'>
+      <Input
+        class='full-width'
+        @type={{this.type}}
+        placeholder={{@options.placeholder}}
+        @value={{this.value}}
+      />
+    </label>
+  </form>
+  <div class='modal-footer'>
+    {{#if @options.noLabel}}
+      <Common::ButtonLarge
+        @text={{@options.noLabel}}
+        @onClick={{this.onNoClickHandler}}
+        @design='dark-transparent'
+      />
+    {{/if}}
+    <Common::ButtonLarge
+      @text={{this.yesLabel}}
+      @onClick={{this.onYesClickHandler}}
+    />
+  </div>
+</div>

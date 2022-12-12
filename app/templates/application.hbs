@@ -13,9 +13,9 @@
   aria-hidden='true'
 >
   <div class='modal-dialog' role='document'>
-    {{#if this.activeModalName}}
+    {{#if this.activeModalType}}
       {{component
-        (concat 'modal/' this.activeModalName)
+        (concat 'modal/' this.activeModalType)
         options=this.activeModalOptions
       }}
     {{/if}}

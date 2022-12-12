@@ -24,13 +24,6 @@
   opacity: 0.5;
 }
 
-.list-entry p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 0px;
-  margin-left: 0.3rem;
-}
-
 .list-entry svg {
   margin-left: 0.2rem;
   margin-right: 0.2rem;
@@ -47,6 +40,13 @@
   width: 50px;
   margin-left: 0.2rem;
   margin-right: 0.2rem;
+}
+
+.list-entry-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0px;
+  margin-left: 0.3rem;
 }
 
 .list-input-footer {

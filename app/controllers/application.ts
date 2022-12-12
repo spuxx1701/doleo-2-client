@@ -6,8 +6,8 @@ export default class ApplicationController extends Controller {
   @service declare modal: ModalService;
   @service declare session: any;
 
-  get activeModalName() {
-    return this.modal.activeModalName;
+  get activeModalType() {
+    return this.modal.activeModalType;
   }
 
   get activeModalOptions() {

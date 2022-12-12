@@ -44,5 +44,10 @@
       {{on 'change' this.handleAmountChange}}
     />
   {{/if}}
-  <p>{{@entry.text}}</p>
+  <p
+    class='list-entry-text'
+    role='button'
+    aria-label='Text von Eintrag {{@entry.text}} bearbeiten'
+    {{on 'click' this.handleTextClick}}
+  >{{@entry.text}}</p>
 </div>

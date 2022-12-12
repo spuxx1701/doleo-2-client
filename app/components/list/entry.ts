@@ -5,6 +5,7 @@ import ListEntry from 'doleo-2-client/models/list-entry';
 import { tracked } from '@glimmer/tracking';
 import ModalService from 'doleo-2-client/services/modal';
 import CustomStore from 'doleo-2-client/services/custom-store';
+import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 
 export interface Args {
   entry: ListEntry;
@@ -82,10 +83,22 @@ export default class ListEntryComponent extends Component<Args> {
     }
   }
 
-  /**
-   * Opens a dialog to edit the list entry.
-   */
-  @action edit() {
-    debugger;
+  @action handleTextClick() {
+    this.modal.input({
+      title: 'Eintrag bearbeiten',
+      icon: 'edit',
+      value: this.entry.text,
+      placeholder: this.entry.text,
+      noLabel: 'Abbrechen',
+      onYesClick: this.editText,
+    });
+  }
+
+  @action editText(value: string) {
+    this.modal.hide();
+    if (stringIsNotEmpty([value]) && value !== this.entry.text) {
+      this.entry.text = value;
+      this.store.trySave(this.entry);
+    }
   }
 }

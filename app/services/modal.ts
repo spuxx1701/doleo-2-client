@@ -2,8 +2,15 @@ import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import * as bootstrap from 'bootstrap';
 import { ConfirmModalOptions } from 'doleo-2-client/components/modal/confirm';
+import { InputModalOptions } from 'doleo-2-client/components/modal/input';
 import { SelectUserModalOptions } from 'doleo-2-client/components/modal/select-user';
 import ManagerService from './manager';
+
+export enum ModalType {
+  confirm = 'confirm',
+  input = 'input',
+  selectUser = 'select-user',
+}
 
 export default class ModalService extends Service {
   @service declare manager: ManagerService;
@@ -11,7 +18,7 @@ export default class ModalService extends Service {
   modalElement: HTMLElement;
   modal: bootstrap.Modal;
 
-  @tracked activeModalName: string | undefined;
+  @tracked activeModalType: ModalType | undefined;
   @tracked activeModalOptions: {} | undefined;
   timeToDestroy = 300;
 
@@ -27,13 +34,19 @@ export default class ModalService extends Service {
   }
 
   confirm(options: ConfirmModalOptions) {
-    this.activeModalName = 'confirm';
-    this.activeModalOptions = options;
-    this.show();
+    this.setActiveModal(ModalType.confirm, options);
+  }
+
+  input(options: InputModalOptions) {
+    this.setActiveModal(ModalType.input, options);
   }
 
   selectUser(options: SelectUserModalOptions) {
-    this.activeModalName = 'select-user';
+    this.setActiveModal(ModalType.selectUser, options);
+  }
+
+  setActiveModal(type: ModalType, options: {}) {
+    this.activeModalType = type;
     this.activeModalOptions = options;
     this.show();
   }
@@ -45,6 +58,6 @@ export default class ModalService extends Service {
   async hide() {
     this.modal.hide();
     await this.manager.sleep(this.timeToDestroy);
-    this.activeModalName = undefined;
+    this.activeModalType = undefined;
   }
 }
