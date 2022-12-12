@@ -10,6 +10,9 @@
 {{#if this.newsFeed.hasNews}}
   <h3>Es gibt Neuigkeiten!</h3>
   <div class='content'>
+    {{#if (string-is-not-empty this.newsFeed.newVersion)}}
+      <Home::NewVersion @version={{this.newsFeed.newVersion}} />
+    {{/if}}
     {{#each this.newsFeed.pings as |ping|}}
       <Home::IncomingPing @ping={{ping}} />
     {{/each}}

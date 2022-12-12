@@ -1,0 +1,26 @@
+<div
+  class='content-element feed-element {{if this.hidden "feed-element-hidden"}}'
+>
+  <p>
+    Doleo wurde auf Version
+    <b>{{@version}}</b>
+    aktualisiert! Tippe auf ✔, um mehr über die Änderungen zu erfahren und
+    außerdem Deinen
+    <b>Cache zu leeren</b>. Das Leeren des Cache kann erforderlich sein, damit
+    alle Änderungen korrekt angezeigt werden.
+  </p>
+  <div class='flex full-width justify-content-end'>
+    <Common::ButtonSmall
+      @icon='check'
+      @design='dark'
+      aria-label='Änderungen ansehen & Cache leeren'
+      @onClick={{this.showChangesAndClearCache}}
+    />
+    <Common::ButtonSmall
+      @icon='times'
+      @design='dark'
+      aria-label='Änderungen nicht ansehen & Cache nicht leeren'
+      @onClick={{this.hide}}
+    />
+  </div>
+</div>
