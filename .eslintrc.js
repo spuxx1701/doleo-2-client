@@ -56,10 +56,10 @@ module.exports = {
         'node/no-unpublished-require': 'off',
       },
     },
-    {
-      // test files
-      files: ['tests/**/*-test.{js,ts}'],
-      extends: ['plugin:qunit/recommended'],
-    },
+    // {
+    //   // test files
+    //   files: ['tests/**/*-test.{js,ts}'],
+    //   extends: ['plugin:qunit/recommended'],
+    // },
   ],
 };

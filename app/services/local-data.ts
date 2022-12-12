@@ -1,9 +1,7 @@
 import { action } from '@ember/object';
-import RouterService from '@ember/routing/router-service';
 import Service, { service } from '@ember/service';
 import ENV from 'doleo-2-client/config/environment';
 import ManagerService from './manager';
-import ModalService from './modal';
 import { clean, valid, gt } from 'semver';
 import NewsFeedService from './news-feed';
 
