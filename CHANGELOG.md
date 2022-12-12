@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [2.2.0] - 2022-12-12
 
+### Added
+
+- Application now stores the latest encountered version and informs the user about updates
 - List entries can now be edited
 
 ## [2.1.0] - 2022-12-09
