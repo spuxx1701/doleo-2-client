@@ -12,7 +12,7 @@ export default class ApplicationAdapter extends RESTAdapter {
 
   get headers() {
     // Provide authorization headers on all requests.
-    let headers = {} as any;
+    const headers = {} as any;
     if (this.session.isAuthenticated) {
       headers[
         'Authorization'

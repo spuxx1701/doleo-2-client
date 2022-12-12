@@ -65,7 +65,7 @@ export default class UserSelectComponent extends Component<Args> {
     // We can force ember data to do a reload.
     const allUsers = await this.store.findAll('user', { reload: true });
     this.otherUsers = [];
-    for (let user of allUsers.slice()) {
+    for (const user of allUsers.slice()) {
       if (
         user.id !== this.account.id &&
         !this.familyMembers.find((member) => member.id === user.id)

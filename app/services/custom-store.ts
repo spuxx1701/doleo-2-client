@@ -9,11 +9,12 @@ export default class CustomStore extends Store {
   @service declare notifications: any;
 
   queue: any[] = [];
-  @tracked isSyncing: boolean = false;
-  @tracked hasUnsyncedChanges: boolean = false;
+  @tracked isSyncing = false;
+  @tracked hasUnsyncedChanges = false;
   @tracked syncInterval: number | undefined;
 
   initialize() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this;
     window.onbeforeunload = function () {
       if (that.hasUnsyncedChanges) {

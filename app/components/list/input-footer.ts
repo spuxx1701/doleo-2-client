@@ -16,7 +16,7 @@ export default class ListEntryComponent extends Component<Args> {
 
   declare args: Args;
   @tracked declare text: string;
-  @tracked amount: number = 1;
+  @tracked amount = 1;
 
   get list() {
     return this.args.list;

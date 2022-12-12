@@ -13,10 +13,6 @@ export default class ManagerService extends Service {
 
   // totalHeight = window.visualViewport?.height;
 
-  constructor() {
-    super(...arguments);
-  }
-
   initialize() {
     this.applyDesign();
     this.enableCursorRippleEffect();

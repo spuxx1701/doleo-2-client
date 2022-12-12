@@ -13,7 +13,7 @@ export default class AccountService extends Service {
   @service declare manager: ManagerService;
   @service declare newsFeed: NewsFeedService;
 
-  @tracked id: string = '';
+  @tracked id = '';
   @tracked account: Account | undefined;
 
   patternEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/;

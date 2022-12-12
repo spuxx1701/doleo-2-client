@@ -1,7 +1,7 @@
 import { helper } from '@ember/component/helper';
 
 export function stringIsNotEmpty(args: any[]) {
-  let [string] = args;
+  const [string] = args;
   return (string as string).replace(/\s/g, '').length > 0;
 }
 

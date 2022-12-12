@@ -24,7 +24,7 @@ interface Args {
 
 export default class ConfirmModalComponent extends Component<Args> {
   @service declare modal: ModalService;
-  @tracked value: string = '';
+  @tracked value = '';
   declare args: Args;
 
   constructor(owner: unknown, args: Args) {

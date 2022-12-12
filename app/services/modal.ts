@@ -19,7 +19,7 @@ export default class ModalService extends Service {
   modal: bootstrap.Modal;
 
   @tracked activeModalType: ModalType | undefined;
-  @tracked activeModalOptions: {} | undefined;
+  @tracked activeModalOptions: object | undefined;
   timeToDestroy = 300;
 
   constructor() {
@@ -45,7 +45,7 @@ export default class ModalService extends Service {
     this.setActiveModal(ModalType.selectUser, options);
   }
 
-  setActiveModal(type: ModalType, options: {}) {
+  setActiveModal(type: ModalType, options: object) {
     this.activeModalType = type;
     this.activeModalOptions = options;
     this.show();
