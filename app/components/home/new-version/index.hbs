@@ -4,14 +4,15 @@
   <p>
     Doleo wurde auf Version
     <b>{{@version}}</b>
-    aktualisiert! Tippe auf ✔, um mehr über die Änderungen zu erfahren und
-    außerdem Deinen
+    aktualisiert! Tippe auf
+    <FaIcon @icon='arrows-rotate' />, um mehr über die Änderungen zu erfahren
+    und außerdem Deinen
     <b>Cache zu leeren</b>. Das Leeren des Cache kann erforderlich sein, damit
     alle Änderungen korrekt angezeigt werden.
   </p>
   <div class='flex full-width justify-content-end'>
     <Common::ButtonSmall
-      @icon='check'
+      @icon='arrows-rotate'
       @design='dark'
       aria-label='Änderungen ansehen & Cache leeren'
       @onClick={{this.showChangesAndClearCache}}
