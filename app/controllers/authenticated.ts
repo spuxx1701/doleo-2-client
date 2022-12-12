@@ -56,7 +56,7 @@ export default class AuthenticatedController extends Controller {
 
   get lists() {
     return this.model.lists
-      .toArray()
+      .slice()
       .sort((a: List, b: List) => a.displayName.localeCompare(b.displayName));
   }
 
