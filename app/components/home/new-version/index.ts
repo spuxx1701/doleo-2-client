@@ -30,7 +30,7 @@ export default class IncomingListInvite extends Component<Args> {
   }
 
   @action async hide() {
-    this.localData.rememberEncounteredVersion();
+    this.localData.setEncounteredVersion();
     this.hidden = true;
   }
 }

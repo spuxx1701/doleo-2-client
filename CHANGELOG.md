@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [2.2.1] - 2022-12-21
+
+### Added
+
+- App now uses localStorage instead of cookies to store client-side data.
+
+### Fixed
+
+- Latest encounted version is now stored correctly
+
 ## [2.2.0] - 2022-12-12
 
 ### Added
