@@ -13,11 +13,9 @@ export default class CustomStore extends Store {
   @tracked hasUnsyncedChanges = false;
   @tracked syncInterval: number | undefined;
 
-  initialize() {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const that = this;
-    window.onbeforeunload = function () {
-      if (that.hasUnsyncedChanges) {
+  @action initialize() {
+    window.onbeforeunload = () => {
+      if (this.hasUnsyncedChanges) {
         return 'Du hast ungespeicherte Änderungen. Wenn Du jetzt die Seite verlässt, wirst Du diese verlieren. Möchtest Du fortfahren?';
       } else {
         return null;
