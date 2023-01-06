@@ -1,0 +1,12 @@
+<button
+  type='button'
+  class='monitoring-client-error'
+  aria-label='Expand/Collapse'
+  {{on 'click' this.toggleExpanded}}
+>
+  <p class='monitoring-client-error-date'>{{this.timestamp}}</p>
+  <p class='monitoring-client-error-text'>{{@clientError.message}}</p>
+  {{#if this.expanded}}
+    <p class='monitoring-client-error-stack'>{{this.stack}}</p>
+  {{/if}}
+</button>

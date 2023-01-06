@@ -1,28 +1,27 @@
-// import { action } from '@ember/object';
 import { Router } from '@ember/routing';
 import Service, { inject as service } from '@ember/service';
 import AccountService from './account';
 import CustomStore from './custom-store';
+import ErrorHandlerService from './error-handler';
 
 export default class ManagerService extends Service {
+  @service declare errorHandler: ErrorHandlerService;
   @service declare router: Router;
   @service declare session: any;
   @service declare account: AccountService;
   @service declare store: CustomStore;
   @service declare notifications: any;
 
-  // totalHeight = window.visualViewport?.height;
-
-  initialize() {
+  async initialize() {
+    await this.errorHandler.initialize();
     this.applyDesign();
     this.enableCursorRippleEffect();
-    addEventListener('error', this.handleError);
     this.store.initialize();
-    // On Safari, we need to do some hacky manipulation to make sure that the fixed input footer will stay at the bottom
-    // even if the virtual keyboard is visible
-    // if (/iPhone|iPad|iPod/.test(window.navigator.userAgent)) {
-    //   window.visualViewport.addEventListener('resize', this.safariHandleResize);
-    // }
+    try {
+      await this.session.setup();
+    } catch (error: any) {
+      this.router.transitionTo('login');
+    }
   }
 
   goTo(path: string) {
@@ -65,14 +64,14 @@ export default class ManagerService extends Service {
    * Enables the ripple effect when the use clicks or taps somewhere on the viewport.
    */
   private enableCursorRippleEffect() {
-    document.onclick = () => this.applyCursorRippleEffect(event);
+    document.onclick = (event) => this.applyCursorRippleEffect(event);
   }
 
   /**
    * Applies a ripple effect when the user clicks or taps somewhere on the viewport.
    * @param event The event object.
    */
-  private applyCursorRippleEffect(event: any) {
+  private applyCursorRippleEffect(event: MouseEvent) {
     const ripple = document.createElement('div');
 
     ripple.className = 'ripple';
@@ -113,29 +112,4 @@ export default class ManagerService extends Service {
   async sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
-
-  handleError(event: any): any {
-    console.warn(event);
-    // this.notifications.error(
-    //   `Hoppla! Da ging etwas schief. Bitte Bescheid geben und folgenden Fehlercode übermitteln: ${error.message} [${source} ${lineno}:${colno}]`
-    // );
-  }
-
-  // @action safariHandleResize() {
-  //   const viewport = window.visualViewport;
-  //   if (viewport) {
-  //     // const bottom = Math.max(viewport.height - this.totalHeight, 0);
-  //     // this.notifications.info(bottom);
-  //     // this.notifications.info(height);
-  //     // document.documentElement.style.setProperty(
-  //     //   '--list-input-footer-bottom',
-  //     //   `${bottom}px`
-  //     // );
-  //     const height = viewport.height;
-  //     document.documentElement.style.setProperty(
-  //       '--app-inner-height',
-  //       `${height}px`
-  //     );
-  //   }
-  // }
 }

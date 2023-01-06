@@ -7,6 +7,7 @@ import NewsFeedService from './news-feed';
 
 export interface LocalData {
   latestEncounteredVersion: string;
+  enableTelemetry: boolean;
 }
 
 export default class LocalDataService extends Service {
@@ -35,5 +36,15 @@ export default class LocalDataService extends Service {
     );
     this.newsFeed.newVersion = undefined;
     this.newsFeed.update();
+  }
+
+  @action getEnabledTelemetry() {
+    const enableTelemetry =
+      localStorage.getItem('doleo-enableTelemetry') || '1';
+    return enableTelemetry === '1';
+  }
+
+  @action setEnableTelemetry(value: boolean) {
+    localStorage.setItem('doleo-enableTelemetry', (+value).toString());
   }
 }

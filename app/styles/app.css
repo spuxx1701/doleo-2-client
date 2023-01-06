@@ -7,6 +7,7 @@
 @import 'notifications.css';
 @import 'sidenav.css';
 @import 'text.css';
+@import 'monitoring.css';
 
 :root {
   --branding-bar-height: 5px;

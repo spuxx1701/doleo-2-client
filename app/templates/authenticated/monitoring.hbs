@@ -1,0 +1,7 @@
+{{page-title 'Monitoring'}}
+
+<h3>Client errors</h3>
+<h6>der letzten 14 Tage</h6>
+{{#each @model.clientErrors as |clientError|}}
+  <Application::Monitoring::ClientError @clientError={{clientError}} />
+{{/each}}

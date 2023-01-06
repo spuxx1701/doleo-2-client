@@ -17,6 +17,7 @@ Router.map(function () {
       this.route('settings');
     });
     this.route('create-list');
+    this.route('monitoring');
   });
   this.route('not-found', { path: '*' });
 });

@@ -53,6 +53,11 @@
   @state={{this.hasActivePushSubscription}}
   @onChange={{this.togglePushNotifications}}
 />
+<Common::Toggle
+  @label='Telemetrie'
+  @state={{this.enableTelemetry}}
+  @onChange={{this.toggleEnableTelemetry}}
+/>
 
 <Common::Separator @hidden={{true}} />
 

@@ -6,8 +6,10 @@ import ManagerService from 'doleo-2-client/services/manager';
 import CustomStore from 'doleo-2-client/services/custom-store';
 import NewsFeedService from 'doleo-2-client/services/news-feed';
 import List from 'doleo-2-client/models/list';
+import AccountService from 'doleo-2-client/services/account';
 
 export default class AuthenticatedController extends Controller {
+  @service declare account: AccountService;
   @service declare store: CustomStore;
   @service declare manager: ManagerService;
   @service declare session: any;
@@ -66,6 +68,10 @@ export default class AuthenticatedController extends Controller {
 
   get hasUnsyncedChanges() {
     return this.store.hasUnsyncedChanges;
+  }
+
+  get showAdminMenu() {
+    return this.account.account?.displayName === 'Leo';
   }
 
   @action logout() {

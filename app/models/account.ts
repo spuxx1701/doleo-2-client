@@ -16,6 +16,9 @@ export default class Account extends Model {
 
   @attr()
   declare family: Family;
+
+  @attr()
+  declare enableTelemetry?: boolean; // Local storage property
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.

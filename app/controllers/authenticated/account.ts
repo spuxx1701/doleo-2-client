@@ -8,6 +8,7 @@ import { stringIsNotEmpty } from 'doleo-2-client/helpers/string-is-not-empty';
 import AccountService from 'doleo-2-client/services/account';
 import ModalService from 'doleo-2-client/services/modal';
 import PushNotificationService from 'doleo-2-client/services/push-notification';
+import LocalDataService from 'doleo-2-client/services/local-data';
 
 export default class AccountController extends Controller {
   @service declare manager: ManagerService;
@@ -15,12 +16,14 @@ export default class AccountController extends Controller {
   @service declare notifications: any;
   @service declare modal: ModalService;
   @service declare pushNotification: PushNotificationService;
+  @service declare localData: LocalDataService;
 
   declare model: Account;
 
   @tracked displayName = this.model.displayName;
   @tracked email = this.model.email;
   @tracked password = '';
+  @tracked enableTelemetry = this.model.enableTelemetry;
 
   @action changeDisplayName() {
     if (!this.validateDisplayName(this.displayName)) {
@@ -172,5 +175,10 @@ export default class AccountController extends Controller {
         toggle.checked = true;
       },
     });
+  }
+
+  @action toggleEnableTelemetry(event: any) {
+    this.localData.setEnableTelemetry(event.target.checked);
+    this.enableTelemetry = event.target.checked;
   }
 }
