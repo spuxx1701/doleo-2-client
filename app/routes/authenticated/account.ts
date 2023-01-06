@@ -10,9 +10,6 @@ export default class SettingsRoute extends Route {
   @service declare localData: LocalDataService;
 
   async model() {
-    return {
-      ...this.account.account,
-      enableTelemetry: this.localData.getEnabledTelemetry(),
-    };
+    return this.account.account;
   }
 }

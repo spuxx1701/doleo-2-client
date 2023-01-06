@@ -5,6 +5,7 @@ import Account from 'doleo-2-client/models/account';
 import ManagerService from './manager';
 import CustomStore from './custom-store';
 import NewsFeedService from './news-feed';
+import LocalDataService from './local-data';
 
 export default class AccountService extends Service {
   @service declare session: any;
@@ -12,6 +13,7 @@ export default class AccountService extends Service {
   @service declare notifications: any;
   @service declare manager: ManagerService;
   @service declare newsFeed: NewsFeedService;
+  @service declare localData: LocalDataService;
 
   @tracked id = '';
   @tracked account: Account | undefined;
@@ -26,6 +28,7 @@ export default class AccountService extends Service {
       throw new Error('Attempted to load account without an active session.');
     }
     this.account = await this.store.queryRecord('account', {});
+    this.account.enableTelemetry = this.localData.getEnabledTelemetry();
     this.id = this.account.id;
     this.manager.applyDesign();
     this.newsFeed.initialize();
