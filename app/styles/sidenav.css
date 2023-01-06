@@ -31,12 +31,13 @@
   .sidenav-collapsible-header, .sidenav-button {
     display: flex;
     align-items: center;
-    padding: 0.5rem;
+    padding-left: 0.5rem;
     height: 45px;
     min-height: 45px;
     width: var(--sidenav-max-width);
     border: none;
     background-color: transparent;
+    overflow: hidden;
   }
 
   .sidenav-collapsible-header {
