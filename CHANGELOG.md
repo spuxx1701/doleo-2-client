@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [2.3.1] - 2023-01-09
+
+- The client now invalidates the session when receiving a 401 from the backend due to using an expired access token during authentication.
+
 ## [2.3.0] - 2023-01-06
 
 - The client now sends error data to the backend
