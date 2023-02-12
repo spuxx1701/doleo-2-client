@@ -12,16 +12,16 @@ module.exports = function (/* environment, appConfig */) {
     scope: '/',
     display: 'standalone',
     background_color: '#ffe1e1',
-    theme_color: '#d87093',
+    theme_color: '#696969',
     icons: [
       {
-        src: 'assets/logo/144x144.png',
-        sizes: '144x144',
+        src: 'assets/logo/192x192.png',
+        sizes: '192x192',
         type: 'image/png',
       },
     ],
     ms: {
-      tileColor: '#d87093',
+      tileColor: '#ffe1e1',
     },
   };
 };
