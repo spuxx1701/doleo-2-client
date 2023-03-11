@@ -12,7 +12,7 @@ module.exports = function (/* environment, appConfig */) {
     scope: '/',
     display: 'standalone',
     background_color: '#ffe1e1',
-    theme_color: '#696969',
+    theme_color: '#17202a',
     icons: [
       {
         src: 'assets/logo/192x192.png',
