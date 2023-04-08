@@ -8,7 +8,8 @@ export interface SelectUserModalOptions {
   title: string;
   icon?: string;
   submitLabel?: string;
-  onSubmit: () => void;
+  /* eslint-disable @typescript-eslint/ban-types */
+  onSubmit: Function;
 }
 
 interface Args {

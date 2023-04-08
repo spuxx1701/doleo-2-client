@@ -16,7 +16,8 @@ export default class ListInvite extends Model {
   /**
    * Accepts the invite.
    */
-  declare accept: () => void;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  declare accept: Function;
 }
 
 ListInvite.prototype.accept = memberAction({

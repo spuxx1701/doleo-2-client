@@ -1,8 +1,8 @@
-import { Router } from '@ember/routing';
 import Service, { inject as service } from '@ember/service';
 import AccountService from './account';
 import CustomStore from './custom-store';
 import ErrorHandlerService from './error-handler';
+import Router from '@ember/routing/router';
 
 export default class ManagerService extends Service {
   @service declare errorHandler: ErrorHandlerService;

@@ -8,7 +8,7 @@ import AccountService from 'doleo-2-client/services/account';
 import CustomStore from 'doleo-2-client/services/custom-store';
 
 export interface Args {
-  onSelectionChange?: () => void;
+  onSelectionChange?: (selection: User[] | SelectableUser[]) => any;
   mode?: 'single' | 'multi';
 }
 

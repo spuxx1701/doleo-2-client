@@ -11,14 +11,16 @@ export default class User extends Model {
 
   /**
    * Invites the user to the specified list.
-   * @param {string} body.listId The list id.
+   * @param {string} body.list The list id.
    */
-  declare inviteToList: () => void;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  declare inviteToList: Function;
 
   /**
    * Pings the user.
    */
-  declare ping: () => void;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  declare ping: Function;
 }
 
 User.prototype.inviteToList = memberAction({
