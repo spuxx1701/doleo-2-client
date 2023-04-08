@@ -16,7 +16,7 @@ export default class ListInvite extends Model {
   /**
    * Accepts the invite.
    */
-  declare accept: Function;
+  declare accept: () => void;
 }
 
 ListInvite.prototype.accept = memberAction({

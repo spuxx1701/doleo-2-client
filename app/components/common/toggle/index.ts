@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 export interface Args {
   label: string;
   state: boolean;
-  onChange?: Function;
+  onChange?: (event: InputEvent) => void;
 }
 
 export default class ToggleComponent extends Component<Args> {
@@ -17,7 +17,7 @@ export default class ToggleComponent extends Component<Args> {
     return this.args.state;
   }
 
-  @action handleChange(event: any) {
+  @action handleChange(event: InputEvent) {
     if (this.args.onChange) {
       this.args.onChange(event);
     }

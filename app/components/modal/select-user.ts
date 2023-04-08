@@ -8,7 +8,7 @@ export interface SelectUserModalOptions {
   title: string;
   icon?: string;
   submitLabel?: string;
-  onSubmit: Function;
+  onSubmit: () => void;
 }
 
 interface Args {

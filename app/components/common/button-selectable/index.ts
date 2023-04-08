@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 export interface Args {
   text: string;
   state: SelectableState;
-  onToggle?: Function;
+  onToggle?: (state: SelectableState, context: any) => void;
   context?: any;
   showCheckbox: boolean;
 }

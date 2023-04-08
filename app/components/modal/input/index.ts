@@ -14,8 +14,8 @@ export interface InputModalOptions {
   prefix?: string;
   yesLabel?: string;
   noLabel?: string;
-  onYesClick?: Function;
-  onNoClick?: Function;
+  onYesClick?: (value: string) => void;
+  onNoClick?: () => void;
 }
 
 interface Args {
@@ -59,7 +59,7 @@ export default class ConfirmModalComponent extends Component<Args> {
 
   @action onYesClickHandler() {
     if (this.args.options.onYesClick) {
-      (this.args.options.onYesClick as Function)(this.value);
+      this.args.options.onYesClick(this.value);
     } else {
       this.modal.hide();
     }
@@ -67,7 +67,7 @@ export default class ConfirmModalComponent extends Component<Args> {
 
   @action onNoClickHandler() {
     if (this.args.options.onNoClick) {
-      (this.args.options.onNoClick as Function)();
+      this.args.options.onNoClick();
     } else {
       this.modal.hide();
     }

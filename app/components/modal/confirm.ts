@@ -10,8 +10,8 @@ export interface ConfirmModalOptions {
   prefix?: string;
   yesLabel?: string;
   noLabel?: string;
-  onYesClick?: Function;
-  onNoClick?: Function;
+  onYesClick?: () => void;
+  onNoClick?: () => void;
 }
 
 interface ConfirmModalComponentArgs {
@@ -36,7 +36,7 @@ export default class ConfirmModalComponent extends Component<ConfirmModalCompone
 
   @action onYesClickHandler() {
     if (this.args.options.onYesClick) {
-      (this.args.options.onYesClick as Function)();
+      this.args.options.onYesClick();
     } else {
       this.modal.hide();
     }
@@ -44,7 +44,7 @@ export default class ConfirmModalComponent extends Component<ConfirmModalCompone
 
   @action onNoClickHandler() {
     if (this.args.options.onNoClick) {
-      (this.args.options.onNoClick as Function)();
+      this.args.options.onNoClick();
     } else {
       this.modal.hide();
     }

@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 
 export interface Args {
   disabled?: boolean;
-  onClick: Function;
+  onClick: () => void;
 }
 
 export default class ButtonComponent extends Component<Args> {

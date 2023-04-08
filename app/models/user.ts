@@ -13,12 +13,12 @@ export default class User extends Model {
    * Invites the user to the specified list.
    * @param {string} body.listId The list id.
    */
-  declare inviteToList: Function;
+  declare inviteToList: () => void;
 
   /**
    * Pings the user.
    */
-  declare ping: Function;
+  declare ping: () => void;
 }
 
 User.prototype.inviteToList = memberAction({
