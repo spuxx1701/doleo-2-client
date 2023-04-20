@@ -60,6 +60,7 @@
     "@types/ember-qunit": "^5.0.0",
     "@types/ember-resolver": "^5.0.11",
     "@types/htmlbars-inline-precompile": "^3.0.0",
+    "@types/node": "^18.15.12",
     "@types/rsvp": "^4.0.4",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
