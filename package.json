@@ -103,7 +103,7 @@
     "prettier": "^2.6.2",
     "typescript": "^5.0.4",
     "uuid": "^9.0.0",
-    "webpack": "^5.72.1"
+    "webpack": "^5.80.0"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
