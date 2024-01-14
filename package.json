@@ -13,7 +13,7 @@
   "scripts": {
     "build": "ember build --environment=production",
     "build:integration": "ember build --environment=integration",
-    "types": "tsc",
+    "types": "tsc --noEmit",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
@@ -21,8 +21,8 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
-    "test": "npm-run-all lint test:*",
-    "test:ember": "ember test"
+    "test": "ember test",
+    "test:coverage": "ember test"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
