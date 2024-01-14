@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [2.4.0] - 2024-01-14
+
+### Changed
+
+- The application was moved to kubernetes.
+
 ## [2.3.1] - 2023-01-09
 
 - The client now invalidates the session when receiving a 401 from the backend due to using an expired access token during authentication.
