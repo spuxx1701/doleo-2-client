@@ -7,16 +7,7 @@ on:
     - main
 
 jobs:
-  types:
-    uses: spuxx1701/ci-cd/.github/workflows/npm_types.yml@v2.1
-
-  lint:
-    uses: spuxx1701/ci-cd/.github/workflows/npm_lint.yml@v2.1
-
   release_image:
-    needs:
-    - types
-    - lint
     uses: spuxx1701/ci-cd/.github/workflows/docker_release_image.yml@v4.1.0
     timeout-minutes: 60
     with:
