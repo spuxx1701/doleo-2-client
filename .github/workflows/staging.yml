@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+    - main
 
 jobs:
   types:
@@ -15,10 +15,11 @@ jobs:
 
   release_image:
     needs:
-      - types
-      - lint
+    - types
+    - lint
     uses: spuxx1701/ci-cd/.github/workflows/docker_release_image.yml@v4.1.0
+    timeout-minutes: 60
     with:
-      dockerfile: Dockerfile.staging
+      dockerfile: Dockerfile.production
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
